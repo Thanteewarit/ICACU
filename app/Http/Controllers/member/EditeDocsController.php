@@ -53,6 +53,10 @@ use App\Model\Budget;
 use App\Model\Animal_stock;
 use App\Model\Animal_common_name;
 use App\Model\Protocol_secretary_opic;
+use App\Model\Protocol_opic_progress;
+use App\Model\Protocol_opic_progress_sub;
+use App\Model\Protocol_opic_termination_sub;
+use App\Model\Protocol_opic_termination;
 
 class EditeDocsController extends Controller
 {
@@ -859,5 +863,74 @@ class EditeDocsController extends Controller
         ->first();
         echo json_encode($Protocol_secretary_opic);
     }
+
+    public function progress(Request $request)
+    {
+        $Protocol_docs      =      Protocol_docs::find($request->id);
+        $Protocol_docs->protocol_status      =  "16";
+        $Protocol_docs->save();
+
+        $protocol_opic_progress                     = new Protocol_opic_progress;
+        $protocol_opic_progress->protocol_id        = $request->id;
+        $protocol_opic_progress->progress_ver       = "1";
+        $protocol_opic_progress->type               = $request->progress_type;
+        $protocol_opic_progress->progress02      = $request->progress02;
+        $protocol_opic_progress->progress03      = $request->progress03;
+        $protocol_opic_progress->progress04      = $request->progress04;
+        $protocol_opic_progress->save();
+
+        $sum = count($request->progress01_sub);
+        if ($sum != 0) {
+            for ($i = 0; $i < $sum; $i++) {
+                
+                $Protocol_opic_progress_sub                  = new Protocol_opic_progress_sub;
+                $Protocol_opic_progress_sub->protocol_id     = $request->id;
+                $Protocol_opic_progress_sub->progress01         = $request->progress01_sub[$i];
+                $Protocol_opic_progress_sub->progress02   = $request->progress02_sub[$i];
+                $Protocol_opic_progress_sub->progress03   = $request->progress03_sub[$i];
+                $Protocol_opic_progress_sub->progress04   = $request->progress04_sub[$i];
+                $Protocol_opic_progress_sub->progress05   = $request->progress05_sub[$i];
+                $Protocol_opic_progress_sub->progress06   = $request->progress06_sub[$i];
+                $Protocol_opic_progress_sub->save();
+            }
+        }
+    }
+    public function termination(Request $request)
+    {
+        if(!empty($request->termination02_A)){
+            $termination02= $request->termination02_A;
+        }elseif(!empty($request->termination02_B)){
+            $termination02=$request->termination02_B;
+        }elseif(!empty($request->termination02_C)){
+            $termination02=$request->termination02_C;
+        }elseif(!empty($request->termination02_D)){
+            $termination02=$request->termination02_D;
+        }
+        $Protocol_opic_termination                     = new Protocol_opic_termination;
+        $Protocol_opic_termination->protocol_id        = $request->id;
+        $Protocol_opic_termination->progress_ver       = "1";
+        $Protocol_opic_termination->termination01               = $request->termination01;
+        $Protocol_opic_termination->termination02      = $progress01;
+        $Protocol_opic_termination->termination03      = $request->termination03;
+        $Protocol_opic_termination->termination04      = $request->termination04;
+        $Protocol_opic_termination->save();
+
+        $sum = count($request->progress01_sub);
+        if ($sum != 0) {
+            for ($i = 0; $i < $sum; $i++) {
+                
+                $Protocol_opic_termination_sub                  = new Protocol_opic_termination_sub;
+                $Protocol_opic_termination_sub->protocol_id     = $request->id;
+                $Protocol_opic_termination_sub->progress01         = $request->progress01_sub[$i];
+                $Protocol_opic_termination_sub->progress02   = $request->progress02_sub[$i];
+                $Protocol_opic_termination_sub->progress03   = $request->progress03_sub[$i];
+                $Protocol_opic_termination_sub->progress04   = $request->progress04_sub[$i];
+                $Protocol_opic_termination_sub->progress05   = $request->progress05_sub[$i];
+                $Protocol_opic_termination_sub->progress06   = $request->progress06_sub[$i];
+                $Protocol_opic_termination_sub->save();
+            }
+        }
+    }
+    
 
 }

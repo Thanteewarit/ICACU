@@ -38,8 +38,19 @@ class ListController extends Controller
         ->get();
 
         $Protocol_docsWaiting     =  Protocol_docs::where('protocol_status','15')
+        ->Orwhere('protocol_status','18')
         ->where('users_id',Auth::user()->id)
         ->get();
+
+        $Protocol_docsProgress    =  Protocol_docs::where('protocol_status','16')
+        ->where('users_id',Auth::user()->id)
+        ->get();
+
+        $Protocol_docsFinish    =  Protocol_docs::where('protocol_status','17')
+        ->where('users_id',Auth::user()->id)
+        ->get();
+
+
 
         return view('member.protocol-list-view', compact(
             'Protocol_docs',
@@ -47,7 +58,9 @@ class ListController extends Controller
             'Protocol_docsApprove',
             'Protocol_docsRejected',
             'Protocol_docsRenew',
-            'Protocol_docsWaiting'
+            'Protocol_docsWaiting',
+            'Protocol_docsProgress',
+            'Protocol_docsFinish'
         ));
         
     }

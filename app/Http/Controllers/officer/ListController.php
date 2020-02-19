@@ -26,10 +26,6 @@ class ListController extends Controller
             $Protocol_submit = Protocol_docs::where('protocol_status','3')->get();
 
             $Protocol_review = Protocol_docs::where('protocol_status','>=','4')
-            ->where('protocol_status','!=','3')
-            ->where('protocol_status','!=','7')
-            ->where('protocol_status','!=','10')
-            ->where('protocol_status','!=','12')
             ->get();
 
             $Protocol_docs = Protocol_docs::where('protocol_status','7')
@@ -40,6 +36,8 @@ class ListController extends Controller
             $Protocol_Approve = Protocol_docs::where('protocol_status','10')->get();
             $Protocol_rejected = Protocol_docs::where('protocol_status','12')->orWhere('protocol_status','14')->get();
             $Protocol_Finish = Protocol_docs::where('protocol_status','13')->get();
+
+            $Protocol_docsProgress = Protocol_docs::Where('protocol_status','16')->get();
             
             return view('officer.protocol-list', compact(
                 'Protocol_review',
@@ -47,7 +45,8 @@ class ListController extends Controller
                 'Protocol_docs',
                 'Protocol_Approve',
                 'Protocol_rejected',
-                'Protocol_Finish'
+                'Protocol_Finish',
+                'Protocol_docsProgress'
             ));
             
         }
@@ -65,6 +64,7 @@ class ListController extends Controller
             $Protocol_Approve = Protocol_docs::where('protocol_status','10')->get();
             $Protocol_rejected = Protocol_docs::where('protocol_status','12')->orWhere('protocol_status','14')->get();
             $Protocol_Finish = Protocol_docs::where('protocol_status','13')->get();
+            $Protocol_docsProgress = Protocol_docs::Where('protocol_status','16')->get();
 
             return view('officer.protocol-list', compact(
                 'Protocol_submit',
@@ -72,7 +72,8 @@ class ListController extends Controller
                 'Protocol_docs',
                 'Protocol_Approve',
                 'Protocol_rejected',
-                'Protocol_Finish'
+                'Protocol_Finish',
+                'Protocol_docsProgress'
             ));
         }
         if(auth()->user()->hasRole('reviewer'))
@@ -95,13 +96,16 @@ class ListController extends Controller
             $Protocol_Approve = Protocol_docs::where('protocol_status','10')->get();
             $Protocol_rejected = Protocol_docs::where('protocol_status','12')->orWhere('protocol_status','14')->get();
             $Protocol_Finish = Protocol_docs::where('protocol_status','13')->get();
+
+            $Protocol_docsProgress = Protocol_docs::Where('protocol_status','16')->get();
             return view('officer.protocol-list', compact(
                 'Protocol_submit',
                 'Protocol_review',
                 'Protocol_docs',
                 'Protocol_Approve',
                 'Protocol_rejected',
-                'Protocol_Finish'
+                'Protocol_Finish',
+                'Protocol_docsProgress'
             ));
         }
 

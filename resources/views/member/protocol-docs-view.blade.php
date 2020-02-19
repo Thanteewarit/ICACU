@@ -860,6 +860,75 @@ $('#Protocol_opic30').on('submit', function (e) {
     });
 
 });
+$('#Protocol_opic_progress').on('submit', function (e) {
+    e.preventDefault();
+    var formData = new FormData(this);
+    $.ajax({
+        url: "{{route('member.edit.progress')}}",
+        data: formData,
+        type: "POST",
+        async: false,
+        contentType: false,
+        processData: false,
+        success: function (data) {
+            swal({
+                title: "ทำการเพิ่มข้อมูลเรียบร้อยแล้ว",
+                text: "",
+                icon: "success",
+                button: "ยืนยัน",
+            });
+
+        }
+
+    });
+
+});
+var num = 2;
+    $(document).ready(function () {
+        $(".plus11").click(function () { 
+            var tr = '';
+            tr += '<tr data-tr="' + num + '" class="del11' + num + '"> ';
+            tr += '<td class="p-0">';
+            tr += '<input type="text" list="common" name="Common_name[]" class="form-control form-control-sm border-0 rounded-0" required>';
+            tr += '<datalist id="common">';
+            tr += '@foreach ($Animal_common_name as $r) <option value="{{$r->common_name_en }}">{{ $r->common_name_en }}</option>@endforeach';
+            tr += '</datalist>';
+            tr += '</td>';
+            tr += '<td class="p-0">';
+            tr += '<input type="text" list="genetic"  name="Genus_Species[]" class="form-control form-control-sm border-0 rounded-0" required>';
+            tr += '<datalist id="genetic">';
+            tr += '@foreach ($Animal_common_name as $r) <option value="{{$r->genetic_diversty }}">{{ $r->genetic_diversty }}</option>@endforeach';
+            tr += '</datalist>';
+            tr += '</td>';
+            tr += '<td class="p-0">';
+            tr += '<input type="text" list="strain" name="Strain_Stock[]" class="form-control form-control-sm border-0 rounded-0" required>';
+            tr += '<datalist id="strain">';
+            tr += '@foreach ($Animal_stock as $r) <option value="{{$r->name }}">{{ $r->name }}</option>@endforeach';
+            tr += '</datalist>';
+            tr += '</td>';
+            tr += '<td class="p-0"><input type="text" class="form-control form-control-sm border-0 rounded-0" name="Age[]" required></td>';
+            tr += '<td class="p-0"><input type="text" class="form-control form-control-sm border-0 rounded-0" name="Weight[]" required></td>';
+            tr += '<td class="p-0">';
+            tr += '<select class="form-control form-control-sm border-0 rounded-0" name="Sex[]" required>';
+            tr += '<option>กรุณาเลือก</option>';
+            tr += '<option>Male</option>';
+            tr += '<option>Female</option>';
+            tr += '</select>';
+            tr += '</td>';
+            tr += '<td class="p-0"><input type="text" class="form-control form-control-sm border-0 rounded-0 Number11" name="Number[]" required></td>';
+            tr += '<td class="text-center p-0"><button type="button" class="btn btn-secondary rounded-0 minus11">-</button></td>';
+            tr += '</tr>';
+            $(".tr_protocol_11").append(tr);
+            num++;
+
+        });
+    });   
+    $(document).on('click', ".minus11", function () {
+        var tr = $(this).parent().parent().attr('data-tr');
+        $(".del11" + tr).remove();
+
+    }); 
+
 
 </script>
 @endsection

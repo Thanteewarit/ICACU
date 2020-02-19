@@ -96,7 +96,9 @@ class ChangeStatusController extends Controller
                 $Protocol_docs  = Protocol_docs::find($request->id);
                 $Protocol_docs->protocol_status     = "8";
                 $Protocol_docs->save();
+
             }
+            return redirect()->route('officer.protocol_list.index')->with('yes', 'อนุมัติให้สมาชิกเรียบร้อย');
         }
         if(auth()->user()->hasRole('member')){
             
@@ -111,7 +113,15 @@ class ChangeStatusController extends Controller
                 $Protocol_docs  = Protocol_docs::find($request->id);
                 $Protocol_docs->protocol_status     = "8";
                 $Protocol_docs->save();
+            }elseif($Protocol_docsStatus->protocol_status==18){
+
+                $Protocol_docs  = Protocol_docs::find($request->id);
+                $Protocol_docs->protocol_status     = "10";
+                $Protocol_docs->save();
+
             }
+            return redirect()->route('member.protocol_list.index')->with('yes', 'อนุมัติให้สมาชิกเรียบร้อย');
+            
         }
         if(auth()->user()->hasRole('president')){
             if($Protocol_docsStatus->protocol_status==5)
@@ -125,6 +135,7 @@ class ChangeStatusController extends Controller
                 $Protocol_docs->protocol_status     = "10";
                 $Protocol_docs->save();
             }
+            return redirect()->route('officer.protocol_list.index')->with('yes', 'อนุมัติให้สมาชิกเรียบร้อย');
 
         }
         if(auth()->user()->hasRole('reviewer')){
@@ -144,10 +155,11 @@ class ChangeStatusController extends Controller
                 $Protocol_docs->protocol_status     = "7";
                 $Protocol_docs->save();
             }
+            return redirect()->route('officer.protocol_list.index')->with('yes', 'อนุมัติให้สมาชิกเรียบร้อย');
 
         }
 
-        return redirect()->route('officer.protocol_list.index')->with('yes', 'อนุมัติให้สมาชิกเรียบร้อย');
+        
     }
 
     public function reply(Request $request)
@@ -993,9 +1005,9 @@ class ChangeStatusController extends Controller
 
         $Protocol_docsCk  = Protocol_docs::orderBy('id','desc')->first();
         $Protocol_docs  =   new Protocol_docs;
-        $Protocol_docs->users_id = Auth::user()->id ;
+        $Protocol_docs->users_id = $Protocol_docsCk->users_id ;
         $Protocol_docs->protocol_number = $Protocol_docsCk->protocol_number;
-        $Protocol_docs->protocol_status = "2";
+        $Protocol_docs->protocol_status = "18";
         $Protocol_docs->number_ver = ($Protocol_docsCk->number_ver+1);
         $Protocol_docs->number_run = "1";
         $Protocol_docs->protocol_type = $Protocol_docsCk->protocol_type;

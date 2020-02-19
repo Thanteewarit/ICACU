@@ -17,6 +17,19 @@
         </div>
     </div>
 
+    <div id="group_progess" aria-labelledby="tab_progess" role="tabpanel" class="tab-pane fade">
+        <div class="work-tab text-center">
+            <nav class="nav nav-tabs" id="nav-tab" role="tablist">
+                <a id="tab_ap" href="#con_ap" aria-controls="con_ap" class="nav-item nav-link active" data-toggle="tab" role="tab" aria-selected="true">PROGRESS</a>
+            </nav>
+        </div>
+        <div class="work-con tab-content" id="nav-tabContent">
+            <div id="con_ap" aria-labelledby="tab_ap" role="tabpanel" class="tab-pane fade show active">
+                @include ('officer.inc.list.status-progress')
+            </div>
+        </div>
+    </div>
+
     <div id="group_acti" aria-labelledby="tab_acti" role="tabpanel" class="tab-pane fade">
         <div class="work-tab text-center">
             <nav class="nav nav-tabs" id="nav-tab" role="tablist">
