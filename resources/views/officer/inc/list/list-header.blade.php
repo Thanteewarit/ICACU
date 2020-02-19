@@ -17,6 +17,12 @@
             </a>
         </li>
         <li>
+            <a id="tab_acti" href="#group_progess" aria-controls="group_progess" class="head-tab nav-item nav-link px-1" data-toggle="tab" role="tab" aria-selected="false">
+                <span class="material-icons md-16 mx-2" title="Active">timer</span>
+                <span class="d-none d-md-block">PROGRESS</span>
+            </a>
+        </li>
+        <li>
             <a id="tab_term" href="#group_term" aria-controls="group_term" class="head-tab nav-item nav-link px-1" data-toggle="tab" role="tab" aria-selected="false">
                 <span class="material-icons md-16 mx-2" title="Terminate">timer_off</span>
                 <span class="d-none d-md-block">Terminate</span>

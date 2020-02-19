@@ -57,6 +57,8 @@ use App\Model\Protocol_reviewer_list;
 use App\Model\Protocol_reviewer_opic;
 use App\Model\Protocol_secretary_opic;
 use App\Model\Protocol_docsfile;
+use App\Model\Protocol_opic_progress;
+use App\Model\Protocol_opic_progress_sub;
 
 class ProtocolViewController extends Controller
 {
@@ -131,8 +133,11 @@ class ProtocolViewController extends Controller
             $Protocol_reviewer_opic     =   Protocol_reviewer_opic::where('protocol_id',$request->id)->where('reviewer_id',Auth::user()->id)->get();
             $Protocol_reviewer_opic_count     =   Protocol_reviewer_opic::where('protocol_id',$request->id)->where('reviewer_id',Auth::user()->id)->count();
         }
-        //dd($Protocol_reviewer_opic);
+        
         $Protocol_reviewer_list     =   Protocol_reviewer_list::where('protocol_id',$request->id)->where('users_id',Auth::user()->id)->first();
+        $Protocol_opic_progress = Protocol_opic_progress::orderBy('id','desc')->where('protocol_id',$request->id)->first();
+        $Protocol_opic_progress_sub = Protocol_opic_progress_sub::orderBy('id','desc')->where('protocol_id',$request->id)->get();
+        
         return view('officer.protocol-docs',compact(
             'Protocol_docs',
             'Protocol_opic01',
@@ -186,7 +191,9 @@ class ProtocolViewController extends Controller
             'StatusUser',
             'Protocol_docsfile',
             'Protocol_docsHistory',
-            'Protocol_reviewer_listP'
+            'Protocol_reviewer_listP',
+            'Protocol_opic_progress',
+            'Protocol_opic_progress_sub'
         ));
     }
 

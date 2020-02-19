@@ -11,16 +11,18 @@
         </tr>
     </thead>
     <tbody>
-        @for($i=0; $i<60; $i++)
-        <tr>
-            <td></td>
-            <td>ICACU-A-000001</td>
-            <td>ICACU-A</td>
-            <td>Lorem Ipsum is simply dummy text of the printing...</td>
-            <td>31/05/62</td>
-            <td>Submitted</td>
-            <td class="text-center"><a href="{{ route('member.protocol_list_view.index')}}"><i class="material-icons md-16 md-noti active">star</i></a></td>
-        </tr>
-        @endfor
+        @if($Protocol_docsFinish)
+            @foreach($Protocol_docsFinish as $key=> $r)
+                <tr>
+                    <td></td>
+                    <td>{{ $r->protocol_number }}</td>
+                    <td>{{ $r->Protocol_typeName->name }}</td>
+                    <td>{{ $r->Protocol_opic01->animal_protocol_th }}</td>
+                    <td>{{ DateThai($r->created_at) }}</td>
+                    <td>{{ $r->Job_statusName->name }}</td>
+                    <td class="text-center"><a href="{{ route('member.protocol.show',array('id'=>$r->id))}}"><i class="material-icons md-16 md-noti active">rate_review</i></a></td>
+                </tr>
+            @endforeach
+        @endif
     </tbody>
 </table>

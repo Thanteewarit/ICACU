@@ -86,6 +86,8 @@ Route::post('/members/protocol-edit/opic27','member\EditeDocsController@editProt
 Route::post('/members/protocol-edit/opic28','member\EditeDocsController@editProtocol_opic28')->name('member.edit.Protocol_opic28');
 Route::post('/members/protocol-edit/opic29','member\EditeDocsController@editProtocol_opic29')->name('member.edit.Protocol_opic29');
 Route::post('/members/protocol-edit/opic30','member\EditeDocsController@editProtocol_opic30')->name('member.edit.Protocol_opic30');
+Route::post('/members/protocol-edit/progress','member\EditeDocsController@progress')->name('member.edit.progress');
+Route::post('/members/protocol-edit/termination','member\EditeDocsController@termination')->name('member.edit.termination');
 
 Route::post('/members/protocol-draft/sendDraft','member\ApproveController@sendDraft')->name('member.protocol-draft.sendDraft');
 

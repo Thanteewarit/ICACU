@@ -7,7 +7,7 @@
             <button class="btn-c material-icons" id="side_upload" title="Upload File">cloud_upload</button>
             @endrole
         @endif
-        @if ($Protocol_docs->protocol_status==2 || $Protocol_docs->protocol_status==15)
+        @if ($Protocol_docs->protocol_status==2 || $Protocol_docs->protocol_status==15 || $Protocol_docs->protocol_status==18 )
         {{-- <a href="{{ route('officer.protocol_view.reply',array('id'=>request()->id))}}"><button class="btn-c material-icons" data-toggle="modal" data-target="#exampleModalScrollable" title="reply">reply</button></a> --}}
         <a href="{{ route('officer.protocol_view.update',array('id'=>request()->id))}}"><button class="btn-c material-icons" data-toggle="modal" data-target="#exampleModalScrollable" title="ส่งข้อมูล">send</button></a>
         @endif
