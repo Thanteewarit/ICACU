@@ -50,7 +50,7 @@
                             </div>
                         </div>
                         <div class="row form-group">
-                                <label class="col-12">สังกัต</label>
+                                <label class="col-12">สังกัด</label>
                                 <div class="col-lg-6">
                                     <select class="form-control form-control-sm mb-2 " onchange="affiliation_typeGet(this.value)" >
                                         <option value="">กรุณาเลือก</option>
@@ -85,13 +85,13 @@
                             <div class="col-lg-6">
                                 <div class="lang-group mb-2">
                                     <small>TH</small>
-                                    <input type="text" class="form-control form-control-sm" name="alignAcademicTh" placeholder="Text here..." required>
+                                    <input type="text" class="form-control form-control-sm" name="alignAcademicTh" placeholder="Text here..." >
                                 </div>
                             </div>
                             <div class="col-lg-6">
                                 <div class="lang-group mb-2">
                                     <small>EN</small>
-                                    <input type="text" class="form-control form-control-sm" name="alignAcademicEn" placeholder="Text here..." required>
+                                    <input type="text" class="form-control form-control-sm" name="alignAcademicEn" placeholder="Text here..." >
                                 </div>
                             </div>
                         </div>
@@ -132,7 +132,7 @@
                             </div>
                             <div class="col-lg-4">
                                 <label>โทรสาร (Fax.)</label>
-                                <input type="text" class="form-control form-control-sm" name="fax" value="">
+                                <input type="text" class="form-control form-control-sm" name="fax" value="-">
                             </div>
                             <div class="col-lg-4">
                                 <label>E-mail</label>
@@ -142,11 +142,11 @@
                         <div class="row form-group">
                             <div class="col-lg-6">
                                 <label>Password</label>
-                                <input type="password" class="form-control form-control-sm" name="password" id="password1" placeholder="Password" autocomplete="new-password" required>
+                                <input type="password" class="form-control form-control-sm" name="password" id="password1" placeholder="Password" autocomplete="new-password"  required>
                             </div>
                             <div class="col-lg-6">
-                                <label>Confrom Password</label>
-                                <input type="password" class="form-control form-control-sm" name="password" id="password2" placeholder="Password" onchange="check_password()" autocomplete="new-password" required>
+                                <label>Confirm Password</label>
+                                <input type="password" class="form-control form-control-sm" name="password" id="password2" placeholder="Password" onchange="check_password()"  autocomplete="new-password" required>
                             </div>
                         </div>
                         <br>

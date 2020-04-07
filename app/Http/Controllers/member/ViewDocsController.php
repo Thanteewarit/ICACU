@@ -55,6 +55,8 @@ use App\Model\Animal_stock;
 use App\Model\Animal_common_name;
 use App\Model\Protocol_secretary_opic;
 use App\Model\Protocol_docsfile;
+use App\Model\Protocol_opic_progress;
+use App\Model\Protocol_amendment;
 
 class ViewDocsController extends Controller
 {
@@ -114,10 +116,12 @@ class ViewDocsController extends Controller
         $Protocol_secretary_opic    =   Protocol_secretary_opic::where('protocol_id',$id)->get();
         $Protocol_docsfile  =   Protocol_docsfile::where('protocol_id',$id)->get();
         $Protocol_secretary_opic    =   Protocol_secretary_opic::where('protocol_id',$id)->get();
-
+        $Protocol_opic_progress_count = Protocol_opic_progress::orderBy('id','desc')->where('protocol_id',$id)->count();
+        $Protocol_opic_progress = Protocol_opic_progress::orderBy('id','desc')->where('protocol_id',$id)->first();
         $Protocol_docsID       =   Protocol_docs::find($id);
         $Protocol_secretary_opicV1    =   Protocol_secretary_opic::where('protocol_id',$id)->where('protocol_status','!=','เหมาะสม')->get();
         $Protocol_docsHistory    =   Protocol_docs::where('protocol_number',$Protocol_docsID->protocol_number)->get();
+        $Protocol_amendment     =   Protocol_amendment::orderBy('id','desc')->where('protocol_id',$id)->first();
 
         return view('member.protocol-docs-view',compact(
             'Protocol_docs',
@@ -169,7 +173,10 @@ class ViewDocsController extends Controller
             'Protocol_secretary_opic',
             'Protocol_docsfile',
             'Protocol_docsHistory',
-            'Protocol_secretary_opicV1'
+            'Protocol_secretary_opicV1',
+            'Protocol_opic_progress_count',
+            'Protocol_opic_progress',
+            'Protocol_amendment'
         ));
     }
 }

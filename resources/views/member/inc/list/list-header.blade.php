@@ -70,8 +70,7 @@
             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="i_member">
                 <h6 class="dropdown-header">Researcher001</h6>
                 <div class="dropdown-divider"></div>
-                <a class="dropdown-item" href="#">Profile Setting</a>
-                <a class="dropdown-item" href="#" onclick="location.href='login.php';">Signout</a>
+                <a class="dropdown-item" href="{{ route('member.register.Profile')}}">Profile Setting</a>
             </div>
         </li>
     </ul>

@@ -19,14 +19,15 @@
             <div class="row form-group">
                 <div class="col-12 mb-4">
                     <label><strong>25.1</strong> ระบุวิธีการ อุปกรณ์ สถานที่ และเหตุผล ที่ทำให้สัตว์ตายอย่างสงบตามมาตรฐานที่เป็นที่ยอมรับพร้อมหลักฐานอ้างอิง (Method, equipment, location, Why euthanasia under standard method)</label>
-                <textarea class="form-control form-control-sm" name="ptc25_02" rows="3" required>{{ $Protocol_opic25->ptc25_02 }}</textarea>
+                <textarea class="form-control form-control-sm" name="ptc25_02" rows="3" >{{ $Protocol_opic25->ptc25_02 }}</textarea>
                 </div>
                 <div class="col-12 mb-4">
                     <label><strong>25.2</strong> ระบุวิธีการการตรวจสอบการตายของสัตว์ (Method for ensure animal death)</label>
-                    <textarea class="form-control form-control-sm" name="ptc25_03" rows="3" required>{{ $Protocol_opic25->ptc25_03 }}</textarea>
+                    <textarea class="form-control form-control-sm" name="ptc25_03" rows="3" >{{ $Protocol_opic25->ptc25_03 }}</textarea>
                 </div>
             </div>
             <input type="hidden" name="id" value="{{ $Protocol_opic11->protocol_id }}">
+            <p class="topic-save2">กรุณากด Save ทุกครั้งหลังมีการแก้ไขข้อมูล</p>
             <button type="submit" class="btn-c material-icons topic-save">save</button>
     
         </div>

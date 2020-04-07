@@ -19,10 +19,11 @@
             <div class="row form-group">
                 <div class="col-12">
                     <label>ระบุวิธีการ อุปกรณ์ สถานที่ และการป้องกันการแพร่กระจายของเชื้อโรคในการผ่าซากสัตว์ (Method, instrument, location and equipment to prevent spread of hazardous agent)</label>
-                <textarea class="form-control form-control-sm" name="ptc26_02" rows="6" required>{{ $Protocol_opic26->ptc26_02 }}</textarea>
+                <textarea class="form-control form-control-sm" name="ptc26_02" rows="6" >{{ $Protocol_opic26->ptc26_02 }}</textarea>
                 </div>
             </div>
             <input type="hidden" name="id" value="{{ $Protocol_opic11->protocol_id }}">
+            <p class="topic-save2">กรุณากด Save ทุกครั้งหลังมีการแก้ไขข้อมูล</p>
             <button type="submit" class="btn-c material-icons topic-save">save</button>
     
         </div>

@@ -2,10 +2,13 @@
 <form class="box-topic" id="Protocol_opic01" >
     {{ csrf_field() }}
     <div class="topic">
-        @if($Protocol_docs->protocol_status!=10)
+        @if($Protocol_docs->protocol_status==15)
         @include ('member.inc-view.modal.modal-protocol-include')
         @endif
         <div class="heading">
+            {{-- <div class="card-block">
+                <div id="server-load" style="height:300px"></div>
+            </div> --}}
             <img class="d-block mx-auto mb-3" src="{{asset('member/img/logo_tu_cut.svg')}}" height="100" />
             <h1>แบบฟอร์มการขอรับการพิจารณาจรรยาบรรณการใช้สัตว์ทดลอง<br>(ANIMAL CARE AND USE PROTOCOL)</h1>
             <p>(เพื่อคณะอนุกรรมการจรรยาบรรณและติดตามโครงการเลี้ยงและใช้สัตว์เพื่องานทางวิทยาศาสตร์ มธ. พิจารณา)</p>
@@ -209,7 +212,10 @@
         <input type="hidden" name="protocol_number" value="1">
 
         @hasanyrole('secretary|reviewer|member')
-        <button type="submit" class="btn-c material-icons topic-save">save</button>
+            @if ($Protocol_docs->protocol_status!=7)
+            <p class="topic-save2">กรุณากด Save ทุกครั้งหลังมีการแก้ไขข้อมูล</p>
+            <button type="submit" class="btn-c material-icons topic-save">save</button>
+            @endif
         @endhasanyrole
 
         @endif

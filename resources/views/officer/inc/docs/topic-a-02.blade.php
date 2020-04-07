@@ -3,6 +3,9 @@
     {{ csrf_field() }}
     <input type="hidden" name="id" value="{{ request()->id }}">
     <div class="topic">
+        @if($Protocol_docs->protocol_status==3)
+        @include ('officer.inc.modal.modal-protocol-include')
+        @endif
         <h2 class="title"><span>02</span>รายชื่อหัวหน้าโครงการและผู้ร่วมโครงการ (List of Principal Investigator and
             Co-Investigators)</h2>
         @foreach($Protocol_opic02 as $r)
@@ -16,35 +19,35 @@
                     <div class="lang-group mb-2">
                         <small>TH</small>
                         <input type="text" class="form-control form-control-sm" name="Name_th[]" value="{{ $r->Name_th }}" autocomplete="off"
-                            required>
+                            >
                     </div>
                 </div>
                 <div class="col-lg-6">
                     <div class="lang-group mb-2">
                         <small>TH</small>
                         <input type="text" class="form-control form-control-sm" name="Surname_th[]" value="{{ $r->Surname_th }}" autocomplete="off"
-                            required>
+                            >
                     </div>
                 </div>
                 <div class="col-lg-6">
                     <div class="lang-group mb-2">
                         <small>EN</small>
                         <input type="text" class="form-control form-control-sm" name="Name_en[]" value="{{ $r->Name_en }}" autocomplete="off"
-                            required>
+                            >
                     </div>
                 </div>
                 <div class="col-lg-6">
                     <div class="lang-group mb-2">
                         <small>EN</small>
                         <input type="text" class="form-control form-control-sm" name="Surname_en[]" value="{{ $r->Surname_en }}" autocomplete="off"
-                            required>
+                            >
                     </div>
                 </div>
             </div>
             <div class="row form-group">
                 <label class="col-12">สถานภาพ</label>
                 <div class="col-lg-6">
-                    <select class="form-control form-control-sm mb-2 pi_item" id="pi_item1 " name="opic02_status[]" value="{{ $r->opic02_status }}" data-id="1" required>
+                    <select class="form-control form-control-sm mb-2 pi_item" id="pi_item1 " name="opic02_status[]" value="{{ $r->opic02_status }}" data-id="1" >
                         <option value="">กรุณาเลือก</option>
                         @foreach ($StatusUser as $rs1)
                         <option value="{{ $rs1->id }}" @if($r->opic02_status==$rs1->id) selected @endif>{{ $rs1->name }}</option>
@@ -63,14 +66,14 @@
                     <div class="lang-group mb-2">
                         <small>TH</small>
                         <input type="text" class="form-control form-control-sm" name="opic02_Align_th[]" value="{{ $r->opic02_Align_th }}"
-                            autocomplete="off" required>
+                            autocomplete="off" >
                     </div>
                 </div>
                 <div class="col-lg-6">
                     <div class="lang-group mb-2">
                         <small>EN</small>
                         <input type="text" class="form-control form-control-sm" name="opic02_Align_en[]" value="{{ $r->opic02_Align_en }}"
-                            autocomplete="off" required>
+                            autocomplete="off" >
                     </div>
                 </div>
             </div>
@@ -80,14 +83,14 @@
                     <div class="lang-group mb-2">
                         <small>TH</small>
                         <input type="text" class="form-control form-control-sm" name="opic02_Other_position_th[]" value="{{ $r->opic02_Other_position_th }}"
-                            autocomplete="off" required>
+                            autocomplete="off" >
                     </div>
                 </div>
                 <div class="col-lg-6">
                     <div class="lang-group mb-2">
                         <small>EN</small>
                         <input type="text" class="form-control form-control-sm" name="opic02_Other_position_en[]" value="{{ $r->opic02_Other_position_en }}"
-                            autocomplete="off" required>
+                            autocomplete="off" >
                     </div>
                 </div>
             </div>
@@ -97,14 +100,14 @@
                     <div class="lang-group mb-2">
                         <small>TH</small>
                         <textarea class="form-control form-control-sm auto-expand" rows="3"
-                            name="opic02_Contact_address_th[]" autocomplete="off" required>{{ $r->opic02_Contact_address_th }}</textarea>
+                            name="opic02_Contact_address_th[]" autocomplete="off" >{{ $r->opic02_Contact_address_th }}</textarea>
                     </div>
                 </div>
                 <div class="col-lg-6">
                     <div class="lang-group mb-2">
                         <small>EN</small>
                         <textarea class="form-control form-control-sm auto-expand" rows="3"
-                            name="opic02_Contact_address_en[]" autocomplete="off" required>{{ $r->opic02_Contact_address_en }}</textarea>
+                            name="opic02_Contact_address_en[]" autocomplete="off" >{{ $r->opic02_Contact_address_en }}</textarea>
                     </div>
                 </div>
             </div>
@@ -112,17 +115,17 @@
                 <div class="col-lg-4">
                     <label>โทรศัพท์ (Tel.)</label>
                     <input type="text" class="form-control form-control-sm" name="opic02_Tel[]" value="{{ $r->opic02_Tel }}" autocomplete="off"
-                        required>
+                        >
                 </div>
                 <div class="col-lg-4">
                     <label>โทรสาร (Fax.)</label>
                     <input type="text" class="form-control form-control-sm" name="opic02_Fax[]" value="{{ $r->opic02_Fax }}" autocomplete="off"
-                        required>
+                        >
                 </div>
                 <div class="col-lg-4">
                     <label>E-mail</label>
                     <input type="email" class="form-control form-control-sm" name="opic02_email[]" value="{{ $r->opic02_email }}" autocomplete="off"
-                        required>
+                        >
                     <input type="hidden" name="number0[]" value="{{ $r->number01 }}">
                 </div>
             </div>
@@ -464,6 +467,8 @@
         @hasanyrole('president|secretary')
         @role('secretary')
         <button type="button" class="btn btn-warning Merge" value="02"><small class="material-icons">crop</small> Merge Comments</button>
+        @if($Protocol_docs->protocol_v2==0)
+        
         <div class="alert alert-warning my-5" role="alert">
             <h4><i class="material-icons">question_answer</i> Comment</h4>
             <hr>
@@ -485,8 +490,10 @@
             </div>
         <textarea class="form-control form-control-sm auto-expand" id="Merge02" rows="4" name="merge_comment01"></textarea>
         </div>
+        @endif
         @endrole
-        @role('president')
+        @hasanyrole('president|secretary')
+        @if($Protocol_docs->protocol_v2=="1")
         @foreach ($Protocol_secretary_opic as $key => $r)
         @if($r->protocol_number == 2)
         <div class="alert alert-warning my-5" role="alert">
@@ -512,11 +519,13 @@
         </div>
         @endif
         @endforeach
-        @endrole
+        @endif
+        @endhasanyrole
         @endhasanyrole
         <input type="hidden" name="protocol_id" value="{{ request()->id }}">
         <input type="hidden" name="protocol_number" value="2">
         @hasanyrole('secretary|reviewer')
+        <p class="topic-save2">กรุณากด Safe ทุกครั้งหลังมีการแก้ไขข้อมูล</p>
         <button type="submit" class="btn-c material-icons topic-save">save</button>
         @endhasanyrole
         @endif

@@ -86,13 +86,13 @@
                             <span class="pcoded-mcaret"></span>
                         </a>
                     </li>
-                    <li class="">
+                    {{-- <li class="">
                         <a href="{{route('admin.committee.index')}}">
                             <span class="pcoded-micon"><i class="ti-layout-cta-right"></i><b>N</b></span>
                             <span class="pcoded-mtext">เพิ่มรายชื่อ รีวิว</span>
                             <span class="pcoded-mcaret"></span>
                         </a>
-                    </li>
+                    </li> --}}
                 </ul>
                 
             </li>

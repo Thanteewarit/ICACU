@@ -21,7 +21,7 @@
                                 <input type="radio" id="conclude-amendment_2" name="conclude-amendment" class="custom-control-input" required checked>
                                 <label class="custom-control-label" for="conclude-amendment_2">แก้ไข / ส่งใหม่</label>
                             </div>
-                            <textarea class="form-control form-control-sm auto-expand" rows="6" placeholder="กรุณาระบุเหตผล.." required>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.</textarea>
+                            <textarea class="form-control form-control-sm auto-expand textareaConsider" rows="6" placeholder="กรุณาระบุเหตผล.." required>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.</textarea>
                         </div>
                         <div class="col-12">
                             <div class="custom-control custom-radio my-2">

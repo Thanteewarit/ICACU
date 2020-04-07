@@ -1,5 +1,6 @@
 <div class="docs-box">
-    <form class="box-topic">
+    <form class="box-topic" id="Protocol_opic_Termination" >
+        {{ csrf_field() }}
         <div class="topic">
 
             <div class="heading">
@@ -16,7 +17,7 @@
             <div class="row form-group">
                 <div class="col-12">
                     <div class="custom-control custom-control-inline custom-radio">
-                        <input type="radio" id="rad-tmn-1_1" name="termination01" class="custom-control-input">
+                        <input type="radio" id="rad-tmn-1_1" name="termination01" value="1" class="custom-control-input">
                         <label class="custom-control-label" for="rad-tmn-1_1">Completed (no further activities with animal will be conducted)</label>
                     </div>
                     {{-- <div class="pl-4">
@@ -29,7 +30,7 @@
             <div class="row form-group">
                 <div class="col-12">
                     <div class="custom-control custom-control-inline custom-radio">
-                        <input type="radio" id="rad-tmn-1_2" name="termination01" class="custom-control-input">
+                        <input type="radio" id="rad-tmn-1_2" name="termination01" value="2" class="custom-control-input">
                         <label class="custom-control-label" for="rad-tmn-1_2">Project was initiated but will not be completed   Reason</label>
                     </div>
                     {{-- <div class="pl-4">
@@ -42,7 +43,7 @@
             <div class="row form-group">
                 <div class="col-12">
                     <div class="custom-control custom-control-inline custom-radio">
-                        <input type="radio" id="rad-tmn-1_3" name="termination01" class="custom-control-input">
+                        <input type="radio" id="rad-tmn-1_3" name="termination01" value="3" class="custom-control-input">
                         <label class="custom-control-label" for="rad-tmn-1_3">Project was never initiated (no animal were used in this research)</label>
                     </div>
                     {{-- <div class="pl-4">
@@ -55,7 +56,7 @@
             <div class="row form-group">
                 <div class="col-12">
                     <div class="custom-control custom-control-inline custom-radio">
-                        <input type="radio" id="rad-tmn-1_4" name="termination01" class="custom-control-input">
+                        <input type="radio" id="rad-tmn-1_4" name="termination01" value="4" class="custom-control-input">
                         <label class="custom-control-label" for="rad-tmn-1_4">Other. Explain: </label>
                     </div>
                     {{-- <div class="pl-4">
@@ -83,7 +84,7 @@
                             @foreach ($Protocol_opic11_sub as $r1)
                             <tr>
                                     <td class="p-0">
-                                    <input type="text" list="common" name="progress01_sub[]" value="{{$r1->Common_name}}" class="form-control form-control-sm border-0 rounded-0" required>
+                                    <input type="text" list="common" name="termination01_sub[]" value="{{$r1->Common_name}}" class="form-control form-control-sm border-0 rounded-0" required>
                                         <datalist id="common">
                                             @foreach ($Animal_common_name as $r)
                                             <option value="{{$r->common_name_en }}">{{$r->common_name_en }}</option>
@@ -91,7 +92,7 @@
                                         </datalist>
                                     </td>
                                     <td class="p-0">
-                                    <input type="text" list="genetic" name="progress02_sub[]" value="{{ $r1->Genus_Species }}" class="form-control form-control-sm border-0 rounded-0" required>
+                                    <input type="text" list="genetic" name="termination02_sub[]" value="{{ $r1->Genus_Species }}" class="form-control form-control-sm border-0 rounded-0" required>
                                         <datalist id="genetic">
                                             @foreach ($Animal_common_name as $r)
                                             <option value="{{$r->genetic_diversty }}">{{ $r->genetic_diversty }}</option>
@@ -99,20 +100,20 @@
                                         </datalist>
                                     </td>
                                     <td class="p-0">
-                                    <input type="text" list="strain" name="progress03_sub[]" value="{{ $r1->Strain_Stock }}" class="form-control form-control-sm border-0 rounded-0" required>
+                                    <input type="text" list="strain" name="termination03_sub[]" value="{{ $r1->Strain_Stock }}" class="form-control form-control-sm border-0 rounded-0" required>
                                         <datalist id="strain">
                                                 @foreach ($Animal_stock as $r)
                                                 <option value="{{$r->name }}" >{{ $r->name }}</option>
                                                 @endforeach
                                         </datalist>
                                     </td>
-                                <td class="p-0"><input type="number" class="form-control form-control-sm border-0 rounded-0" name="progress04_sub[]" value="{{ $r1->Number }}" required></td>
+                                <td class="p-0"><input type="number" class="form-control form-control-sm border-0 rounded-0" name="termination04_sub[]" value="{{ $r1->Number }}" required></td>
                                     
                                     <td class="p-0">
-                                        <input type="number" name="progress05_sub[]" class="form-control form-control-sm border-0 rounded-0"  required>
+                                        <input type="number" name="termination05_sub[]" class="form-control form-control-sm border-0 rounded-0"  required>
                                     </td>
                                     <td class="text-center p-0">
-                                        <input type="number" name="progress06_sub[]" class="form-control form-control-sm border-0 rounded-0"  required>
+                                        <input type="number" name="termination06_sub[]" class="form-control form-control-sm border-0 rounded-0"  required>
                                     </td>
                                 </tr>
                             @endforeach
@@ -133,7 +134,8 @@
                     <textarea class="form-control form-control-sm mb-4" name="termination04" rows="6" required></textarea>
                 </div>
             </div>
-            
+            <input name="id" type="hidden" value="{{ request()->id }}">
+            <button type="submit" class="btn-c material-icons topic-save">save</button>
         </div>
     </form>
 </div>

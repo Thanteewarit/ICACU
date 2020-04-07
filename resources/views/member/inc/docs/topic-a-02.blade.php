@@ -11,45 +11,45 @@
                     <div class="col-lg-6">
                         <div class="lang-group mb-2">
                             <small>TH</small>
-                            <input type="text" class="form-control form-control-sm" name="Name_th[]" autocomplete="off"
+                        <input type="text" class="form-control form-control-sm" name="Name_th[]" autocomplete="off" value="{{ $UsersDetail->firstNameTh }}"
                                 required>
                         </div>
                     </div>
                     <div class="col-lg-6">
                         <div class="lang-group mb-2">
                             <small>TH</small>
-                            <input type="text" class="form-control form-control-sm" name="Surname_th[]" autocomplete="off"
+                            <input type="text" class="form-control form-control-sm" name="Surname_th[]" value="{{ $UsersDetail->firstNameEn }}" autocomplete="off"
                                 required>
                         </div>
                     </div>
                     <div class="col-lg-6">
                         <div class="lang-group mb-2">
                             <small>EN</small>
-                            <input type="text" class="form-control form-control-sm" name="Name_en[]" autocomplete="off"
+                            <input type="text" class="form-control form-control-sm" name="Name_en[]" value="{{ $UsersDetail->lastNameTh }}" autocomplete="off"
                                 required>
                         </div>
                     </div>
                     <div class="col-lg-6">
                         <div class="lang-group mb-2">
                             <small>EN</small>
-                            <input type="text" class="form-control form-control-sm" name="Surname_en[]" autocomplete="off"
+                            <input type="text" class="form-control form-control-sm" name="Surname_en[]" value="{{ $UsersDetail->lastNameEn }}" autocomplete="off"
                                 required>
                         </div>
                     </div>
                 </div>
                 <div class="row form-group">
-                    <label class="col-12">สถานภาพ</label>
+                <label class="col-12">สถานภาพ</label>
                     <div class="col-lg-6">
                         <select class="form-control form-control-sm mb-2 pi_item" id="pi_item1 " name="opic02_status[]" data-id="1" required>
                             <option value="">กรุณาเลือก</option>
                             @foreach ($StatusUser as $r)
-                            <option value="{{ $r->id }}">{{ $r->name }}</option>
+                            <option value="{{ $r->id }}" @if($r->id==$UsersDetail->statusUser ) selected @endif>{{ $r->name }}</option>
                             @endforeach
     
                         </select>
                     </div>
                     <div class="col-lg-6">
-                        <input type="text" class="form-control form-control-sm mb-2 pi_other" name="opic02_Other[]" id="pi_other1"
+                        <input type="text" class="form-control form-control-sm mb-2 pi_other" name="opic02_Other[]" value="{{ $UsersDetail->alignAcademicTh }}" id="pi_other1"
                             value=" ">
                     </div>
                 </div>
@@ -58,14 +58,14 @@
                     <div class="col-lg-6">
                         <div class="lang-group mb-2">
                             <small>TH</small>
-                            <input type="text" class="form-control form-control-sm" name="opic02_Align_th[]"
+                            <input type="text" class="form-control form-control-sm" name="opic02_Align_th[]" value="{{ $UsersDetail->alignAcademicTh }}"
                                 autocomplete="off" required>
                         </div>
                     </div>
                     <div class="col-lg-6">
                         <div class="lang-group mb-2">
                             <small>EN</small>
-                            <input type="text" class="form-control form-control-sm" name="opic02_Align_en[]"
+                            <input type="text" class="form-control form-control-sm" name="opic02_Align_en[]" value="{{ $UsersDetail->alignAcademicEn }}"
                                 autocomplete="off" required>
                         </div>
                     </div>
@@ -75,14 +75,14 @@
                     <div class="col-lg-6">
                         <div class="lang-group mb-2">
                             <small>TH</small>
-                            <input type="text" class="form-control form-control-sm" name="opic02_Other_position_th[]"
+                            <input type="text" class="form-control form-control-sm" name="opic02_Other_position_th[]" value="{{ $UsersDetail->otherPositionTh }}"
                                 autocomplete="off" required>
                         </div>
                     </div>
                     <div class="col-lg-6">
                         <div class="lang-group mb-2">
                             <small>EN</small>
-                            <input type="text" class="form-control form-control-sm" name="opic02_Other_position_en[]"
+                            <input type="text" class="form-control form-control-sm" name="opic02_Other_position_en[]" value="{{ $UsersDetail->otherPositionEn }}"
                                 autocomplete="off" required>
                         </div>
                     </div>
@@ -93,31 +93,31 @@
                         <div class="lang-group mb-2">
                             <small>TH</small>
                             <textarea class="form-control form-control-sm auto-expand" rows="3"
-                                name="opic02_Contact_address_th[]" autocomplete="off" required></textarea>
+                                name="opic02_Contact_address_th[]" autocomplete="off" required>{{ $UsersDetail->contactAddressTh }}</textarea>
                         </div>
                     </div>
                     <div class="col-lg-6">
                         <div class="lang-group mb-2">
                             <small>EN</small>
                             <textarea class="form-control form-control-sm auto-expand" rows="3"
-                                name="opic02_Contact_address_en[]" autocomplete="off" required></textarea>
+                                name="opic02_Contact_address_en[]" autocomplete="off" required>{{ $UsersDetail->contactAddressEn }}</textarea>
                         </div>
                     </div>
                 </div>
                 <div class="row form-group">
                     <div class="col-lg-4">
                         <label>โทรศัพท์ (Tel.)</label>
-                        <input type="text" class="form-control form-control-sm" name="opic02_Tel[]" autocomplete="off"
+                        <input type="text" class="form-control form-control-sm" name="opic02_Tel[]" value="{{ $UsersDetail->tell }}" autocomplete="off"
                             required>
                     </div>
                     <div class="col-lg-4">
                         <label>โทรสาร (Fax.)</label>
-                        <input type="text" class="form-control form-control-sm" name="opic02_Fax[]" autocomplete="off"
+                        <input type="text" class="form-control form-control-sm" name="opic02_Fax[]" value="{{ $UsersDetail->fax }}" autocomplete="off"
                             required>
                     </div>
                     <div class="col-lg-4">
                         <label>E-mail</label>
-                        <input type="email" class="form-control form-control-sm" name="opic02_email[]" autocomplete="off"
+                        <input type="email" class="form-control form-control-sm" name="opic02_email[]" value="{{ $UserAll->email }}" autocomplete="off"
                             required>
                         <input type="hidden" name="number0[]" value="1">
                     </div>
@@ -127,7 +127,7 @@
                         <hr>
                         <h3>หน้าที่รับผิดชอบ</h3>
                         <div class="custom-control custom-checkbox mb-1">
-                            <input type="checkbox" id="chk-a2-1_1" class="custom-control-input" name="opic02_responsible[]" value="01">
+                            <input type="checkbox" id="chk-a2-1_1" class="custom-control-input" name="opic02_responsible[]" checked value="01">
                             <label class="custom-control-label" for="chk-a2-1_1">หัวหน้าโครงการที่ขอใช้สัตว์ (Name of
                                 Principal Investigator, PI)</label>
                         </div>
@@ -364,7 +364,7 @@
             </div>
     
     
-    
+            <p class="topic-save2">กรุณากด Save ทุกครั้งหลังมีการแก้ไขข้อมูล</p>
             <button type="submit" class="btn-c material-icons topic-save">save</button>
     
         </div>

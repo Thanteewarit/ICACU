@@ -11,7 +11,7 @@
         </tr>
     </thead>
     <tbody>
-        @if(!empty($$Protocol_Finish))
+        @if(!empty($Protocol_Finish))
         @foreach ($Protocol_Finish as $r)
         <tr>
                 <td></td>

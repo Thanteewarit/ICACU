@@ -11,15 +11,15 @@
         </tr>
     </thead>
     <tbody>
-        @foreach ($Protocol_docs as $r)
+        @foreach ($Protocol_submit as $r)
         <tr>
-                <td></td>
-                <td>{{ $r->protocol_number }}</td>
-                <td>{{ $r->Protocol_typeName->name }}</td>
-                <td>{{ $r->Protocol_opic01->animal_protocol_th }}</td>
-                <td>{{ DateThai($r->created_at) }}</td>
-                <td>{{ $r->Job_statusName->name }}</td>
-                <td class="text-center"><a href="{{ route('officer.protocol_view.index',array('id'=>$r->id))}}"><i class="material-icons md-16 md-noti active">rate_review</i></a></td>
+            <td></td>
+            <td>{{ $r->protocol_number }}</td>
+            <td>{{ $r->typeName }}</td>
+            <td>{{ $r->animal_protocol_th }}</td>
+            <td>{{ DateThai($r->TimeIN) }}</td>
+            <td>{{ $r->StatusTodo }}</td>
+            <td class="text-center"><a href="{{ route('officer.protocol_view.index',array('id'=>$r->ptcId))}}"><i class="material-icons md-16 md-noti active">rate_review</i></a></td>
         </tr>
         @endforeach
     </tbody>

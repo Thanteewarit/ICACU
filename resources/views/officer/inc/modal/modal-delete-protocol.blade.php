@@ -8,8 +8,8 @@
         </button>
       </div>
       <div class="modal-body text-center">
-        <p>Are you sure to delete?</p>
-        <p><strong>Protocol No. IACUC-B-000001</strong></p>
+        <p>กรุณาใส่เหตุผล.</p>
+        <textarea class="form-control" rows="10"></textarea>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">NO</button>

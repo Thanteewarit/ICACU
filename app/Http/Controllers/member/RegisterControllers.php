@@ -11,6 +11,7 @@ use App\Model\Affiliation_type;
 use App\Model\UsersDetail;
 use App\Model\UserAll;
 use App\Model\HasRoles;
+use Auth;
 
 class RegisterControllers extends Controller
 {
@@ -21,6 +22,23 @@ class RegisterControllers extends Controller
         $Affiliation_type   =   Affiliation_type::where('status','Y')->get();
         return view('member.register', compact('StatusUser','Affiliation','Affiliation_type'));
     }
+    public function forgetpass()
+    {
+        $StatusUser         =   StatusUser::where('status','Y')->get();
+        $Affiliation        =   Affiliation::where('status','Y')->get();
+        $Affiliation_type   =   Affiliation_type::where('status','Y')->get();
+        return view('member.forget-pass', compact('StatusUser','Affiliation','Affiliation_type'));
+    }
+    public function Profile()
+    {
+        $UserAll            =   UserAll::find(Auth::user()->id);
+        $UsersDetail        =   UsersDetail::where('usersId',Auth::user()->id)->first();
+        $StatusUser         =   StatusUser::where('status','Y')->get();
+        $Affiliation        =   Affiliation::where('status','Y')->get();
+        $Affiliation_type   =   Affiliation_type::where('status','Y')->get();
+        return view('member.member', compact('StatusUser','Affiliation','Affiliation_type','UserAll','UsersDetail'));
+    }
+    
 
     public function create(Request $request)
     {
@@ -56,53 +74,58 @@ class RegisterControllers extends Controller
         return redirect()->route('LoginOut')->with('yes', 'สมัครสมาชิกสำเร็จ');
     }
 
-    public function store(Request $request)
+    public function edit(Request $request)
     {
-        //
-    }
+        if(!empty($request->password)){
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
+            $UserAll =  UserAll::find(Auth::user()->id);
+            $UserAll->name = $request->firstNameTh;
+            $UserAll->email = $request->email;
+            $UserAll->password = bcrypt($request->password);
+            $UserAll->save();
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
+            $UsersDetail =  UsersDetail::where('usersId',Auth::user()->id)
+            ->update([
+                'firstNameTh'   => $request->firstNameTh,
+                'firstNameEn'   => $request->firstNameEn,
+                'lastNameTh'   => $request->lastNameTh,
+                'lastNameEn'   => $request->lastNameEn,
+                'alignAcademicTh'   => $request->alignAcademicTh,
+                'alignAcademicEn'   => $request->alignAcademicEn,
+                'otherPositionTh'   => $request->otherPositionTh,
+                'otherPositionEn'   => $request->otherPositionEn,
+                'contactAddressTh'   => $request->contactAddressTh,
+                'contactAddressEn'   => $request->contactAddressEn,
+                'statusUser'   => $request->statusUser,
+                'tell'   => $request->tell,
+                'fax'   => $request->fax
+            ]);
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
+        }else{
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
+            $UserAll =  UserAll::find(Auth::user()->id);
+            $UserAll->name = $request->firstNameTh;
+            $UserAll->email = $request->email;
+            $UserAll->save();
+
+            $UsersDetail =  UsersDetail::where('usersId',Auth::user()->id)
+            ->update([
+                'firstNameTh'   => $request->firstNameTh,
+                'firstNameEn'   => $request->firstNameEn,
+                'lastNameTh'   => $request->lastNameTh,
+                'lastNameEn'   => $request->lastNameEn,
+                'alignAcademicTh'   => $request->alignAcademicTh,
+                'alignAcademicEn'   => $request->alignAcademicEn,
+                'otherPositionTh'   => $request->otherPositionTh,
+                'otherPositionEn'   => $request->otherPositionEn,
+                'contactAddressTh'   => $request->contactAddressTh,
+                'contactAddressEn'   => $request->contactAddressEn,
+                'statusUser'   => $request->statusUser,
+                'tell'   => $request->tell,
+                'fax'   => $request->fax
+            ]);
+        }
+
+        return redirect()->route('member.dashboard.index')->with('yes', 'แก้ไขข้อมูลสมาชิกสำเร็จ');
     }
 }

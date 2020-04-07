@@ -2,24 +2,26 @@
 <form class="box-topic" id="Protocol_opic09">
         {{ csrf_field() }}
     <div class="topic">
-
+        @if($Protocol_docs->protocol_status==3)
+        @include ('officer.inc.modal.modal-protocol-include')
+        @endif
         <h2 class="title"><span>09</span>เหตุผลที่ต้องใช้สัตว์ (Justification)</h2>
         <div class="row form-group">
             <div class="col-12">
                 <label><strong>9.1</strong> มีวิธีการอื่นที่อาจนำมาใช้แทนสัตว์ได้หรือไม่ ให้เหตุผลด้วยว่าทำไมจึงไม่ใช้วิธีการอื่นดังกล่าวมาใช้แทนสัตว์ (Replacement)</label>
-            <textarea class="form-control form-control-sm" rows="3" name="Replacement01" required>{{ $Protocol_opic09->Replacement01 }}</textarea>
+            <textarea class="form-control form-control-sm" rows="3" name="Replacement01" >{{ $Protocol_opic09->Replacement01 }}</textarea>
             </div>
         </div>
         <div class="row form-group">
             <div class="col-12">                        
                 <label><strong>9.2</strong> หากมีเหตุผลความจำเป็นที่จะต้องใช้สัตว์ทดลองและไม่สามารถใช้วิธีการอื่นทดแทน ท่านมี วิธีการหรือแนวทางปฏิบัติในการลดจำนวนสัตว์ทดลองให้น้อยที่สุดอย่างไร (Reduction)</label>
-                <textarea class="form-control form-control-sm" rows="3" name="Replacement02" required>{{ $Protocol_opic09->Replacement02 }}</textarea>
+                <textarea class="form-control form-control-sm" rows="3" name="Replacement02" >{{ $Protocol_opic09->Replacement02 }}</textarea>
             </div>
         </div>
         <div class="row form-group">
             <div class="col-12">
                 <label><strong>9.3</strong> ท่านมีวิธีในการปฏิบัติกับสัตว์ทดลองอย่างไร เพื่อให้สัตว์เจ็บปวดน้อยที่สุด (Refinement)</label>
-                <textarea class="form-control form-control-sm" rows="3" name="Replacement03" required>{{ $Protocol_opic09->Replacement03 }}</textarea>
+                <textarea class="form-control form-control-sm" rows="3" name="Replacement03" >{{ $Protocol_opic09->Replacement03 }}</textarea>
             </div>
         </div>
 
@@ -123,6 +125,8 @@
         @hasanyrole('president|secretary')
         @role('secretary')
         <button type="button" class="btn btn-warning Merge" value="09"><small class="material-icons">crop</small> Merge Comments</button>
+        @if($Protocol_docs->protocol_v2==0)
+        
         <div class="alert alert-warning my-5" role="alert">
             <h4><i class="material-icons">question_answer</i> Comment</h4>
             <hr>
@@ -144,8 +148,10 @@
             </div>
         <textarea class="form-control form-control-sm auto-expand" id="Merge09" rows="4" name="merge_comment01"></textarea>
         </div>
+        @endif
         @endrole
-        @role('president')
+        @hasanyrole('president|secretary')
+        @if($Protocol_docs->protocol_v2=="1")
         @foreach ($Protocol_secretary_opic as $key => $r)
         @if($r->protocol_number == 9)
         <div class="alert alert-warning my-5" role="alert">
@@ -171,11 +177,13 @@
         </div>
         @endif
         @endforeach
-        @endrole
+        @endif
+        @endhasanyrole
         @endhasanyrole
         <input type="hidden" name="protocol_id" value="{{ request()->id }}">
         <input type="hidden" name="protocol_number" value="9">
         @hasanyrole('secretary|reviewer')
+                <p class="topic-save2">กรุณากด Safe ทุกครั้งหลังมีการแก้ไขข้อมูล</p>
         <button type="submit" class="btn-c material-icons topic-save">save</button>
         @endhasanyrole
         @endif

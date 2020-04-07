@@ -1,7 +1,7 @@
 <!-- STR 29 -->
 <div class="box-topic">
     <div class="topic">
-        @if($Protocol_docs->protocol_status!=10) @include ('member.inc-view.modal.modal-protocol-include') @endif
+        @if($Protocol_docs->protocol_status==15) @include ('member.inc-view.modal.modal-protocol-include') @endif
         <h2 class="title text-center">คำรับรอง (Statement of profession)</h2>
 
         <div class="row form-group">

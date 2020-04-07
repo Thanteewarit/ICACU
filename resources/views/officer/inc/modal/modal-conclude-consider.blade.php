@@ -13,29 +13,29 @@
                         <div class="col-12">
                             <div class="custom-control custom-radio my-2">
                                 <input type="radio" id="rad-conclude-consider_1" name="rad-conclude-consider" class="custom-control-input" required>
-                                <label class="custom-control-label" for="rad-conclude-consider_1">รับรองโดยไม่มีการแก้ไข</label>
+                                <label class="custom-control-label" for="rad-conclude-consider_1">ไม่เหมาะสม</label>
+                            </div>
+                        </div>
+                        <div class="col-12">
+                            <div class="custom-control custom-radio my-2">
+                                <input type="radio" id="rad-conclude-consider_3" name="rad-conclude-consider" class="custom-control-input" required>
+                                <label class="custom-control-label" for="rad-conclude-consider_3">ไม่เกี่ยวข้อง</label>
                             </div>
                         </div>
                         <div class="col-12">
                             <div class="custom-control custom-radio my-2">
                                 <input type="radio" id="rad-conclude-consider_2" name="rad-conclude-consider" class="custom-control-input" required checked>
-                                <label class="custom-control-label" for="rad-conclude-consider_2">แก้ไข / ส่งใหม่</label>
+                                <label class="custom-control-label" for="rad-conclude-consider_2">ไม่มีข้อมูล</label>
                             </div>
-                            <textarea class="form-control form-control-sm auto-expand" rows="6" placeholder="กรุณาระบุเหตผล.." required>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.</textarea>
+                            <textarea class="form-control form-control-sm auto-expand textareaConsider" rows="6" readonly>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.</textarea>
                         </div>
-                        <div class="col-12">
-                            <div class="custom-control custom-radio my-2">
-                                <input type="radio" id="rad-conclude-consider_3" name="rad-conclude-consider" class="custom-control-input" required>
-                                <label class="custom-control-label" for="rad-conclude-consider_3">ไม่รับรอง</label>
-                            </div>
-                        </div>
+                        
                     </div>
                 
                 </form>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">CANCEL</button>
-                <button type="submit" class="btn btn-success">SEND</button>
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">ปิดและแก้ไข</button>
             </div>
         </div>
     </div>

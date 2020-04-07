@@ -13,15 +13,19 @@
                     <div class="row">
                         <div class="col-12">
                             <div class="d-block mx-auto my-3 text-center">
-                                <img src="{{asset('member/img/glaf.png')}}" height="300">
+                                <div id="server-load" style="height:300px; z-index: 999999;"></div>
                             </div>
                         </div>
                         <div class="col-12">
-                            <P><strong class="mr-2">Protocol No. :</strong>IACUC-A-000001</p>
-                            <P><strong class="mr-2">Status :</strong>Active</p>
-                            <P><strong class="mr-2">Protocol Title :</strong>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
-                            <P><strong class="mr-2">Submitted Date :</strong>31/05/62</p>
-                            <P><strong class="mr-2">Progress Date :</strong>31/11/62</p>
+                            <P><strong class="mr-2">Protocol No. :</strong>{{ $Protocol_docs->protocol_number }} Ver.{{ $Protocol_docs->number_ver }}/{{ $Protocol_docs->number_run }}</p>
+                            <P><strong class="mr-2">Status :</strong>{{ $Protocol_docs->Job_statusName->name }}</p>
+                            <P><strong class="mr-2">Protocol Title :</strong>{{ $Protocol_opic01->animal_protocol_th }}</p>
+                            <P><strong class="mr-2">Submitted Date :</strong>{{ DateThai($Protocol_opic01->updated_at) }}</p>
+                            @if($Protocol_opic_progress_count>0)
+                            <P><strong class="mr-2">Progress Date :</strong>{{ DateThai($Protocol_opic_progress->created_at) }}</p>
+                            @else
+                            <P><strong class="mr-2">Progress Date :</strong>Waiting</p>
+                            @endif
                         </div>
                     </div>
                 

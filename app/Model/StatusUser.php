@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class StatusUser extends Model
 {
-    protected $table="statusUser";
+    protected $table="statususer";
     public $timestamps = false;
 
     public function ststusName(){

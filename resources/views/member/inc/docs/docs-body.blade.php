@@ -4,7 +4,8 @@
         {{-- <button class="btn-c material-icons" id="side_reviewer" title="Add Reviewer">group_add</button> --}}
         <button class="btn-c material-icons" id="side_upload" title="Upload File">cloud_upload</button>
         {{-- <button class="btn-c material-icons" data-toggle="modal" data-target="#exampleModalScrollable" title="Send">send</button> --}}
-        <a href="{{ route('member.protocol_create.update',array('id'=>Session::get('protocol_id')))}}"><button class="btn-c material-icons" data-toggle="modal" data-target="#exampleModalScrollable" title="Send">send</button></a>
+        <a href="{{ route('member.protocol_create.SaveIn',array('id'=>Session::get('protocol_id')))}}"><button class="btn-c material-icons" data-toggle="modal" data-target="#exampleModalScrollable" style="color: #f98000;" title="บันทึกไว้ก่อน">insert_drive_file</button></a>
+        <a href="{{ route('member.protocol_create.update',array('id'=>Session::get('protocol_id')))}}"><button class="btn-c material-icons" data-toggle="modal" data-target="#exampleModalScrollable" style="color: green;" title="Send">send</button></a>
         {{-- <button type="button" class="btn-c material-icons switch-1" title="Control">more_vert</button> --}}
     </div>
 

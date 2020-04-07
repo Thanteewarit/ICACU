@@ -3,7 +3,7 @@
     {{ csrf_field() }}
     <input type="hidden" name="id" value="{{ request()->id }}">
     <div class="topic">
-        @if($Protocol_docs->protocol_status!=10)
+        @if($Protocol_docs->protocol_status==15)
         @include ('member.inc-view.modal.modal-protocol-include')
         @endif
         <h2 class="title"><span>02</span>รายชื่อหัวหน้าโครงการและผู้ร่วมโครงการ (List of Principal Investigator and
@@ -381,7 +381,10 @@
         </div>
 
 
-        <button type="submit" class="btn-c material-icons topic-save">save</button>
+                    @if ($Protocol_docs->protocol_status!=7)
+            <p class="topic-save2">กรุณากด Save ทุกครั้งหลังมีการแก้ไขข้อมูล</p>
+            <button type="submit" class="btn-c material-icons topic-save">save</button>
+            @endif
 
     </div>
 </form>

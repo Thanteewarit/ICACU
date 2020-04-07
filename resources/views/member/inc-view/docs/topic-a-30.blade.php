@@ -3,7 +3,7 @@
         {{ csrf_field() }}
         <div class="box-topic">
             <div class="topic">
-                @if($Protocol_docs->protocol_status!=10) @include ('member.inc-view.modal.modal-protocol-include') @endif
+                @if($Protocol_docs->protocol_status==15) @include ('member.inc-view.modal.modal-protocol-include') @endif
                 <div class="heading">
                     <img class="d-block mx-auto mb-3" src="{{asset('member/img/logo_tu_cut.svg')}} " height="100" />
                     <h2 class="title text-center">

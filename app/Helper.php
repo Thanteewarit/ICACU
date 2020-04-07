@@ -18,4 +18,10 @@ function DateThai($strDate)
 		//return "$strDay $strMonthThai $strYear, $strHour:$strMinute";
         return "$strDay $strMonthThai $strYear";
 	}
-	
+
+function dateDif($strDate1)
+{
+	$date=round(abs(strtotime($strDate1) - strtotime(date("Y-m-d")))/60/60/24);
+	$dateSun= $date*100/30;
+	return number_format($dateSun,2);
+}

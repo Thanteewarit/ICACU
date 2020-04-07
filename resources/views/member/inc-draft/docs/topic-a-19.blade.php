@@ -82,10 +82,11 @@
                     operative care, including provisions for post-surgical observations.
                     <strong>Surgeon/Qualification:</strong> Indicate who will perform the surgery, and his/her qualifications,
                     training, or experience in the proposed procedure.)</p>
-                    <textarea class="form-control form-control-sm" rows="6" name="ptc19_08" required>{{ $Protocol_opic19->ptc19_08 }}</textarea>
+                    <textarea class="form-control form-control-sm" rows="6" name="ptc19_08" >{{ $Protocol_opic19->ptc19_08 }}</textarea>
                 </div>
             </div>
             <input type="hidden" name="id" value="{{ $Protocol_opic11->protocol_id }}">
+            <p class="topic-save2">กรุณากด Save ทุกครั้งหลังมีการแก้ไขข้อมูล</p>
             <button type="submit" class="btn-c material-icons topic-save">save</button>
     
         </div>

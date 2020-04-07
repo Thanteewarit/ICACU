@@ -2,7 +2,9 @@
 <form class="box-topic" id="Protocol_opic19">
         {{ csrf_field() }}
         <div class="topic">
-    
+            @if($Protocol_docs->protocol_status==3)
+        @include ('officer.inc.modal.modal-protocol-include')
+        @endif
             <h2 class="title"><span>19</span>การผ่าตัด การปฏิบัติก่อน-หลังการผ่าตัด โดยเทคนิคปลอดเชื้อ (Surgery)</h2>
             
             <div class="row form-group">
@@ -82,7 +84,7 @@
                     operative care, including provisions for post-surgical observations.
                     <strong>Surgeon/Qualification:</strong> Indicate who will perform the surgery, and his/her qualifications,
                     training, or experience in the proposed procedure.)</p>
-                    <textarea class="form-control form-control-sm" rows="6" name="ptc19_08" required>{{ $Protocol_opic19->ptc19_08 }}</textarea>
+                    <textarea class="form-control form-control-sm" rows="6" name="ptc19_08" >{{ $Protocol_opic19->ptc19_08 }}</textarea>
                 </div>
             </div>
             <input type="hidden" name="id" value="{{ $Protocol_opic11->protocol_id }}">
@@ -185,6 +187,8 @@
          @hasanyrole('president|secretary')
          @role('secretary')
          <button type="button" class="btn btn-warning Merge" value="19"><small class="material-icons">crop</small> Merge Comments</button>
+         @if($Protocol_docs->protocol_v2==0)
+         
          <div class="alert alert-warning my-5" role="alert">
              <h4><i class="material-icons">question_answer</i> Comment</h4>
              <hr>
@@ -206,8 +210,10 @@
              </div>
          <textarea class="form-control form-control-sm auto-expand" id="Merge19" rows="4" name="merge_comment01"></textarea>
          </div>
+         @endif
          @endrole
-         @role('president')
+         @hasanyrole('president|secretary')
+         @if($Protocol_docs->protocol_v2=="1")
          @foreach ($Protocol_secretary_opic as $key => $r)
          @if($r->protocol_number == 19)
          <div class="alert alert-warning my-5" role="alert">
@@ -232,13 +238,15 @@
          <textarea class="form-control form-control-sm auto-expand" id="Merge19" rows="4" name="merge_comment01">{{ $r->comment }}</textarea>
          </div>
          @endif
-         @endforeach
-         @endrole
-         @endhasanyrole
+        @endforeach
+        @endif
+        @endhasanyrole
+        @endhasanyrole
      <input type="hidden" name="protocol_id" value="{{ request()->id }}">
      <input type="hidden" name="protocol_number" value="19">
      @hasanyrole('secretary|reviewer')
-         <button type="submit" class="btn-c material-icons topic-save">save</button>
+                 <p class="topic-save2">กรุณากด Safe ทุกครั้งหลังมีการแก้ไขข้อมูล</p>
+        <button type="submit" class="btn-c material-icons topic-save">save</button>
          @endhasanyrole
      @endif
  

@@ -22,7 +22,7 @@
                 <textarea class="form-control form-control-sm" name="ptc27_02" rows="6" ></textarea>
             </div>
         </div>
-
+        <p class="topic-save2">กรุณากด Save ทุกครั้งหลังมีการแก้ไขข้อมูล</p>
         <button type="submit" class="btn-c material-icons topic-save">save</button>
 
     </div>

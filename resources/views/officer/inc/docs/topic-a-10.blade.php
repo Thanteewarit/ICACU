@@ -2,19 +2,21 @@
 <form class="box-topic" id="Protocol_opic10">
         {{ csrf_field() }}
     <div class="topic">
-
+        @if($Protocol_docs->protocol_status==3)
+        @include ('officer.inc.modal.modal-protocol-include')
+        @endif
         <h2 class="title"><span>10</span>ประโยชน์ต่อมนุษย์หรือสัตว์และผลประโยชน์ทางวิชาการที่คาดว่าจะได้รับ (anticipated outcome)</h2>
         
         <div class="row form-group">
             <div class="col-12">
                 <label><strong>10.1</strong> สรุปผลประโยชน์ต่อมนุษย์</label>
-            <textarea class="form-control form-control-sm" rows="3" name="anticipated01" required>{{ $Protocol_opic10->anticipated01 }}</textarea>
+            <textarea class="form-control form-control-sm" rows="3" name="anticipated01" >{{ $Protocol_opic10->anticipated01 }}</textarea>
             </div>
         </div>
         <div class="row form-group">
             <div class="col-12">
                 <label><strong>10.2</strong> สรุปผลประโยชน์ต่อความก้าวหน้าทางวิชาการ</label>
-                <textarea class="form-control form-control-sm" rows="3" name="anticipated02" required>{{ $Protocol_opic10->anticipated02 }}</textarea>
+                <textarea class="form-control form-control-sm" rows="3" name="anticipated02" >{{ $Protocol_opic10->anticipated02 }}</textarea>
             </div>
         </div>
 
@@ -118,6 +120,8 @@
         @hasanyrole('president|secretary')
         @role('secretary')
         <button type="button" class="btn btn-warning Merge" value="10"><small class="material-icons">crop</small> Merge Comments</button>
+        @if($Protocol_docs->protocol_v2==0)
+        
         <div class="alert alert-warning my-5" role="alert">
             <h4><i class="material-icons">question_answer</i> Comment</h4>
             <hr>
@@ -139,8 +143,10 @@
             </div>
         <textarea class="form-control form-control-sm auto-expand" id="Merge10" rows="4" name="merge_comment01"></textarea>
         </div>
+        @endif
         @endrole
-        @role('president')
+        @hasanyrole('president|secretary')
+        @if($Protocol_docs->protocol_v2=="1")
         @foreach ($Protocol_secretary_opic as $key => $r)
         @if($r->protocol_number == 10)
         <div class="alert alert-warning my-5" role="alert">
@@ -166,11 +172,13 @@
         </div>
         @endif
         @endforeach
-        @endrole
+        @endif
+        @endhasanyrole
         @endhasanyrole
         <input type="hidden" name="protocol_id" value="{{ request()->id }}">
         <input type="hidden" name="protocol_number" value="10">
         @hasanyrole('secretary|reviewer')
+                <p class="topic-save2">กรุณากด Safe ทุกครั้งหลังมีการแก้ไขข้อมูล</p>
         <button type="submit" class="btn-c material-icons topic-save">save</button>
         @endhasanyrole
         @endif

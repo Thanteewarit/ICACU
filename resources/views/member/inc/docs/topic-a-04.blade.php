@@ -243,7 +243,7 @@
                 <input type="text" class="form-control form-control-sm" name="topic4_5n1" value=" " required>
             </div>
         </div>
-
+        <p class="topic-save2">กรุณากด Save ทุกครั้งหลังมีการแก้ไขข้อมูล</p>
         <button type="submit" class="btn-c material-icons topic-save">save</button>
 
     </div>

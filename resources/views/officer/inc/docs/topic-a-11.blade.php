@@ -2,7 +2,9 @@
 <form class="box-topic" id="Protocol_opic11">
     {{ csrf_field() }}
 <div class="topic">
-
+    @if($Protocol_docs->protocol_status==3)
+    @include ('officer.inc.modal.modal-protocol-include')
+    @endif
     <h2 class="title"><span>11</span>ข้อมูลเกี่ยวกับสัตว์ทดลองที่ใช้ในงานวิจัย (Animal model and species justification)</h2>
     <div class="row mb-5">
         <div class="col-12">
@@ -25,7 +27,7 @@
                     @foreach ($Protocol_opic11_sub as $r1)
                     <tr>
                             <td class="p-0">
-                            <input type="text" list="common" name="Common_name[]" value="{{$r1->Common_name}}" class="form-control form-control-sm border-0 rounded-0" required>
+                            <input type="text" list="common" name="Common_name[]" value="{{$r1->Common_name}}" class="form-control form-control-sm border-0 rounded-0" >
                                 <datalist id="common">
                                     @foreach ($Animal_common_name as $r)
                                     <option value="{{$r->common_name_en }}">{{$r->common_name_en }}</option>
@@ -33,7 +35,7 @@
                                 </datalist>
                             </td>
                             <td class="p-0">
-                            <input type="text" list="genetic" name="Genus_Species[]" value="{{ $r1->Genus_Species }}" class="form-control form-control-sm border-0 rounded-0" required>
+                            <input type="text" list="genetic" name="Genus_Species[]" value="{{ $r1->Genus_Species }}" class="form-control form-control-sm border-0 rounded-0" >
                                 <datalist id="genetic">
                                     @foreach ($Animal_common_name as $r)
                                     <option value="{{$r->genetic_diversty }}">{{ $r->genetic_diversty }}</option>
@@ -41,24 +43,24 @@
                                 </datalist>
                             </td>
                             <td class="p-0">
-                            <input type="text" list="strain" name="Strain_Stock[]" value="{{ $r1->Strain_Stock }}" class="form-control form-control-sm border-0 rounded-0" required>
+                            <input type="text" list="strain" name="Strain_Stock[]" value="{{ $r1->Strain_Stock }}" class="form-control form-control-sm border-0 rounded-0" >
                                 <datalist id="strain">
                                         @foreach ($Animal_stock as $r)
                                         <option value="{{$r->name }}" >{{ $r->name }}</option>
                                         @endforeach
                                 </datalist>
                             </td>
-                        <td class="p-0"><input type="number" class="form-control form-control-sm border-0 rounded-0" name="Age[]" value="{{ $r1->Age }}" required></td>
-                            <td class="p-0"><input type="number" class="form-control form-control-sm border-0 rounded-0" name="Weight[]" value="{{ $r1->Weight }}" required></td>
+                        <td class="p-0"><input type="number" class="form-control form-control-sm border-0 rounded-0" name="Age[]" value="{{ $r1->Age }}" ></td>
+                            <td class="p-0"><input type="number" class="form-control form-control-sm border-0 rounded-0" name="Weight[]" value="{{ $r1->Weight }}" ></td>
                             <td class="p-0">
-                                <select class="form-control form-control-sm border-0 rounded-0" name="Sex[]" required>
+                                <select class="form-control form-control-sm border-0 rounded-0" name="Sex[]" >
                                     <option>กรุณาเลือก</option>
                                     <option @if($r1->Sex=='Male') selected @endif>Male</option>
                                     <option @if($r1->Sex=='Female') selected @endif>Female</option>
                                 </select>
                             </td>
                             <td class="p-0">
-                                <input type="number" name="Number[]" class="form-control form-control-sm border-0 rounded-0 Number11" value="{{ $r1->Number }}" required>
+                                <input type="number" name="Number[]" class="form-control form-control-sm border-0 rounded-0 Number11" value="{{ $r1->Number }}" >
                             </td>
                             <td class="text-center p-0">
                                 <button type="button" class="btn btn-secondary rounded-0 del11">-</button>
@@ -85,7 +87,7 @@
                 <div class="input-group-prepend">
                     <div class="input-group-text">Period</div>
                 </div>
-            <input type="text" class="form-control form-control-sm input-date-ranges" name="Period" value="{{ $Protocol_opic11->Period }}" required>
+            <input type="text" class="form-control form-control-sm input-date-ranges" name="Period" value="{{ $Protocol_opic11->Period }}" >
                 <div class="input-group-prepend">
                     <div class="input-group-text">Duration</div>
                 </div>
@@ -96,19 +98,19 @@
     <div class="row mb-5">
         <div class="col-12">
             <label><strong>11.3</strong> ทำไมจึงเลือกใช้สัตว์ทดลองชนิดและเพศดังกล่าวในการทดลองมีการศึกษามาก่อนแล้วหรือไม่ (Animal model and species justification: Provide a scientific justification for the choice of animal model(s). What physiological and morphological characteristics does this animal possess that make it the best possible model?)</label>
-            <textarea class="form-control form-control-sm" rows="3" name="AnimalModel" required>{{ $Protocol_opic11->AnimalModel }}</textarea>
+            <textarea class="form-control form-control-sm" rows="3" name="AnimalModel" >{{ $Protocol_opic11->AnimalModel }}</textarea>
         </div>
     </div>
     <div class="row mb-5">
         <div class="col-12">
             <label><strong>11.4</strong> หลักเกณฑ์ในการกำหนดจำนวนสัตว์ทดลอง (Number of animals required justification: Provide an explanation of how the numbers of animals to be used in each group or total were appropriate. Number of animals used in the experiment should be based on scientific and statistical requirements to achieve objectives)</label>
-            <textarea class="form-control form-control-sm" rows="3" name="animalsRequired" required>{{ $Protocol_opic11->animalsRequired }}</textarea>
+            <textarea class="form-control form-control-sm" rows="3" name="animalsRequired" >{{ $Protocol_opic11->animalsRequired }}</textarea>
         </div>
     </div>
     <div class="row mb-5">
         <div class="col-12">
             <label><strong>11.5</strong> กรณีที่จำเป็นต้องใช้สัตว์ป่าให้เหตุผลด้วยว่าทำไมจึงใช้สัตว์ทดลองหรือสัตว์อื่นแทนไม่ได้ (In case of wildlife species is used provide an explanation of how does not replace these species with laboratory animal or other animal)</label>
-            <textarea class="form-control form-control-sm" rows="3" name="caseWildlife" required>{{ $Protocol_opic11->caseWildlife }}</textarea>
+            <textarea class="form-control form-control-sm" rows="3" name="caseWildlife" >{{ $Protocol_opic11->caseWildlife }}</textarea>
         </div>
     </div>
 
@@ -212,6 +214,8 @@
         @hasanyrole('president|secretary')
         @role('secretary')
         <button type="button" class="btn btn-warning Merge" value="11"><small class="material-icons">crop</small> Merge Comments</button>
+        @if($Protocol_docs->protocol_v2==0)
+       
         <div class="alert alert-warning my-5" role="alert">
             <h4><i class="material-icons">question_answer</i> Comment</h4>
             <hr>
@@ -233,8 +237,10 @@
             </div>
         <textarea class="form-control form-control-sm auto-expand" id="Merge11" rows="4" name="merge_comment01"></textarea>
         </div>
+        @endif
         @endrole
-        @role('president')
+        @hasanyrole('president|secretary')
+        @if($Protocol_docs->protocol_v2=="1")
         @foreach ($Protocol_secretary_opic as $key => $r)
         @if($r->protocol_number == 11)
         <div class="alert alert-warning my-5" role="alert">
@@ -260,11 +266,13 @@
         </div>
         @endif
         @endforeach
-        @endrole
+        @endif
+        @endhasanyrole
         @endhasanyrole
         <input type="hidden" name="protocol_id" value="{{ request()->id }}">
         <input type="hidden" name="protocol_number" value="11">
         @hasanyrole('secretary|reviewer')
+                <p class="topic-save2">กรุณากด Safe ทุกครั้งหลังมีการแก้ไขข้อมูล</p>
         <button type="submit" class="btn-c material-icons topic-save">save</button>
         @endhasanyrole
     @endif

@@ -17,15 +17,15 @@
             @foreach ($Protocol_opic05 as $r1)
                 <tr>
                     <td class="p-0">
-                        <select class="form-control form-control-sm border-0 rounded-0" name="FundingSource[]" required>
+                        <select class="form-control form-control-sm border-0 rounded-0" name="FundingSource[]" >
                             <option value="">please select</option>
                             @foreach ($Budget as $r)
                             <option value="{{$r->id}}" @if($r->id==$r1->FundingSource) selected @endif >{{$r->name}}</option>
                             @endforeach
                         </select>
                     </td>
-                <td class="p-0"><input type="text" class="form-control form-control-sm border-0 rounded-0 input-date-ranges" name="FundingPeriod[]" value="{{ $r1->FundingPeriod }}" required></td>
-                    <td class="p-0"><input type="number" class="form-control form-control-sm border-0 rounded-0 text-right" name="Budget[]" value="{{ $r1->Budget }}" required></td>
+                <td class="p-0"><input type="text" class="form-control form-control-sm border-0 rounded-0 input-date-ranges" name="FundingPeriod[]" value="{{ $r1->FundingPeriod }}" ></td>
+                    <td class="p-0"><input type="number" class="form-control form-control-sm border-0 rounded-0 text-right" name="Budget[]" value="{{ $r1->Budget }}" ></td>
                     <td class="text-center p-0">
                         <button type="button" class="btn btn-secondary rounded-0 minus">-</button>
                     </td>
@@ -45,6 +45,7 @@
     </table>
 
     <input type="hidden" name="id" value="{{ $Protocol_opic03->protocol_id }}">
+    <p class="topic-save2">กรุณากด Save ทุกครั้งหลังมีการแก้ไขข้อมูล</p>
     <button type="submit" class="btn-c material-icons topic-save">save</button>
 
 </div>

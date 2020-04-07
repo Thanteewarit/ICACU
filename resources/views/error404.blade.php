@@ -59,10 +59,13 @@
                 </div>
 
                 <!-- Your text -->
-                <h1>Oops! Error 404 not found.</h1>
+                <h1>Oops! Animal E-Ethic  Error.</h1>
 
-                <p>The page you were looking for doesn't exist.<br>
-                    We think the page may have moved.</p>
+                <h2><br><br>
+                    ระบบการพิจารณาจรรยาบรรณการใช้สัตว์เพื่องานทางวิทยาศาสตร์ มหาวิทยาลัยธรรมศาสตร์<br>
+                <br>
+                ขออภัยในความไม่สะดวก
+                </h2>
 
             </div>
 

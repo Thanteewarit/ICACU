@@ -8,7 +8,7 @@
         <div class="row form-group">
             <div class="col-12">
                 <div class="custom-control custom-control-inline custom-radio mb-1">
-                    <input type="radio" id="rad-a19-1_1" name="ptc19_01" value="N" class="custom-control-input">
+                    <input type="radio" id="rad-a19-1_1" name="ptc19_01" value="N" checked class="custom-control-input">
                     <label class="custom-control-label" for="rad-a19-1_1">ไม่มี (No)</label>
                 </div>
                 <div class="custom-control custom-control-inline custom-radio mb-1">
@@ -85,7 +85,7 @@
                 <textarea class="form-control form-control-sm" rows="6" name="ptc19_08"></textarea>
             </div>
         </div>
-
+        <p class="topic-save2">กรุณากด Save ทุกครั้งหลังมีการแก้ไขข้อมูล</p>
         <button type="submit" class="btn-c material-icons topic-save">save</button>
 
     </div>

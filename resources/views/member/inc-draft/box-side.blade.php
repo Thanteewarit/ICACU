@@ -146,78 +146,14 @@
 
 <div class="box-side half" id="form_reviewer">
     <div class="side-head">
-        <span>Add Reviewer</span>
+        <span>ส่งข้อมูลกลับไปแก้ไข</span>
         <button class="side-close"><i class="material-icons">close</i></button>
     </div>
     <div class="side-body p-4">
         <form>
-            <input type="text" class="form-control form-control-sm mb-1" placeholder="Search...">
-            <table class="table table-sm">
-                <thead>
-                    <tr>
-                        <th scope="col" style="width:30px;">#</th>
-                        <th scope="col">#</th>
-                        <th scope="col">First</th>
-                        <th scope="col">Last</th>
-                        <th scope="col">Handle</th>
-                        <th scope="col" style="width:44px;"></th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>
-                            <div class="custom-control custom-checkbox" style="top:-3px;">
-                                <input type="checkbox" class="custom-control-input" id="chk_rev_1">
-                                <label class="custom-control-label" for="chk_rev_1"></label>
+            <textarea class="form-control" name="comment" rows="20">{{$Protocol_docs->comment}}</textarea>
                             </div>
-                        </td>
-                        <td>1</td>
-                        <td>Mark</td>
-                        <td>Otto</td>
-                        <td>@mdo</td>
-                        <td class="text-center p-0">
-                            <span type="button" class="btn btn-light text-danger rounded-0 px-1 m-0 float-left shadow-none material-icons">swap_horiz</span>
-                            <span type="button" class="btn btn-light text-danger rounded-0 px-1 m-0 float-left shadow-none material-icons">delete</span>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <div class="custom-control custom-checkbox" style="top:-3px;">
-                                <input type="checkbox" class="custom-control-input" id="chk_rev_2">
-                                <label class="custom-control-label" for="chk_rev_2"></label>
-                            </div>
-                        </td>
-                        <td>2</td>
-                        <td>Jacob</td>
-                        <td>Thornton</td>
-                        <td>@fat</td>
-                        <td class="text-center p-0">
-                            <span type="button" class="btn btn-light text-danger rounded-0 px-1 m-0 float-left shadow-none material-icons">swap_horiz</span>
-                            <span type="button" class="btn btn-light text-danger rounded-0 px-1 m-0 float-left shadow-none material-icons">delete</span>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <div class="custom-control custom-checkbox" style="top:-3px;">
-                                <input type="checkbox" class="custom-control-input" id="chk_rev_3">
-                                <label class="custom-control-label" for="chk_rev_3"></label>
-                            </div>
-                        </td>
-                        <td>3</td>
-                        <td>Larry</td>
-                        <td>the Bird</td>
-                        <td>@twitter</td>
-                        <td class="text-center p-0">
-                            <span type="button" class="btn btn-light text-danger rounded-0 px-1 m-0 float-left shadow-none material-icons">swap_horiz</span>
-                            <span type="button" class="btn btn-light text-danger rounded-0 px-1 m-0 float-left shadow-none material-icons">delete</span>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
         </form>
-    </div>
-    <div class="side-foot p-0">
-        <button class="side-close font-weight-bold w-100">SAVE</button>
     </div>
 <div>
 
@@ -262,4 +198,27 @@
                 <button class="side-close font-weight-bold w-100">UPLOAD</button>
             </div>
         <div>
+        </form>
+
+        <form id="SendBack" >
+            {{ csrf_field() }}
+            <div class="box-side half" id="side_upload52">
+                <div class="side-head">
+                    <span>ส่งข้อมูลกลับไปแก้ไข</span>
+                    <button class="side-close"><i class="material-icons">close</i></button>
+                </div>
+                
+                <div class="side-body p-4">
+                        <div class="row form-group">
+                            <div class="col-md-12">
+                            <h6>ข้อมูลที่ต้องแก้ไข</h6>
+                            <textarea class="form-control" name="comment" rows="15">{{$Protocol_docs->comment}}</textarea>
+                            </div>
+                        </div>
+                </div>
+                <div class="side-foot p-0">
+                <input type="hidden" name="protocol_id" value="{{request()->route('id')}}">
+                        <button type="submit" class="side-close font-weight-bold w-100 bg-secondary side-close4">Send to User</button>
+                </div>
+            <div>
         </form>

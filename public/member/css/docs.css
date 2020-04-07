@@ -23,6 +23,21 @@
     bottom: 20px;
     color: #fff;
     background: #EF0039;
+}.docs-box .topic-save2 {
+    position: fixed;
+    right: 91px;
+    bottom: 2px;
+    padding: 10px;
+    border-radius: 25px;
+    color: #fff;
+    background: #ef6600;
+}
+.docs-box .topic-save-ed {
+    position: fixed;
+    right: 30px;
+    bottom: 20px;
+    color: #fff;
+    background: rgb(0, 148, 25);
 }
 .docs-box .box-topic .heading {
     text-align: center;

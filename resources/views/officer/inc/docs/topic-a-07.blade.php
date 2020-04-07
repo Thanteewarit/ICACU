@@ -2,11 +2,13 @@
 <form class="box-topic" id="Protocol_opic07">
         {{ csrf_field() }}
     <div class="topic">
-
+        @if($Protocol_docs->protocol_status==3)
+        @include ('officer.inc.modal.modal-protocol-include')
+        @endif
         <h2 class="title"><span>07</span>บทนำ และหลักการ (Background &amp; Rationale)</h2>
         <div class="row form-group">
             <div class="col-12">
-            <textarea class="form-control form-control-sm mb-3" name="Background" rows="8" required>{{$Protocol_opic07->Background}}</textarea>
+            <textarea class="form-control form-control-sm mb-3" name="Background" rows="8" >{{$Protocol_opic07->Background}}</textarea>
             </div>
         </div>
         <div class="row form-group">
@@ -19,41 +21,41 @@
         <div class="row form-group">
             <div class="col-12">
                 <label>7.1.1 ฐานข้อมูลการทบทวนวรรณกรรม (Literature source(s) searched (database name):</label>
-                <input type="text" name="Literature" class="form-control form-control-sm mb-3" value="{{$Protocol_opic07->Literature}}" required>
+                <input type="text" name="Literature" class="form-control form-control-sm mb-3" value="{{$Protocol_opic07->Literature}}" >
             </div>
             <div class="col-12">
                 <label>7.1.2 วันที่สืบค้นล่าสุด (ไม่เกิน 6
                 เดือนก่อนถึงวันประชุมคณะอนุกรรมการจรรยาบรรณและติดตามโครงการเลี้ยงและใช้สัตว์ มธ.)
                 (Last date of search: Perform the search no earlier than 6 months prior to Sub-IACUC
                 TU meeting)</label>
-                <input type="text" class="form-control form-control-sm mb-3 input-date-single" name="Lastdate" value="{{$Protocol_opic07->Lastdate}}" required>
+                <input type="text" class="form-control form-control-sm mb-3 input-date-single" name="Lastdate" value="{{$Protocol_opic07->Lastdate}}" >
             </div>
             <div class="col-12">
                 <label>7.1.3 ช่วงปีของข้อมูลที่สืบค้น (Period of information searched (from year to the current year.)</label>
                 <div class="input-group input-group-sm mb-3 w-25">
-                    <input type="number" class="form-control form-control-sm " name="Period_start" value="{{$Protocol_opic07->Period_start}}" placeholder="YYYY" required>
+                    <input type="number" class="form-control form-control-sm " name="Period_start" value="{{$Protocol_opic07->Period_start}}" placeholder="YYYY" >
                     <div class="input-group-prepend">
                         <div class="input-group-text">-</div>
                     </div>
-                    <input type="number" class="form-control form-control-sm" name="Period_end" value="{{$Protocol_opic07->Period_end}}" placeholder="YYYY" required>
+                    <input type="number" class="form-control form-control-sm" name="Period_end" value="{{$Protocol_opic07->Period_end}}" placeholder="YYYY" >
                 </div>
             </div>
             <div class="col-12">
                 <label>7.1.4 คำสำคัญที่ใช้ในการสืบค้น (Keywords used in search)</label>
-                <input type="text" class="form-control form-control-sm mb-3" name="Keywords" value="{{$Protocol_opic07->Keywords}}" required>
+                <input type="text" class="form-control form-control-sm mb-3" name="Keywords" value="{{$Protocol_opic07->Keywords}}" >
             </div>
             <div class="col-12">
                 <label>7.1.5 อธิบายผลการสืบค้นโดยสรุป มีการทำซ้ำหรือไม่ กรณีมีการทำซ้ำโปรดระบุเหตุผลความจำเป็น (Results of search: Provide a narrative description of the results of the literature
                 search. Are there any duplication found? Provide justification if this study has to
                 repeat previous studies.)</label>
-                <input type="text" class="form-control form-control-sm mb-3" name="Results" value="{{$Protocol_opic07->Results}}" required>
+                <input type="text" class="form-control form-control-sm mb-3" name="Results" value="{{$Protocol_opic07->Results}}" >
             </div>
         </div>
 
         <div class="row form-group">
             <div class="col-12">
                 <h3>7.2 เอกสารอ้างอิง (List of reference)</h3>
-                <textarea class="form-control form-control-sm" rows="8" name="reference" required> {{$Protocol_opic07->reference}} </textarea>
+                <textarea class="form-control form-control-sm" rows="8" name="reference" > {{$Protocol_opic07->reference}} </textarea>
             </div>
         </div>
 
@@ -157,6 +159,8 @@
         @hasanyrole('president|secretary')
         @role('secretary')
         <button type="button" class="btn btn-warning Merge" value="07"><small class="material-icons">crop</small> Merge Comments</button>
+        @if($Protocol_docs->protocol_v2==0)
+        
         <div class="alert alert-warning my-5" role="alert">
             <h4><i class="material-icons">question_answer</i> Comment</h4>
             <hr>
@@ -178,8 +182,10 @@
             </div>
         <textarea class="form-control form-control-sm auto-expand" id="Merge07" rows="4" name="merge_comment01"></textarea>
         </div>
+        @endif
         @endrole
-        @role('president')
+        @hasanyrole('president|secretary')
+        @if($Protocol_docs->protocol_v2=="1")
         @foreach ($Protocol_secretary_opic as $key => $r)
         @if($r->protocol_number == 7)
         <div class="alert alert-warning my-5" role="alert">
@@ -205,7 +211,8 @@
         </div>
         @endif
         @endforeach
-        @endrole
+        @endif
+        @endhasanyrole
         @endhasanyrole
         <input type="hidden" name="protocol_id" value="{{ request()->id }}">
         <input type="hidden" name="protocol_number" value="7">

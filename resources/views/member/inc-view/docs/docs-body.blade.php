@@ -11,6 +11,8 @@
         {{-- <a href="{{ route('officer.protocol_view.reply',array('id'=>request()->id))}}"><button class="btn-c material-icons" data-toggle="modal" data-target="#exampleModalScrollable" title="reply">reply</button></a> --}}
         <a href="{{ route('officer.protocol_view.update',array('id'=>request()->id))}}"><button class="btn-c material-icons" data-toggle="modal" data-target="#exampleModalScrollable" title="ส่งข้อมูล">send</button></a>
         @endif
+
+
         
         
         @hasanyrole('president|member')
@@ -34,7 +36,6 @@
             </a>
         </nav>
     </div>
-
     <div class="work-con tab-content" id="nav-tabContent">
         <div id="con_prc" aria-labelledby="tab_prc" role="tabpanel" class="h-100 tab-pane fade show active">
             @include ('member.inc-view.docs.docs-protocol')

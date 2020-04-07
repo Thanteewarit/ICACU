@@ -1360,5 +1360,11 @@
     }); 
     
 </script>
+<script>
+    $('.topic-save').on('click', function (e) {
+        $(this).attr('class', ' btn-c material-icons topic-save-ed');
+
+});
+</script>
     
 @endsection

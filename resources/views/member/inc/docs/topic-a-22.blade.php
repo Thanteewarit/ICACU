@@ -19,16 +19,16 @@
         <div class="row form-group">
             <div class="col-12 mb-4">
                 <label><strong>22.1</strong> ระบุเหตุผลความจำเป็นที่ต้องนำสัตว์ไปใช้นอกสถานที่ (Why the experiment to be conduct in other building)</label>
-                <textarea class="form-control form-control-sm" name="ptc22_02" rows="3" required></textarea>
+                <textarea class="form-control form-control-sm" name="ptc22_02" rows="3" ></textarea>
             </div>
             <div class="col-12 mb-4">
                 <label><strong>22.2</strong> ระบุสถานที่ที่จะนำสัตว์ไปใช้ (Where the experiment is expected to be conducted? Please provide the building name and room number.)</label>
-                <textarea class="form-control form-control-sm" name="ptc22_03"  rows="3" required></textarea>
+                <textarea class="form-control form-control-sm" name="ptc22_03"  rows="3" ></textarea>
             </div>
             <div class="col-12 mb-4">
                 <label><strong>22.3</strong> ระยะเวลาที่จะนำสัตว์ไปใช้ (Estimated total time period that live animals will be kept in the laboratory is…hours)</label>
                 <div class="input-group input-group-sm" style="width: 120px;">
-                    <input type="number" class="form-control form-control-sm" name="ptc22_04"  required>
+                    <input type="number" class="form-control form-control-sm" name="ptc22_04"  >
                     <div class="input-group-prepend">
                         <div class="input-group-text">hours</div>
                     </div>
@@ -36,13 +36,14 @@
             </div>
             <div class="col-12 mb-4">
                 <label><strong>22.4</strong> วิธีการเคลื่อนย้ายสัตว์ออกจากสถานที่เลี้ยง (How to transport animal)</label>
-                <textarea class="form-control form-control-sm" rows="3" name="ptc22_05"  required></textarea>
+                <textarea class="form-control form-control-sm" rows="3" name="ptc22_05"  ></textarea>
             </div>
             <div class="col-12 mb-4">
                 <label><strong>22.5</strong> วิธีการจัดการกับสัตว์หลังสิ้นสุดการใช้ (How will the animal sample or carcass be disposed?)</label>
-                <textarea class="form-control form-control-sm" rows="3" name="ptc22_06"  required></textarea>
+                <textarea class="form-control form-control-sm" rows="3" name="ptc22_06" ></textarea>
             </div>
         </div>
+        <p class="topic-save2">กรุณากด Save ทุกครั้งหลังมีการแก้ไขข้อมูล</p>
         <button type="submit" class="btn-c material-icons topic-save">save</button>
 
     </div>

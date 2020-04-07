@@ -10,12 +10,12 @@
                 <span class="d-none d-md-block">Pending</span>
             </a>
         </li>
-        <li>
+        {{-- <li>
             <a id="tab_acti" href="#group_acti" aria-controls="group_acti" class="head-tab nav-item nav-link px-1" data-toggle="tab" role="tab" aria-selected="false">
                 <span class="material-icons md-16 mx-2" title="Active">timer</span>
                 <span class="d-none d-md-block">Active</span>
             </a>
-        </li>
+        </li> --}}
         <li>
             <a id="tab_acti" href="#group_progess" aria-controls="group_progess" class="head-tab nav-item nav-link px-1" data-toggle="tab" role="tab" aria-selected="false">
                 <span class="material-icons md-16 mx-2" title="Active">timer</span>
@@ -74,10 +74,9 @@
                 <span><img src="{{asset('member/img/avatar.svg')}}" /></span>
             </button>
             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="i_member">
-                <h6 class="dropdown-header">Researcher001</h6>
+                <h6 class="dropdown-header">{{Auth::user()->name}}</h6>
                 <div class="dropdown-divider"></div>
-                <a class="dropdown-item" href="#">Profile Setting</a>
-                <a class="dropdown-item" href="#" onclick="location.href='login.php';">Signout</a>
+                <a class="dropdown-item" href="{{ route('member.register.Profile')}}">Profile Setting</a>
             </div>
         </li>
     </ul>

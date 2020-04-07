@@ -2,7 +2,7 @@
 <form class="box-topic" id="Protocol_opic15">
         {{ csrf_field() }}
     <div class="topic">
-        @if($Protocol_docs->protocol_status!=10) @include ('member.inc-view.modal.modal-protocol-include') @endif
+        @if($Protocol_docs->protocol_status==15) @include ('member.inc-view.modal.modal-protocol-include') @endif
         <h2 class="title"><span>15</span> สถานที่เลี้ยงและใช้สัตว์ทดลอง (Animal and study facilities)</h2>
         
         <div class="row form-group">
@@ -188,7 +188,10 @@
         <input type="hidden" name="protocol_id" value="{{ request()->id }}">
         <input type="hidden" name="protocol_number" value="15">
         @hasanyrole('secretary|reviewer|member')
-        <button type="submit" class="btn-c material-icons topic-save">save</button>
+                    @if ($Protocol_docs->protocol_status!=7)
+            <p class="topic-save2">กรุณากด Save ทุกครั้งหลังมีการแก้ไขข้อมูล</p>
+            <button type="submit" class="btn-c material-icons topic-save">save</button>
+            @endif
         @endhasanyrole
         @endif
 

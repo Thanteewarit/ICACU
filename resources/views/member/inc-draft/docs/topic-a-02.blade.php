@@ -16,35 +16,35 @@
                     <div class="lang-group mb-2">
                         <small>TH</small>
                         <input type="text" class="form-control form-control-sm" name="Name_th[]" value="{{ $r->Name_th }}" autocomplete="off"
-                            required>
+                            >
                     </div>
                 </div>
                 <div class="col-lg-6">
                     <div class="lang-group mb-2">
                         <small>TH</small>
                         <input type="text" class="form-control form-control-sm" name="Surname_th[]" value="{{ $r->Surname_th }}" autocomplete="off"
-                            required>
+                            >
                     </div>
                 </div>
                 <div class="col-lg-6">
                     <div class="lang-group mb-2">
                         <small>EN</small>
                         <input type="text" class="form-control form-control-sm" name="Name_en[]" value="{{ $r->Name_en }}" autocomplete="off"
-                            required>
+                            >
                     </div>
                 </div>
                 <div class="col-lg-6">
                     <div class="lang-group mb-2">
                         <small>EN</small>
                         <input type="text" class="form-control form-control-sm" name="Surname_en[]" value="{{ $r->Surname_en }}" autocomplete="off"
-                            required>
+                            >
                     </div>
                 </div>
             </div>
             <div class="row form-group">
                 <label class="col-12">สถานภาพ</label>
                 <div class="col-lg-6">
-                    <select class="form-control form-control-sm mb-2 pi_item" id="pi_item1 " name="opic02_status[]" value="{{ $r->opic02_status }}" data-id="1" required>
+                    <select class="form-control form-control-sm mb-2 pi_item" id="pi_item1 " name="opic02_status[]" value="{{ $r->opic02_status }}" data-id="1" >
                         <option value="">กรุณาเลือก</option>
                         @foreach ($StatusUser as $rs1)
                         <option value="{{ $rs1->id }}" @if($r->opic02_status==$rs1->id) selected @endif>{{ $rs1->name }}</option>
@@ -63,14 +63,14 @@
                     <div class="lang-group mb-2">
                         <small>TH</small>
                         <input type="text" class="form-control form-control-sm" name="opic02_Align_th[]" value="{{ $r->opic02_Align_th }}"
-                            autocomplete="off" required>
+                            autocomplete="off" >
                     </div>
                 </div>
                 <div class="col-lg-6">
                     <div class="lang-group mb-2">
                         <small>EN</small>
                         <input type="text" class="form-control form-control-sm" name="opic02_Align_en[]" value="{{ $r->opic02_Align_en }}"
-                            autocomplete="off" required>
+                            autocomplete="off" >
                     </div>
                 </div>
             </div>
@@ -80,14 +80,14 @@
                     <div class="lang-group mb-2">
                         <small>TH</small>
                         <input type="text" class="form-control form-control-sm" name="opic02_Other_position_th[]" value="{{ $r->opic02_Other_position_th }}"
-                            autocomplete="off" required>
+                            autocomplete="off" >
                     </div>
                 </div>
                 <div class="col-lg-6">
                     <div class="lang-group mb-2">
                         <small>EN</small>
                         <input type="text" class="form-control form-control-sm" name="opic02_Other_position_en[]" value="{{ $r->opic02_Other_position_en }}"
-                            autocomplete="off" required>
+                            autocomplete="off" >
                     </div>
                 </div>
             </div>
@@ -97,14 +97,14 @@
                     <div class="lang-group mb-2">
                         <small>TH</small>
                         <textarea class="form-control form-control-sm auto-expand" rows="3"
-                            name="opic02_Contact_address_th[]" autocomplete="off" required>{{ $r->opic02_Contact_address_th }}</textarea>
+                            name="opic02_Contact_address_th[]" autocomplete="off" >{{ $r->opic02_Contact_address_th }}</textarea>
                     </div>
                 </div>
                 <div class="col-lg-6">
                     <div class="lang-group mb-2">
                         <small>EN</small>
                         <textarea class="form-control form-control-sm auto-expand" rows="3"
-                            name="opic02_Contact_address_en[]" autocomplete="off" required>{{ $r->opic02_Contact_address_en }}</textarea>
+                            name="opic02_Contact_address_en[]" autocomplete="off" >{{ $r->opic02_Contact_address_en }}</textarea>
                     </div>
                 </div>
             </div>
@@ -112,17 +112,17 @@
                 <div class="col-lg-4">
                     <label>โทรศัพท์ (Tel.)</label>
                     <input type="text" class="form-control form-control-sm" name="opic02_Tel[]" value="{{ $r->opic02_Tel }}" autocomplete="off"
-                        required>
+                        >
                 </div>
                 <div class="col-lg-4">
                     <label>โทรสาร (Fax.)</label>
                     <input type="text" class="form-control form-control-sm" name="opic02_Fax[]" value="{{ $r->opic02_Fax }}" autocomplete="off"
-                        required>
+                        >
                 </div>
                 <div class="col-lg-4">
                     <label>E-mail</label>
                     <input type="email" class="form-control form-control-sm" name="opic02_email[]" value="{{ $r->opic02_email }}" autocomplete="off"
-                        required>
+                        >
                     <input type="hidden" name="number0[]" value="{{ $r->number01 }}">
                 </div>
             </div>
@@ -377,7 +377,7 @@
             </div>
         </div>
 
-
+        <p class="topic-save2">กรุณากด Save ทุกครั้งหลังมีการแก้ไขข้อมูล</p>
         <button type="submit" class="btn-c material-icons topic-save">save</button>
 
     </div>

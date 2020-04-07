@@ -24,8 +24,8 @@
                                     </li>
                                 </ul>
                                 <div class="text-right">
-                                    @can('manage')<button type="button" class="btn btn-info waves-effect md-trigger"
-                                        onclick="clearText()" data-modal="modal-2">Add animals</button>@endcan
+                                    <button type="button" class="btn btn-info waves-effect md-trigger"
+                                        onclick="clearText()" data-modal="modal-2">Add animals</button>
 
                                 </div>
                             </div>

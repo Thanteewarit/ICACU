@@ -2,12 +2,14 @@
 <form class="box-topic" id="Protocol_opic06">
         {{ csrf_field() }}
     <div class="topic">
-
+        @if($Protocol_docs->protocol_status==3)
+        @include ('officer.inc.modal.modal-protocol-include')
+        @endif
         <h2 class="title"><span>06</span>บทคัดย่อโครงการที่เสนอขอใช้สัตว์ (Executive Summary with Non-technical Term)</h2>
         <div class="row form-group">
             <div class="col-12">
                 <h3>นำเสนอภาพรวมโครงการโดยสรุปในภาษาที่เข้าใจง่ายโดยคนทั่วไป เพื่อให้ทราบถึงหลักการและเหตุผลความจำเป็นในการใช้สัตว์ วิธีการและประโยชน์ที่ได้รับ</h3>
-            <textarea name="Executive" class="form-control form-control-sm" rows="8" required>{{ $Protocol_opic06->Executive }}</textarea>
+            <textarea name="Executive" class="form-control form-control-sm" rows="8" >{{ $Protocol_opic06->Executive }}</textarea>
             </div>
         </div>
 
@@ -110,6 +112,8 @@
         @hasanyrole('president|secretary')
         @role('secretary')
         <button type="button" class="btn btn-warning Merge" value="06"><small class="material-icons">crop</small> Merge Comments</button>
+        @if($Protocol_docs->protocol_v2==0)
+        
         <div class="alert alert-warning my-5" role="alert">
             <h4><i class="material-icons">question_answer</i> Comment</h4>
             <hr>
@@ -131,8 +135,10 @@
             </div>
         <textarea class="form-control form-control-sm auto-expand" id="Merge06" rows="4" name="merge_comment01"></textarea>
         </div>
+        @endif
         @endrole
-        @role('president')
+        @hasanyrole('president|secretary')
+        @if($Protocol_docs->protocol_v2=="1")
         @foreach ($Protocol_secretary_opic as $key => $r)
         @if($r->protocol_number == 6)
         <div class="alert alert-warning my-5" role="alert">
@@ -158,11 +164,13 @@
         </div>
         @endif
         @endforeach
-        @endrole
+        @endif
+        @endhasanyrole
         @endhasanyrole
         <input type="hidden" name="protocol_id" value="{{ request()->id }}">
         <input type="hidden" name="protocol_number" value="6">
         @hasanyrole('secretary|reviewer')
+                <p class="topic-save2">กรุณากด Safe ทุกครั้งหลังมีการแก้ไขข้อมูล</p>
         <button type="submit" class="btn-c material-icons topic-save">save</button>
         @endhasanyrole
     @endif

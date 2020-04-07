@@ -59,6 +59,9 @@ use App\Model\Protocol_secretary_opic;
 use App\Model\Protocol_docsfile;
 use App\Model\Protocol_opic_progress;
 use App\Model\Protocol_opic_progress_sub;
+use App\Model\Protocol_amendment;
+use App\Model\Protocol_opic_termination;
+use App\Model\Protocol_opic_termination_sub;
 
 class ProtocolViewController extends Controller
 {
@@ -120,6 +123,13 @@ class ProtocolViewController extends Controller
         $Protocol_docsfile  =   Protocol_docsfile::where('protocol_id',$request->id)->get();
         $Protocol_docsID       =   Protocol_docs::find($request->id);
         $Protocol_docsHistory    =   Protocol_docs::where('protocol_number',$Protocol_docsID->protocol_number)->get();
+        $Protocol_amendment     =   Protocol_amendment::where('protocol_id',$request->id)->first();
+        $Protocol_secretary_opicV1 = Protocol_secretary_opic::where('protocol_id',$request->id)
+        ->where('protocol_status',"!=","เหมาะสม")
+        ->get();
+        $Protocol_secretary_opicCount = Protocol_secretary_opic::where('protocol_id',$request->id)
+        ->where('protocol_status',"!=","เหมาะสม")
+        ->count();
 
         if(auth()->user()->hasRole('secretary')){
             $Protocol_reviewer_opic     =   Protocol_reviewer_opic::where('protocol_id',$request->id)->get();
@@ -135,9 +145,12 @@ class ProtocolViewController extends Controller
         }
         
         $Protocol_reviewer_list     =   Protocol_reviewer_list::where('protocol_id',$request->id)->where('users_id',Auth::user()->id)->first();
+        $Protocol_opic_progress_count = Protocol_opic_progress::orderBy('id','desc')->where('protocol_id',$request->id)->count();
         $Protocol_opic_progress = Protocol_opic_progress::orderBy('id','desc')->where('protocol_id',$request->id)->first();
         $Protocol_opic_progress_sub = Protocol_opic_progress_sub::orderBy('id','desc')->where('protocol_id',$request->id)->get();
         
+        $Protocol_opic_termination = Protocol_opic_termination::orderBy('id','desc')->where('protocol_id',$request->id)->first();
+        $Protocol_opic_termination_sub = Protocol_opic_termination_sub::orderBy('id','desc')->where('protocol_id',$request->id)->get();
         return view('officer.protocol-docs',compact(
             'Protocol_docs',
             'Protocol_opic01',
@@ -193,7 +206,13 @@ class ProtocolViewController extends Controller
             'Protocol_docsHistory',
             'Protocol_reviewer_listP',
             'Protocol_opic_progress',
-            'Protocol_opic_progress_sub'
+            'Protocol_opic_progress_sub',
+            'Protocol_amendment',
+            'Protocol_opic_progress_count',
+            'Protocol_opic_termination_sub',
+            'Protocol_opic_termination',
+            'Protocol_secretary_opicV1',
+            'Protocol_secretary_opicCount'
         ));
     }
 

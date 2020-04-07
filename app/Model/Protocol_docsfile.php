@@ -6,5 +6,5 @@ use Illuminate\Database\Eloquent\Model;
 
 class Protocol_docsfile extends Model
 {
-    protected $table="Protocol_docsfile";
+    protected $table="protocol_docsfile";
 }

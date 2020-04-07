@@ -25,7 +25,7 @@
                         <tr>
                             {{-- <th scope="row">1</th> --}}
                             <td class="p-0">
-                                <input type="text" list="common" name="Common_name[]" class="form-control form-control-sm border-0 rounded-0" required>
+                                <input type="text" list="common" name="Common_name[]" class="form-control form-control-sm border-0 rounded-0" >
                                 <datalist id="common">
                                     @foreach ($Animal_common_name as $r)
                                     <option value="{{$r->common_name_en }}">{{$r->common_name_en }}</option>
@@ -33,7 +33,7 @@
                                 </datalist>
                             </td>
                             <td class="p-0">
-                                <input type="text" list="genetic" name="Genus_Species[]" class="form-control form-control-sm border-0 rounded-0" required>
+                                <input type="text" list="genetic" name="Genus_Species[]" class="form-control form-control-sm border-0 rounded-0" >
                                 <datalist id="genetic">
                                     @foreach ($Animal_common_name as $r)
                                     <option value="{{$r->genetic_diversty }}">{{ $r->genetic_diversty }}</option>
@@ -41,24 +41,24 @@
                                 </datalist>
                             </td>
                             <td class="p-0">
-                                <input type="text" list="strain" name="Strain_Stock[]" class="form-control form-control-sm border-0 rounded-0" required>
+                                <input type="text" list="strain" name="Strain_Stock[]" class="form-control form-control-sm border-0 rounded-0" >
                                 <datalist id="strain">
                                         @foreach ($Animal_stock as $r)
                                         <option value="{{$r->name }}">{{ $r->name }}</option>
                                         @endforeach
                                 </datalist>
                             </td>
-                            <td class="p-0"><input type="number" class="form-control form-control-sm border-0 rounded-0" name="Age[]" required></td>
-                            <td class="p-0"><input type="number" class="form-control form-control-sm border-0 rounded-0" name="Weight[]" required></td>
+                            <td class="p-0"><input type="number" class="form-control form-control-sm border-0 rounded-0" name="Age[]" ></td>
+                            <td class="p-0"><input type="number" class="form-control form-control-sm border-0 rounded-0" name="Weight[]" ></td>
                             <td class="p-0">
-                                <select class="form-control form-control-sm border-0 rounded-0" name="Sex[]" required>
+                                <select class="form-control form-control-sm border-0 rounded-0" name="Sex[]" >
                                     <option>กรุณาเลือก</option>
                                     <option>Male</option>
                                     <option>Female</option>
                                 </select>
                             </td>
                             <td class="p-0">
-                                <input type="number" name="Number[]" class="form-control form-control-sm border-0 rounded-0 Number11" required>
+                                <input type="number" name="Number[]" class="form-control form-control-sm border-0 rounded-0 Number11" >
                             </td>
                             <td class="text-center p-0">
                                 <button type="button" class="btn btn-secondary rounded-0 del11">-</button>
@@ -84,35 +84,35 @@
                     <div class="input-group-prepend">
                         <div class="input-group-text">Period</div>
                     </div>
-                    <input type="text" class="form-control form-control-sm input-date-ranges" name="Period" required>
+                    <input type="text" class="form-control form-control-sm input-date-ranges" name="Period" >
                     <div class="input-group-prepend">
                         <div class="input-group-text">Duration</div>
                     </div>
-                    <input type="text" class="form-control form-control-sm" placeholder="Days" name="Duration" value=" " required>
+                    <input type="text" class="form-control form-control-sm" placeholder="Days" name="Duration" value=" " >
                 </div>
             </div>
         </div>
         <div class="row mb-5">
             <div class="col-12">
                 <label><strong>11.3</strong> ทำไมจึงเลือกใช้สัตว์ทดลองชนิดและเพศดังกล่าวในการทดลองมีการศึกษามาก่อนแล้วหรือไม่ (Animal model and species justification: Provide a scientific justification for the choice of animal model(s). What physiological and morphological characteristics does this animal possess that make it the best possible model?)</label>
-                <textarea class="form-control form-control-sm" rows="3" name="AnimalModel" required></textarea>
+                <textarea class="form-control form-control-sm" rows="3" name="AnimalModel" ></textarea>
             </div>
         </div>
         <div class="row mb-5">
             <div class="col-12">
                 <label><strong>11.4</strong> หลักเกณฑ์ในการกำหนดจำนวนสัตว์ทดลอง (Number of animals required justification: Provide an explanation of how the numbers of animals to be used in each group or total were appropriate. Number of animals used in the experiment should be based on scientific and statistical requirements to achieve objectives)</label>
-                <textarea class="form-control form-control-sm" rows="3" name="animalsRequired" required></textarea>
+                <textarea class="form-control form-control-sm" rows="3" name="animalsRequired" ></textarea>
             </div>
         </div>
         <div class="row mb-5">
             <div class="col-12">
                 <label><strong>11.5</strong> กรณีที่จำเป็นต้องใช้สัตว์ป่าให้เหตุผลด้วยว่าทำไมจึงใช้สัตว์ทดลองหรือสัตว์อื่นแทนไม่ได้ (In case of wildlife species is used provide an explanation of how does not replace these species with laboratory animal or other animal)</label>
-                <textarea class="form-control form-control-sm" rows="3" name="caseWildlife" required></textarea>
+                <textarea class="form-control form-control-sm" rows="3" name="caseWildlife" ></textarea>
             </div>
         </div>
 
         <button type="submit" class="btn-c material-icons topic-save">save</button>
-
+        <p class="topic-save2">กรุณากด Save ทุกครั้งหลังมีการแก้ไขข้อมูล</p>
     </div>
 </form>
 <!-- END 11 -->

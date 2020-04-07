@@ -2,7 +2,7 @@
 <form class="box-topic" id="Protocol_opic24">
         {{ csrf_field() }}
         <div class="topic">
-            @if($Protocol_docs->protocol_status!=10) @include ('member.inc-view.modal.modal-protocol-include') @endif
+            @if($Protocol_docs->protocol_status==15) @include ('member.inc-view.modal.modal-protocol-include') @endif
             <h2 class="title"><span>24</span>การดำเนินการกับสัตว์ที่ยังมีชีวิตหลังการสิ้นสุดโครงการ (disposition of animals after completion of activity)</h2>
             
             <div class="row form-group">
@@ -176,7 +176,10 @@
             <input type="hidden" name="protocol_id" value="{{ request()->id }}">
             <input type="hidden" name="protocol_number" value="24">
             @hasanyrole('secretary|reviewer|member')
-        <button type="submit" class="btn-c material-icons topic-save">save</button>
+                    @if ($Protocol_docs->protocol_status!=7)
+            <p class="topic-save2">กรุณากด Save ทุกครั้งหลังมีการแก้ไขข้อมูล</p>
+            <button type="submit" class="btn-c material-icons topic-save">save</button>
+            @endif
         @endhasanyrole
             @endif
     

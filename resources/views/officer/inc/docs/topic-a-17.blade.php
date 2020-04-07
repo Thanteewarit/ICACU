@@ -2,7 +2,9 @@
 <form class="box-topic" id="Protocol_opic17">
         {{ csrf_field() }}
     <div class="topic">
-
+        @if($Protocol_docs->protocol_status==3)
+        @include ('officer.inc.modal.modal-protocol-include')
+        @endif
         <h2 class="title"><span>17</span> ระยะเวลาดำเนินการโครงการ (Proposal Period)</h2>
         
         <div class="row form-group">
@@ -11,7 +13,7 @@
             </div>
             <div class="col-md-4">
                 <div class="input-group input-group-sm">
-                <input type="text" class="form-control form-control-sm input-date-ranges" name="ptc17_01" value="{{ $Protocol_opic17->ptc17_01 }}" required>
+                <input type="text" class="form-control form-control-sm input-date-ranges" name="ptc17_01" value="{{ $Protocol_opic17->ptc17_01 }}" >
                     <div class="input-group-prepend">
                         <div class="input-group-text material-icons">date_range</div>
                     </div>
@@ -25,7 +27,7 @@
             </div>
             <div class="col-md-4">
                 <div class="input-group input-group-sm">
-                    <input type="text" class="form-control form-control-sm input-date-ranges" name="ptc17_02" value="{{ $Protocol_opic17->ptc17_02 }}" required>
+                    <input type="text" class="form-control form-control-sm input-date-ranges" name="ptc17_02" value="{{ $Protocol_opic17->ptc17_02 }}" >
                     <div class="input-group-prepend">
                         <div class="input-group-text material-icons">date_range</div>
                     </div>
@@ -131,6 +133,7 @@
         @endhasanyrole
         @hasanyrole('president|secretary')
         @role('secretary')
+        @if($Protocol_docs->protocol_v2==0)
         <button type="button" class="btn btn-warning Merge" value="17"><small class="material-icons">crop</small> Merge Comments</button>
         <div class="alert alert-warning my-5" role="alert">
             <h4><i class="material-icons">question_answer</i> Comment</h4>
@@ -153,8 +156,10 @@
             </div>
         <textarea class="form-control form-control-sm auto-expand" id="Merge17" rows="4" name="merge_comment01"></textarea>
         </div>
+        @endif
         @endrole
-        @role('president')
+        @hasanyrole('president|secretary')
+        @if($Protocol_docs->protocol_v2=="1")
         @foreach ($Protocol_secretary_opic as $key => $r)
         @if($r->protocol_number == 17)
         <div class="alert alert-warning my-5" role="alert">
@@ -180,11 +185,13 @@
         </div>
         @endif
         @endforeach
-        @endrole
+        @endif
+        @endhasanyrole
         @endhasanyrole
         <input type="hidden" name="protocol_id" value="{{ request()->id }}">
         <input type="hidden" name="protocol_number" value="17">
         @hasanyrole('secretary|reviewer')
+                <p class="topic-save2">กรุณากด Safe ทุกครั้งหลังมีการแก้ไขข้อมูล</p>
         <button type="submit" class="btn-c material-icons topic-save">save</button>
         @endhasanyrole
         @endif

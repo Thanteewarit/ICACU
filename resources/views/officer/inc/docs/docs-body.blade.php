@@ -3,23 +3,40 @@
     <div class="work-btn">
         @if ($Protocol_docs->protocol_status!=3)
             @role('president')
-            <button class="btn-c material-icons" id="side_reviewer" title="Add Reviewer">group_add</button>
-            {{-- <button class="btn-c material-icons" id="side_upload" title="Upload File">cloud_upload</button> --}}
+            <button class="btn-c material-icons" id="side_reviewer" title="เลือก reviewer">group_add</button>
             @endrole
         @endif
-        @if ($Protocol_docs->protocol_status!=12)
-            <a href="{{ route('officer.protocol_view.replyEdit',array('id'=>request()->id))}}"><button class="btn-c material-icons" data-toggle="modal" data-target="#exampleModalScrollable" title="ข้อมูล ไม่ครบ ส่งกลับไปแก้ไข">reply</button></a>
+        @hasanyrole('president|secretary')
+        @if ($Protocol_docs->protocol_status==8 || $Protocol_docs->protocol_status==7)
+            <a href="{{ route('officer.protocol_view.replyEdit',array('id'=>request()->id))}}">
+                <button class="btn-c material-icons" data-toggle="modal" style="color: red;" data-target="#exampleModalScrollable" title="ข้อมูลไม่ครบ ส่งให้ User ทำการแก้ไข" >reply</button>
+            </a>
+            @if ($Protocol_docs->protocol_status==8)
+            <a href="{{ route('officer.protocol_view.replySecretary',array('id'=>request()->id))}}">
+            <button class="btn-c material-icons" data-toggle="modal" data-target="#exampleModalScrollable" style="color: #f57200;" title="ส่งกลับให้เลขาแก้ไข">loop</button>
+            </a>
+            @endif
         @endif
+        @if ($Protocol_docs->protocol_status==16)
+            <button class="btn-c material-icons" data-toggle="modal" style="color: red;" data-target="#modal_replay" title="ข้อมูลไม่ครบ ส่งให้ User ทำการแก้ไข" >reply</button>
 
-        @if ($Protocol_docs->protocol_status==11)
-            <a href="{{ route('officer.protocol_view.rewnew',array('id'=>request()->id))}}"><button class="btn-c material-icons" data-toggle="modal" data-target="#exampleModalScrollable" title="Approve Rewnew">add_circle</button></a>
+        @endif
+        @if ($Protocol_docs->protocol_status==3)
+            <button class="btn-c material-icons" data-toggle="modal" data-target="#exampleModalScrollable" style="color: #f57200;" title="ส่งกลับให้ User แก้ไขข้อมูล พร้อมระบุสิ่งที่ต้องกลับไปแก้" id="side_upload">reply</button>
+        @endif
+        @endhasanyrole
+        @if ($Protocol_docs->protocol_status==11 || $Protocol_docs->protocol_status==18)
+            <a href="{{ route('officer.protocol_view.rewnew',array('id'=>request()->id))}}"><button class="btn-c material-icons" data-toggle="modal" data-target="#exampleModalScrollable" style="color: orange;" title="Approve Amendment Protocol">build</button></a>
+            <a href="{{ route('officer.protocol_view.update',array('id'=>request()->id))}}"><button class="btn-c material-icons" data-toggle="modal" data-target="#exampleModalScrollable" style="color: #00af17;" title="ข้อมูล ถูกต้องครบถ้วน">send</button></a>
         @else
-            @if ($Protocol_docs->protocol_status!=12)
-                <a href="{{ route('officer.protocol_view.update',array('id'=>request()->id))}}"><button class="btn-c material-icons" data-toggle="modal" data-target="#exampleModalScrollable" title="ข้อมูล ถูกต้องครบถ้วน">send</button></a>
+            @if ($Protocol_docs->protocol_status!=12 )
+                <a href="{{ route('officer.protocol_view.update',array('id'=>request()->id))}}"><button class="btn-c material-icons" data-toggle="modal" data-target="#exampleModalScrollable" style="color: #00af17;" title="ข้อมูล ถูกต้องครบถ้วน">send</button></a>
             @endif
         @endif
         @hasanyrole('president|secretary|reviewer')
-        <button type="button" class="btn-c material-icons switch-1" title="Control">more_vert</button>
+        {{-- <button class="btn-c material-icons" id="side_upload" title="Upload File">cloud_upload</button> --}}
+        
+        <button type="button" class="btn-c material-icons switch-1" style="color: #00d2f3;" title="Control">more_vert</button>
         @endhasanyrole
     </div>
 

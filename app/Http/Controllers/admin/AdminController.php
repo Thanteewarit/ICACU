@@ -168,7 +168,12 @@ class AdminController extends Controller
         $AnimalType     =   AnimalType::all();
         $Status         =   Status::all();
     
-        return view('admin.animal_stock', compact('Animal','AnimalType','Status','Animal_common_name','Animals_type','Animal_stock'));
+        return view('admin.animal_stock', compact(
+            'AnimalType',
+            'Status',
+            'Animal_common_name',
+            'Animals_type',
+            'Animal_stock'));
     }
 
     public function getAnimals_type(Request $request)

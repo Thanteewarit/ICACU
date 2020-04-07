@@ -114,7 +114,9 @@
                                                                 required>
                                                                 <option value="">กรุณาเลือก</option>
                                                                 @foreach($role AS $key => $r)
-                                                                <option value="{{$r->id}}">{{$r->name}}</option>
+                                                                    @if($r->id!=3)
+                                                                        <option value="{{$r->id}}">{{$r->name}}</option>
+                                                                    @endif
                                                                 @endforeach
                                                             </select>
                                                         </div>

@@ -64,7 +64,10 @@ class DraftController extends Controller
     }
     public function index()
     {
-        $Protocol_docs = Protocol_docs::where('protocol_status','2')->get();
+        $Protocol_docs = Protocol_docs::where('protocol_status','2')
+        ->orWhere('protocol_status','4')
+        ->orWhere('protocol_status','19')
+        ->get();
         return view('member.protocol-draft', compact('Protocol_docs'));
     }
 

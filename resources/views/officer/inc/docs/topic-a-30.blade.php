@@ -2,6 +2,9 @@
 <form class="box-topic" id="Protocol_opic30">
         {{ csrf_field() }}
         <div class="box-topic">
+            @if($Protocol_docs->protocol_status==3)
+            @include ('officer.inc.modal.modal-protocol-include')
+            @endif
             <div class="topic">
     
                 <div class="heading">
@@ -11,14 +14,14 @@
                         มหาวิทยาลัยธรรมศาสตร์</h2>
                 </div>
     
-                <div class="row form-group">
+                {{-- <div class="row form-group">
                     <div class="col-12">
                         <p><strong>ชื่อโครงการวิจัย : {{ $Protocol_opic01->animal_protocol_th }}</strong></p>
                         <p><strong>หัวหน้าโครงการ : </strong></p>
                         <p><strong>วันที่ทำการประเมิน : </strong></p>
                         <p><strong>ผู้ประเมิน : </strong></p>
                     </div>
-                </div>
+                </div> --}}
                 <table class="table table-bordered">
                     <thead>
                         <tr>
@@ -435,81 +438,167 @@
                     </tbody>
                 </table>
                 <input type="hidden" name="id" value="{{ $Protocol_opic11->protocol_id }}">
-                @if ($Protocol_docs->protocol_status==103)
-                <div class="alert alert-secondary" role="alert">
-                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                    <h4><i class="material-icons">account_circle</i> REVIEWER001</h4>
-                    <hr>
-                    <div class="custom-control custom-control-inline custom-radio my-2">
-                        <input type="radio" id="reviewer-comment-1_1" name="reviewer-comment-1" class="custom-control-input"  checked>
-                        <label class="custom-control-label" for="reviewer-comment-1_1">เหมาะสม</label>
-                    </div>
-                    <div class="custom-control custom-control-inline custom-radio my-2">
-                        <input type="radio" id="reviewer-comment-1_2" name="reviewer-comment-1" class="custom-control-input"  checked>
-                        <label class="custom-control-label" for="reviewer-comment-1_2">ไม่เหมาะสม</label>
-                    </div>
-                    <div class="custom-control custom-control-inline custom-radio my-2">
-                        <input type="radio" id="reviewer-comment-1_3" name="reviewer-comment-1" class="custom-control-input"  checked>
-                        <label class="custom-control-label" for="reviewer-comment-1_3">ไม่มีข้อมูล</label>
-                    </div>
-                    <div class="custom-control custom-control-inline custom-radio my-2">
-                        <input type="radio" id="reviewer-comment-1_4" name="reviewer-comment-1" class="custom-control-input"  checked>
-                        <label class="custom-control-label" for="reviewer-comment-1_4">ไม่เกี่ยวข้อง</label>
-                    </div>
-                    <textarea class="form-control form-control-sm auto-expand" rows="4" placeholder="กรุณาระบุเหตผล.." >Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.</textarea>
-                </div>
-                <div class="alert alert-secondary" role="alert">
-                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                    <h4><i class="material-icons">account_circle</i> REVIEWER002</h4>
-                    <hr>
-                    <div class="custom-control custom-control-inline custom-radio my-2">
-                        <input type="radio" id="reviewer-comment-2_1" name="reviewer-comment-2" class="custom-control-input"  checked>
-                        <label class="custom-control-label" for="reviewer-comment-2_1">เหมาะสม</label>
-                    </div>
-                    <div class="custom-control custom-control-inline custom-radio my-2">
-                        <input type="radio" id="reviewer-comment-2_2" name="reviewer-comment-2" class="custom-control-input"  checked>
-                        <label class="custom-control-label" for="reviewer-comment-2_2">ไม่เหมาะสม</label>
-                    </div>
-                    <div class="custom-control custom-control-inline custom-radio my-2">
-                        <input type="radio" id="reviewer-comment-2_3" name="reviewer-comment-2" class="custom-control-input"  checked>
-                        <label class="custom-control-label" for="reviewer-comment-2_3">ไม่มีข้อมูล</label>
-                    </div>
-                    <div class="custom-control custom-control-inline custom-radio my-2">
-                        <input type="radio" id="reviewer-comment-2_4" name="reviewer-comment-2" class="custom-control-input"  checked>
-                        <label class="custom-control-label" for="reviewer-comment-2_4">ไม่เกี่ยวข้อง</label>
-                    </div>
-                    <textarea class="form-control form-control-sm auto-expand" rows="4" placeholder="กรุณาระบุเหตผล.." >Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.</textarea>
-                </div>
-                <button type="button" class="btn btn-warning"><small class="material-icons">crop</small> Merge Comments</button>
-                <div class="alert alert-warning my-5" role="alert">
-                    <h4><i class="material-icons">question_answer</i> Comment</h4>
-                    <hr>
-                    <div class="custom-control custom-control-inline custom-radio my-2">
-                        <input type="radio" id="merge-comment-1_1" name="merge-comment-1" class="custom-control-input">
-                        <label class="custom-control-label" for="merge-comment-1_1">เหมาะสม</label>
-                    </div>
-                    <div class="custom-control custom-control-inline custom-radio my-2">
-                        <input type="radio" id="merge-comment-1_2" name="merge-comment-1" class="custom-control-input">
-                        <label class="custom-control-label" for="merge-comment-1_2">ไม่เหมาะสม</label>
-                    </div>
-                    <div class="custom-control custom-control-inline custom-radio my-2">
-                        <input type="radio" id="merge-comment-1_3" name="merge-comment-1" class="custom-control-input">
-                        <label class="custom-control-label" for="merge-comment-1_3">ไม่มีข้อมูล</label>
-                    </div>
-                    <div class="custom-control custom-control-inline custom-radio my-2">
-                        <input type="radio" id="merge-comment-1_4" name="merge-comment-1" class="custom-control-input" checked>
-                        <label class="custom-control-label" for="merge-comment-1_4">ไม่เกี่ยวข้อง</label>
-                    </div>
-                    <textarea class="form-control form-control-sm auto-expand" rows="4" placeholder="กรุณาระบุเหตผล.." >Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.</textarea>
-                </div>
-                @hasanyrole('secretary|reviewer')
-                <button type="submit" class="btn-c material-icons topic-save">save</button>
-                @endhasanyrole
+        @if ($Protocol_docs->protocol_status==6 || $Protocol_docs->protocol_status==7 || $Protocol_docs->protocol_status==8)
+        {{-- ถ้าเป็น เลขา หรือ รีวิวให้เเสดง --}}
+        @hasanyrole('committee|secretary|reviewer')
+            {{-- ถ้าเกิดมีการส่งค่ารีวิว ส่งมาให้แสดง --}}
+            @if($Protocol_reviewer_opic_count!=0)
+                {{-- วนลูป เเสดงข้อมูล --}}
+                @foreach ($Protocol_reviewer_opic as $key => $r)
+                    {{-- ถ้ารูเท่ากับรีวิว เเละ protocol_number เท่ากับ 1  --}}
+                    @if(auth()->user()->hasRole('reviewer') && $r->protocol_number==30) 
+                        @if(auth()->user()->id == $r->reviewer_id)
+                            <div class="alert alert-secondary" role="alert">
+                                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                                <h4><i class="material-icons">account_circle</i> REVIEWER </h4>
+                                <hr>
+                                <div class="custom-control custom-control-inline custom-radio my-2">
+                                    <input type="radio" id="reviewer-comment-30_1" name="protocol_status" value="เหมาะสม" @if($r->protocol_status == "เหมาะสม") checked @endif class="custom-control-input" @role('secretary') disabled @endrole >
+                                    <label class="custom-control-label" for="reviewer-comment-30_1">เหมาะสม</label>
+                                </div>
+                                <div class="custom-control custom-control-inline custom-radio my-2">
+                                    <input type="radio" id="reviewer-comment-30_2" name="protocol_status" value="ไม่เหมาะสม" @if($r->protocol_status == "ไม่เหมาะสม") checked @endif  class="custom-control-input" @role('secretary') disabled @endrole  >
+                                    <label class="custom-control-label" for="reviewer-comment-30_2">ไม่เหมาะสม</label>
+                                </div>
+                                <div class="custom-control custom-control-inline custom-radio my-2">
+                                    <input type="radio" id="reviewer-comment-30_3" name="protocol_status" value="ไม่มีข้อมูล" @if($r->protocol_status == "ไม่มีข้อมูล") checked @endif class="custom-control-input" @role('secretary') disabled @endrole  >
+                                    <label class="custom-control-label" for="reviewer-comment-30_3">ไม่มีข้อมูล</label>
+                                </div>
+                                <div class="custom-control custom-control-inline custom-radio my-2">
+                                    <input type="radio" id="reviewer-comment-30_4" name="protocol_status" value="ไม่เกี่ยวข้อง" @if($r->protocol_status == "ไม่เกี่ยวข้อง") checked @endif class="custom-control-input" @role('secretary') disabled @endrole  >
+                                    <label class="custom-control-label" for="reviewer-comment-30_4">ไม่เกี่ยวข้อง</label>
+                                </div>
+                            <textarea class="form-control form-control-sm auto-expand" rows="4" name="comment" placeholder="กรุณาระบุเหตผล.." @role('secretary') readonly @endrole>{{ $r->comment }}</textarea>
+                            </div>
+                        @endif
+                    @endif
+                @endforeach
+
+                @foreach ($Protocol_reviewer_opic as $key => $r)
+                {{-- ถ้ารูเท่ากับรีวิว เเละ protocol_number เท่ากับ 1  --}}
+                @if(auth()->user()->hasRole('secretary') && $r->protocol_number==30) 
+                        <div class="alert alert-secondary" role="alert">
+                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                            <h4><i class="material-icons">account_circle</i> REVIEWER : {{ $r->usersName->name }}</h4>
+                            <hr>
+                            <div class="custom-control custom-control-inline custom-radio my-2">
+                                <input type="radio" id="reviewer-comment{{ $key }}-3_1" name="protocol_status{{ $key }}" value="เหมาะสม"   @if($r->protocol_status == "เหมาะสม") checked @endif class="custom-control-input" @role('secretary') disabled @endrole>
+                                <label class="custom-control-label" for="reviewer-comment{{ $key }}-3_1">เหมาะสม</label>
+                            </div>
+                            <div class="custom-control custom-control-inline custom-radio my-2">
+                                <input type="radio" id="reviewer-comment{{ $key }}-3_2" name="protocol_status{{ $key }}" value="ไม่เหมาะสม" @if($r->protocol_status == "ไม่เหมาะสม") checked @endif  class="custom-control-input" @role('secretary') disabled @endrole >
+                                <label class="custom-control-label" for="reviewer-comment{{ $key }}-3_2">ไม่เหมาะสม</label>
+                            </div>
+                            <div class="custom-control custom-control-inline custom-radio my-2">
+                                <input type="radio" id="reviewer-comment{{ $key }}-3_3" name="protocol_status{{ $key }}" value="ไม่มีข้อมูล"   @if($r->protocol_status == "ไม่มีข้อมูล") checked @endif class="custom-control-input" @role('secretary') disabled @endrole >
+                                <label class="custom-control-label" for="reviewer-comment{{ $key }}-3_3">ไม่มีข้อมูล</label>
+                            </div>
+                            <div class="custom-control custom-control-inline custom-radio my-2">
+                                <input type="radio" id="reviewer-comment{{ $key }}-3_4" name="protocol_status{{ $key }}" value="ไม่เกี่ยวข้อง" @if($r->protocol_status == "ไม่เกี่ยวข้อง") checked @endif class="custom-control-input" @role('secretary') disabled @endrole>
+                                <label class="custom-control-label" for="reviewer-comment-30_4">ไม่เกี่ยวข้อง</label>
+                            </div>
+                        <textarea class="form-control form-control-sm auto-expand" rows="4" name="comment30[]" placeholder="กรุณาระบุเหตผล.." @role('secretary') readonly @endrole>{{ $r->comment }}</textarea>
+                        </div>
                 @endif
+            @endforeach
+            @else
+                @role('reviewer')
+                        <div class="alert alert-secondary" role="alert">
+                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                            <h4><i class="material-icons">account_circle</i> REVIEWER</h4>
+                            <hr>
+                            <div class="custom-control custom-control-inline custom-radio my-2">
+                                <input type="radio" id="reviewer-comment-30_1" name="protocol_status" value="เหมาะสม" class="custom-control-input" @role('secretary') disabled @endrole checked>
+                                <label class="custom-control-label" for="reviewer-comment-30_1">เหมาะสม</label>
+                            </div>
+                            <div class="custom-control custom-control-inline custom-radio my-2">
+                                <input type="radio" id="reviewer-comment-30_2" name="protocol_status" value="ไม่เหมาะสม" class="custom-control-input" @role('secretary') disabled @endrole  checked>
+                                <label class="custom-control-label" for="reviewer-comment-30_2">ไม่เหมาะสม</label>
+                            </div>
+                            <div class="custom-control custom-control-inline custom-radio my-2">
+                                <input type="radio" id="reviewer-comment-30_3" name="protocol_status" value="ไม่มีข้อมูล" class="custom-control-input" @role('secretary') disabled @endrole  checked>
+                                <label class="custom-control-label" for="reviewer-comment-30_3">ไม่มีข้อมูล</label>
+                            </div>
+                            <div class="custom-control custom-control-inline custom-radio my-2">
+                                <input type="radio" id="reviewer-comment-30_4" name="protocol_status" value="ไม่เกี่ยวข้อง" class="custom-control-input" @role('secretary') disabled @endrole  checked>
+                                <label class="custom-control-label" for="reviewer-comment-30_4">ไม่เกี่ยวข้อง</label>
+                            </div>
+                        <textarea class="form-control form-control-sm auto-expand" rows="4" name="comment" placeholder="กรุณาระบุเหตผล.." @role('secretary') readonly @endrole></textarea>
+                        </div>
+                @endrole
+            @endif
+        @endhasanyrole
+        @hasanyrole('president|secretary')
+        @role('secretary')
+        <button type="button" class="btn btn-warning Merge" value="30"><small class="material-icons">crop</small> Merge Comments</button>
+        @if($Protocol_docs->protocol_v2==0)
+        
+        <div class="alert alert-warning my-5" role="alert">
+            <h4><i class="material-icons">question_answer</i> Comment</h4>
+            <hr>
+            <div class="custom-control custom-control-inline custom-radio my-2">
+                <input type="radio" id="merge-comment-1-30_1" name="protocol_status01" value="เหมาะสม" class="custom-control-input">
+                <label class="custom-control-label" for="merge-comment-1-30_1">เหมาะสม</label>
+            </div>
+            <div class="custom-control custom-control-inline custom-radio my-2">
+                <input type="radio" id="merge-comment-1-30_2" name="protocol_status01" value="ไม่เหมาะสม" class="custom-control-input">
+                <label class="custom-control-label" for="merge-comment-1-30_2">ไม่เหมาะสม</label>
+            </div>
+            <div class="custom-control custom-control-inline custom-radio my-2">
+                <input type="radio" id="merge-comment-1-30_3" name="protocol_status01" value="ไม่มีข้อมูล" class="custom-control-input">
+                <label class="custom-control-label" for="merge-comment-1-30_3">ไม่มีข้อมูล</label>
+            </div>
+            <div class="custom-control custom-control-inline custom-radio my-2">
+                <input type="radio" id="merge-comment-1-30_4" name="protocol_status01" value="ไม่เกี่ยวข้อง" class="custom-control-input" checked>
+                <label class="custom-control-label" for="merge-comment-1-30_4">ไม่เกี่ยวข้อง</label>
+            </div>
+        <textarea class="form-control form-control-sm auto-expand" id="Merge30" rows="4" name="merge_comment01"></textarea>
+        </div>
+        @endif
+        @endrole
+        @hasanyrole('president|secretary')
+        @if($Protocol_docs->protocol_v2=="1")
+        @foreach ($Protocol_secretary_opic as $key => $r)
+        @if($r->protocol_number == 30)
+        <div class="alert alert-warning my-5" role="alert">
+            <h4><i class="material-icons">question_answer</i> Comment</h4>
+            <hr>
+            <div class="custom-control custom-control-inline custom-radio my-2">
+                <input type="radio" id="merge-comment-1-30_1" name="protocol_status01" value="เหมาะสม" @if($r->protocol_status=="เหมาะสม") checked @endif class="custom-control-input">
+                <label class="custom-control-label" for="merge-comment-1-30_1">เหมาะสม</label>
+            </div>
+            <div class="custom-control custom-control-inline custom-radio my-2">
+                <input type="radio" id="merge-comment-1-30_2" name="protocol_status01" value="ไม่เหมาะสม" @if($r->protocol_status=="ไม่เหมาะสม") checked @endif class="custom-control-input">
+                <label class="custom-control-label" for="merge-comment-1-30_2">ไม่เหมาะสม</label>
+            </div>
+            <div class="custom-control custom-control-inline custom-radio my-2">
+                <input type="radio" id="merge-comment-1-30_3" name="protocol_status01" value="ไม่มีข้อมูล" @if($r->protocol_status=="ไม่มีข้อมูล") checked @endif class="custom-control-input">
+                <label class="custom-control-label" for="merge-comment-1-30_3">ไม่มีข้อมูล</label>
+            </div>
+            <div class="custom-control custom-control-inline custom-radio my-2">
+                <input type="radio" id="merge-comment-1-30_4" name="protocol_status01" value="ไม่เกี่ยวข้อง" @if($r->protocol_status=="ไม่เกี่ยวข้อง") checked @endif class="custom-control-input" >
+                <label class="custom-control-label" for="merge-comment-1-30_4">ไม่เกี่ยวข้อง</label>
+            </div>
+        <textarea class="form-control form-control-sm auto-expand" id="Merge30" rows="4" name="merge_comment01">{{ $r->comment }}</textarea>
+        </div>
+        @endif
+        @endforeach
+        @endif
+        @endhasanyrole
+        @endhasanyrole
+            <input type="hidden" name="protocol_id" value="{{ request()->id }}">
+            <input type="hidden" name="protocol_number" value="30">
+            @hasanyrole('secretary|reviewer')
+                    <p class="topic-save2">กรุณากด Safe ทุกครั้งหลังมีการแก้ไขข้อมูล</p>
+        <button type="submit" class="btn-c material-icons topic-save">save</button>
+            @endhasanyrole
+            @endif
             </div>
         </div>
     </form>

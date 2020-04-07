@@ -33,11 +33,12 @@
                     กรณีที่จำเป็นต้องทำให้สัตว์เจ็บปวดแต่ไม่มีการบรรเทาความเจ็บปวดให้แก่สัตว์
                     โปรดชี้แจงเหตุผลให้ชัดเจน (If this is not relieving pain or distress please indicate
                     this and justify)</label>
-                    <textarea class="form-control form-control-sm" name="ptc20_02" rows="6" required>{{ $Protocol_opic20->ptc20_02 }}</textarea>
+                    <textarea class="form-control form-control-sm" name="ptc20_02" rows="6" >{{ $Protocol_opic20->ptc20_02 }}</textarea>
                 </div>
             </div>
     
             <input type="hidden" name="id" value="{{ $Protocol_opic11->protocol_id }}">
+            <p class="topic-save2">กรุณากด Save ทุกครั้งหลังมีการแก้ไขข้อมูล</p>
             <button type="submit" class="btn-c material-icons topic-save">save</button>
     
         </div>

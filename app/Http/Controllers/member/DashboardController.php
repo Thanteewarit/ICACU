@@ -19,6 +19,8 @@ class DashboardController extends Controller
         $Protocol_docs          = Protocol_docs::where('users_id',Auth::user()->id)
         ->where('protocol_status','>=','2')
         ->where('protocol_status','!=','14')
+        ->where('show_status','Y')
+        ->orWhere('protocol_status','4')
         ->get();
         return view('member.dashboard',compact('Protocol_docs'));
     }

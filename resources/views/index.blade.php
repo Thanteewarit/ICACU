@@ -49,7 +49,7 @@
         </form>
         <div class="row w-100">
             <button class="btn col-5 mr-auto btn-warning" onclick="location.href='{{ route('member.register.index')}}';">Registeration</button>
-            <button class="btn col-5 ml-auto btn-secondary" onclick="location.href='forget-pass.php';">Forget
+            <button class="btn col-5 ml-auto btn-secondary" onclick="location.href='{{ route('member.register.forgetpass')}}';">Forget
                 Password</button>
         </div>
     </main>

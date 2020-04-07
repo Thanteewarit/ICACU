@@ -7,10 +7,10 @@
         <div class="row form-group">
             <div class="col-12">
                 <h3>นำเสนอภาพรวมโครงการโดยสรุปในภาษาที่เข้าใจง่ายโดยคนทั่วไป เพื่อให้ทราบถึงหลักการและเหตุผลความจำเป็นในการใช้สัตว์ วิธีการและประโยชน์ที่ได้รับ</h3>
-                <textarea name="Executive" class="form-control form-control-sm" rows="8" required></textarea>
+                <textarea name="Executive" class="form-control form-control-sm" rows="8" required>-</textarea>
             </div>
         </div>
-
+        <p class="topic-save2">กรุณากด Save ทุกครั้งหลังมีการแก้ไขข้อมูล</p>
         <button type="submit" class="btn-c material-icons topic-save">save</button>
 
     </div>

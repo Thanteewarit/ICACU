@@ -2,27 +2,29 @@
 <form class="box-topic" id="Protocol_opic01" >
     {{ csrf_field() }}
     <div class="topic">
-
+        @if($Protocol_docs->protocol_status==3)
+        @include ('officer.inc.modal.modal-protocol-include')
+        @endif
         <div class="heading">
             <img class="d-block mx-auto mb-3" src="{{asset('member/img/logo_tu_cut.svg')}}" height="100" />
             <h1>แบบฟอร์มการขอรับการพิจารณาจรรยาบรรณการใช้สัตว์ทดลอง<br>(ANIMAL CARE AND USE PROTOCOL)</h1>
             <p>(เพื่อคณะอนุกรรมการจรรยาบรรณและติดตามโครงการเลี้ยงและใช้สัตว์เพื่องานทางวิทยาศาสตร์ มธ. พิจารณา)</p>
         </div>
 
-        <h2 class="title"><span>01</span>ชื่อโครงการ (Protocol Title)</h2>
+    <h2 class="title"><span>01</span>ชื่อโครงการ (Protocol Title)</h2>
 
         <div class="row form-group">
             <h3 class="col-12">ชื่อโครงการที่ขอใช้สัตว์ (Animal Protocol Title)</h3>
             <div class="col-12">
                 <div class="lang-group mb-2">
                     <small>TH</small>
-                <input type="text" class="form-control form-control-sm" name="animal_protocol_th" value="{{ $Protocol_opic01->animal_protocol_th }}" autocomplete="off"  required>
+                <input type="text" class="form-control form-control-sm" name="animal_protocol_th" value="{{ $Protocol_opic01->animal_protocol_th }}" autocomplete="off"  >
                 </div>
             </div>
             <div class="col-12">
                 <div class="lang-group mb-2">
                     <small>EN</small>
-                    <input type="text" class="form-control form-control-sm" name="animal_protocol_en" value="{{ $Protocol_opic01->animal_protocol_en }}" autocomplete="off"  required>
+                    <input type="text" class="form-control form-control-sm" name="animal_protocol_en" value="{{ $Protocol_opic01->animal_protocol_en }}" autocomplete="off"  >
                 </div>
             </div>
         </div>
@@ -32,13 +34,13 @@
             <div class="col-md-12">
                 <div class="lang-group mb-2">
                     <small>TH</small>
-                    <input type="text" class="form-control form-control-sm"  name="project_proposal_th" value="{{ $Protocol_opic01->project_proposal_th }}" autocomplete="off"  required>
+                    <input type="text" class="form-control form-control-sm"  name="project_proposal_th" value="{{ $Protocol_opic01->project_proposal_th }}" autocomplete="off"  >
                 </div>
             </div>
             <div class="col-md-12">
                 <div class="lang-group mb-2">
                     <small>EN</small>
-                    <input type="text" class="form-control form-control-sm" name="project_proposal_en" value="{{ $Protocol_opic01->project_proposal_en }}" autocomplete="off"  required>
+                    <input type="text" class="form-control form-control-sm" name="project_proposal_en" value="{{ $Protocol_opic01->project_proposal_en }}" autocomplete="off"  >
                 </div>
             </div>
         </div>
@@ -153,6 +155,8 @@
         @hasanyrole('president|secretary')
         @role('secretary')
         <button type="button" class="btn btn-warning Merge" value="01"><small class="material-icons">crop</small> Merge Comments</button>
+        @if($Protocol_docs->protocol_v2==0)
+        
         <div class="alert alert-warning my-5" role="alert">
             <h4><i class="material-icons">question_answer</i> Comment</h4>
             <hr>
@@ -174,10 +178,12 @@
             </div>
         <textarea class="form-control form-control-sm auto-expand" id="Merge01" rows="4" name="merge_comment01"></textarea>
         </div>
+        @endif
         @endrole
-        @role('president')
+        @hasanyrole('president|secretary')
+        @if($Protocol_docs->protocol_v2=="1")
         @foreach ($Protocol_secretary_opic as $key => $r)
-        @if($r->protocol_number == 1)
+        @if($r->protocol_number == 1 )
         <div class="alert alert-warning my-5" role="alert">
             <h4><i class="material-icons">question_answer</i> Comment</h4>
             <hr>
@@ -201,13 +207,15 @@
         </div>
         @endif
         @endforeach
-        @endrole
+        @endif
+        @endhasanyrole
         @endhasanyrole
 
         <input type="hidden" name="protocol_id" value="{{ request()->id }}">
         <input type="hidden" name="protocol_number" value="1">
 
         @hasanyrole('secretary|reviewer|member')
+        <p class="topic-save2">กรุณากด Save ทุกครั้งหลังมีการแก้ไขข้อมูล</p>
         <button type="submit" class="btn-c material-icons topic-save">save</button>
         @endhasanyrole
 

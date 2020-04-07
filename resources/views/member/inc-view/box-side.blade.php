@@ -10,8 +10,11 @@
         <button type="button" id="control_02"><i class="material-icons mr-3">attachment</i>Attached file</button>
         <button type="button" id="control_03"><i class="material-icons mr-3">history</i>History</button>
 
-        @if ($Protocol_docs->protocol_status==12)
+        @if ($Protocol_docs->protocol_status==10)
         <button type="button" id="control_04"><i class="material-icons mr-3">autorenew</i>Renew</button>
+        <button type="button" id="control_05"><i class="material-icons mr-3">build</i>Amendment</button>
+        @endif
+        @if ($Protocol_docs->protocol_status==25)
         <button type="button" id="control_05"><i class="material-icons mr-3">build</i>Amendment</button>
         @endif
         @if ($Protocol_docs->protocol_status==2)
@@ -84,14 +87,18 @@
                                 </div>
                                 <div>
                         </form>
+                        <form id="AmendmentProtocol" class="form-horizontal" method="POST">
 
                         <div class="box-side half" id="form_amendment">
                             <div class="side-head">
                                 <span>Amendment Protocol</span>
-                                <button class="side-close5"><i class="material-icons">close</i></button>
+                                <button type="button" class="side-close5"><i class="material-icons">close</i></button>
                             </div>
+                            {{-- <form class="form-horizontal" method="POST" action="{{ route('member.protocol.Amendment') }}"> --}}
+                                {{ csrf_field() }}
+                                <input type="hidden" name="id" value="{{ request()->id }}">
+                                @if(empty($Protocol_amendment))
                             <div class="side-body p-4">
-                                <form>
                                     <div class="row form-group">
                                         <h6 class="col-12">กรณีโครงการที่ผ่านการรับรองแล้วต้องการแก้ไขเพิ่มเติม
                                             (โปรดเลือกข้อที่แก้ไข) (Please check the amendment topic)</h6>
@@ -100,83 +107,195 @@
                                         </div>
                                         <div class="col-12">
                                             <div class="custom-control custom-checkbox mb-1">
-                                                <input type="checkbox" id="chk-amd_1" class="custom-control-input">
+                                                <input type="checkbox" id="chk-amd_1" name="amendment01" value="Y" class="custom-control-input">
                                                 <label class="custom-control-label" for="chk-amd_1">ผู้วิจัยหลัก
                                                     (Principle Investigator)</label>
                                             </div>
                                             <div class="custom-control custom-checkbox mb-1">
-                                                <input type="checkbox" id="chk-amd_2" class="custom-control-input">
+                                                <input type="checkbox" id="chk-amd_2" name="amendment02" value="Y" class="custom-control-input">
                                                 <label class="custom-control-label" for="chk-amd_2">ผู้ร่วมวิจัย
                                                     (Co-Investigator)</label>
                                             </div>
                                             <div class="custom-control custom-checkbox mb-1">
-                                                <input type="checkbox" id="chk-amd_3" class="custom-control-input">
+                                                <input type="checkbox" id="chk-amd_3" name="amendment03" value="Y" class="custom-control-input">
                                                 <label class="custom-control-label" for="chk-amd_3">วัตถุประสงค์
                                                     (Objective(s))</label>
                                             </div>
                                             <div class="custom-control custom-checkbox mb-1">
-                                                <input type="checkbox" id="chk-amd_4" class="custom-control-input">
+                                                <input type="checkbox" id="chk-amd_4" name="amendment04" value="Y" class="custom-control-input">
                                                 <label class="custom-control-label" for="chk-amd_4">ขยายเวลา (Extend
                                                     animal protocol)</label>
                                             </div>
                                             <div class="custom-control custom-checkbox mb-1">
-                                                <input type="checkbox" id="chk-amd_5" class="custom-control-input">
+                                                <input type="checkbox" id="chk-amd_5" name="amendment05" value="Y" class="custom-control-input">
                                                 <label class="custom-control-label" for="chk-amd_5">ระเบียบวิธีวิจัย
                                                     (Experimental design and general procedures)</label>
                                             </div>
                                             <div class="custom-control custom-checkbox mb-1 ml-4">
-                                                <input type="checkbox" id="chk-amd_6" class="custom-control-input">
+                                                <input type="checkbox" id="chk-amd_6" name="amendment06" value="Y" class="custom-control-input">
                                                 <label class="custom-control-label" for="chk-amd_6">จำนวนสัตว์ทดลอง
                                                     (Number of animal)</label>
                                             </div>
                                             <div class="custom-control custom-checkbox mb-1 ml-4">
-                                                <input type="checkbox" id="chk-amd_7" class="custom-control-input">
+                                                <input type="checkbox" id="chk-amd_7" name="amendment07" value="Y" class="custom-control-input">
                                                 <label class="custom-control-label"
                                                     for="chk-amd_7">การเพิ่มเติมการผ่าตัด (Surgery)</label>
                                             </div>
                                             <div class="custom-control custom-checkbox mb-1 ml-4">
-                                                <input type="checkbox" id="chk-amd_8" class="custom-control-input">
+                                                <input type="checkbox" id="chk-amd_8" name="amendment08" value="Y" class="custom-control-input">
                                                 <label class="custom-control-label"
                                                     for="chk-amd_8">การเปลี่ยนแปลงการใช้ยาสลบ (Anesthesia)</label>
                                             </div>
                                             <div class="custom-control custom-checkbox mb-1 ml-4">
-                                                <input type="checkbox" id="chk-amd_9" class="custom-control-input">
+                                                <input type="checkbox" id="chk-amd_9" name="amendment09" value="Y" class="custom-control-input">
                                                 <label class="custom-control-label" for="chk-amd_9">การใช้ยาลดปวด
                                                     (Analgesia)</label>
                                             </div>
                                             <div class="custom-control custom-checkbox mb-1 ml-4">
-                                                <input type="checkbox" id="chk-amd_10" class="custom-control-input">
+                                                <input type="checkbox" id="chk-amd_10" name="amendment10" value="Y" class="custom-control-input">
                                                 <label class="custom-control-label"
                                                     for="chk-amd_10">การหยุดการทดลองกับสัตว์ก่อนสิ้นสุดการทดลอง (Humane
                                                     Endpoints)</label>
                                             </div>
                                             <div class="custom-control custom-checkbox mb-1 ml-4">
-                                                <input type="checkbox" id="chk-amd_11" class="custom-control-input">
+                                                <input type="checkbox" id="chk-amd_11" name="amendment11" value="Y" class="custom-control-input">
                                                 <label class="custom-control-label"
                                                     for="chk-amd_11">การเปลี่ยนแปลงวิธีการุณยฆาต (Euthanasia)</label>
                                             </div>
                                             <div class="custom-control custom-checkbox mb-1 ml-4">
-                                                <input type="checkbox" id="chk-amd_12" class="custom-control-input">
+                                                <input type="checkbox" id="chk-amd_12" name="amendment12" value="Y" class="custom-control-input">
                                                 <label class="custom-control-label"
                                                     for="chk-amd_12">การเปลี่ยนแปลงช่วงเวลา ความถี่
                                                     กระบวนการที่กระทำต่อสัตว์ (Animal Procedure)</label>
                                             </div>
                                             <div class="custom-control custom-checkbox mb-1">
-                                                <input type="checkbox" id="chk-amd_13" class="custom-control-input">
+                                                <input type="checkbox" id="chk-amd_13" name="amendment13" value="Y" class="custom-control-input">
                                                 <label class="custom-control-label" for="chk-amd_13">อื่นๆ (ระบุ) (Other
                                                     (s)</label>
                                             </div>
-                                            <textarea class="form-control" rows="3"></textarea>
+                                            <textarea class="form-control" name="amendment13_sub" rows="10"></textarea>
                                         </div>
                                     </div>
-                                </form>
                             </div>
+                            @else
+                            <div class="side-body p-4">
+                                    <div class="row form-group">
+                                        <h6 class="col-12">กรณีโครงการที่ผ่านการรับรองแล้วต้องการแก้ไขเพิ่มเติม
+                                            (โปรดเลือกข้อที่แก้ไข) (Please check the amendment topic)</h6>
+                                        <div class="col-12">
+                                            <hr>
+                                        </div>
+                                        <div class="col-12">
+                                            <div class="custom-control custom-checkbox mb-1">
+                                                <input type="checkbox" id="chk-amd_1" name="amendment01" value="Y"
+                                                    @if($Protocol_amendment->amendment01=="Y") checked @endif
+                                                class="custom-control-input">
+                                                <label class="custom-control-label" for="chk-amd_1">ผู้วิจัยหลัก
+                                                    (Principle Investigator)</label>
+                                            </div>
+                                            <div class="custom-control custom-checkbox mb-1">
+                                                <input type="checkbox" id="chk-amd_2" name="amendment02" value="Y"
+                                                    @if($Protocol_amendment->amendment02=="Y") checked @endif
+                                                class="custom-control-input">
+                                                <label class="custom-control-label" for="chk-amd_2">ผู้ร่วมวิจัย
+                                                    (Co-Investigator)</label>
+                                            </div>
+                                            <div class="custom-control custom-checkbox mb-1">
+                                                <input type="checkbox" id="chk-amd_3" name="amendment03" value="Y"
+                                                    @if($Protocol_amendment->amendment03=="Y") checked @endif
+                                                class="custom-control-input">
+                                                <label class="custom-control-label" for="chk-amd_3">วัตถุประสงค์
+                                                    (Objective(s))</label>
+                                            </div>
+                                            <div class="custom-control custom-checkbox mb-1">
+                                                <input type="checkbox" id="chk-amd_4" name="amendment04" value="Y"
+                                                    @if($Protocol_amendment->amendment04=="Y") checked @endif
+                                                class="custom-control-input">
+                                                <label class="custom-control-label" for="chk-amd_4">ขยายเวลา
+                                                    (Extend animal protocol)</label>
+                                            </div>
+                                            <div class="custom-control custom-checkbox mb-1">
+                                                <input type="checkbox" id="chk-amd_5" name="amendment05" value="Y"
+                                                    @if($Protocol_amendment->amendment05=="Y") checked @endif
+                                                class="custom-control-input">
+                                                <label class="custom-control-label"
+                                                    for="chk-amd_5">ระเบียบวิธีวิจัย (Experimental design and
+                                                    general procedures)</label>
+                                            </div>
+                                            <div class="custom-control custom-checkbox mb-1 ml-4">
+                                                <input type="checkbox" id="chk-amd_6" name="amendment06" value="Y"
+                                                    @if($Protocol_amendment->amendment06=="Y") checked @endif
+                                                class="custom-control-input">
+                                                <label class="custom-control-label"
+                                                    for="chk-amd_6">จำนวนสัตว์ทดลอง (Number of animal)</label>
+                                            </div>
+                                            <div class="custom-control custom-checkbox mb-1 ml-4">
+                                                <input type="checkbox" id="chk-amd_7" name="amendment07" value="Y"
+                                                    @if($Protocol_amendment->amendment07=="Y") checked @endif
+                                                class="custom-control-input">
+                                                <label class="custom-control-label"
+                                                    for="chk-amd_7">การเพิ่มเติมการผ่าตัด (Surgery)</label>
+                                            </div>
+                                            <div class="custom-control custom-checkbox mb-1 ml-4">
+                                                <input type="checkbox" id="chk-amd_8" name="amendment08" value="Y"
+                                                    @if($Protocol_amendment->amendment08=="Y") checked @endif
+                                                class="custom-control-input">
+                                                <label class="custom-control-label"
+                                                    for="chk-amd_8">การเปลี่ยนแปลงการใช้ยาสลบ
+                                                    (Anesthesia)</label>
+                                            </div>
+                                            <div class="custom-control custom-checkbox mb-1 ml-4">
+                                                <input type="checkbox" id="chk-amd_9" name="amendment09" value="Y"
+                                                    @if($Protocol_amendment->amendment09=="Y") checked @endif
+                                                class="custom-control-input">
+                                                <label class="custom-control-label"
+                                                    for="chk-amd_9">การใช้ยาลดปวด (Analgesia)</label>
+                                            </div>
+                                            <div class="custom-control custom-checkbox mb-1 ml-4">
+                                                <input type="checkbox" id="chk-amd_10" name="amendment10" value="Y"
+                                                    @if($Protocol_amendment->amendment10=="Y") checked @endif
+                                                class="custom-control-input">
+                                                <label class="custom-control-label"
+                                                    for="chk-amd_10">การหยุดการทดลองกับสัตว์ก่อนสิ้นสุดการทดลอง
+                                                    (Humane Endpoints)</label>
+                                            </div>
+                                            <div class="custom-control custom-checkbox mb-1 ml-4">
+                                                <input type="checkbox" id="chk-amd_11" name="amendment11" value="Y"
+                                                    @if($Protocol_amendment->amendment11=="Y") checked @endif
+                                                class="custom-control-input">
+                                                <label class="custom-control-label"
+                                                    for="chk-amd_11">การเปลี่ยนแปลงวิธีการุณยฆาต
+                                                    (Euthanasia)</label>
+                                            </div>
+                                            <div class="custom-control custom-checkbox mb-1 ml-4">
+                                                <input type="checkbox" id="chk-amd_12" name="amendment12" value="Y"
+                                                    @if($Protocol_amendment->amendment12=="Y") checked @endif
+                                                class="custom-control-input">
+                                                <label class="custom-control-label"
+                                                    for="chk-amd_12">การเปลี่ยนแปลงช่วงเวลา ความถี่
+                                                    กระบวนการที่กระทำต่อสัตว์ (Animal Procedure)</label>
+                                            </div>
+                                            <div class="custom-control custom-checkbox mb-1">
+                                                <input type="checkbox" id="chk-amd_13" name="amendment13" value="Y"
+                                                    @if($Protocol_amendment->amendment13=="Y") checked @endif
+                                                class="custom-control-input">
+                                                <label class="custom-control-label" for="chk-amd_13">อื่นๆ
+                                                    (ระบุ) (Other (s)</label>
+                                            </div>
+                                            <textarea class="form-control" name="amendment13_sub"
+                                                rows="10">{{$Protocol_amendment->amendment13_sub}}</textarea>
+                                        </div>
+                                    </div>
+                                
+                            </div>
+                            @endif
                             <div class="side-foot p-0">
-                                <button type="submit"
-                                    class="side-close font-weight-bold w-50 bg-secondary">SAVE</button>
-                                <button type="submit" class="side-close font-weight-bold w-50 bg-success">SEND</button>
+                                
+                                <button type="submit" class="side-close font-weight-bold w-100 bg-success">SEND</button>
                             </div>
                             <div>
+                        </form>
+
 
                                 <div class="box-side half" id="form_reviewer">
                                     <div class="side-head">
@@ -271,20 +390,26 @@
                                     </div>
                                     <div>
 
-                                        <div class="box-side half" id="form_upload">
-                                            <div class="side-head">
-                                                <span>Upload file</span>
-                                                <button class="side-close"><i class="material-icons">close</i></button>
-                                            </div>
-                                            <div class="side-body p-4">
-                                                <form class="d-flex justify-content-center align-items-center h-100">
-                                                    <div class="text-center text-muted">
-                                                        <h4 class="material-icons display-3">insert_drive_file</h4>
-                                                        <h6 class="my-3">Drop file here..</h6>
-                                                    </div>
+
+                                                <form id="SendBack" >
+                                                    {{ csrf_field() }}
+                                                    <div class="box-side half" id="form_upload">
+                                                        <div class="side-head">
+                                                            <span>ส่งข้อมูลกลับไปแก้ไข</span>
+                                                            <button class="side-close"><i class="material-icons">close</i></button>
+                                                        </div>
+                                                        
+                                                        <div class="side-body p-4">
+                                                                <div class="row form-group">
+                                                                    <div class="col-md-12">
+                                                                    <h6>ข้อมูลที่ต้องแก้ไข</h6>
+                                                                    <textarea class="form-control" name="comment" rows="15">{{$Protocol_docs->comment}}</textarea>
+                                                                    </div>
+                                                                </div>
+                                                        </div>
+                                                        <div class="side-foot p-0">
+                                                        <input type="hidden" name="protocol_id" value="{{request()->route('id')}}">
+                                                                <button type="submit" class="side-close font-weight-bold w-100 bg-secondary side-close4">Send to User</button>
+                                                        </div>
+                                                    <div>
                                                 </form>
-                                            </div>
-                                            <div class="side-foot p-0">
-                                                <button class="side-close font-weight-bold w-100">UPLOAD</button>
-                                            </div>
-                                            <div>

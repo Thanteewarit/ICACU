@@ -2,7 +2,9 @@
 <form class="box-topic" id="Protocol_opic08">
         {{ csrf_field() }}
     <div class="topic">
-
+        @if($Protocol_docs->protocol_status==3)
+        @include ('officer.inc.modal.modal-protocol-include')
+        @endif
         <h2 class="title"><span>08</span>วัตถุประสงค์ของโครงการ (Objective)</h2>
 
         <table class="table table-sm table-bordered">
@@ -15,7 +17,7 @@
             <tbody class="tr_protocol_08">
                 @foreach ($Protocol_opic08 as $r)
                 <tr>
-                <td class="p-0"><textarea class="form-control form-control-sm border-0 rounded-0 auto-expand"  name="Objective[]" rows="1"  required>{{ $r->Objective  }}</textarea></td>
+                <td class="p-0"><textarea class="form-control form-control-sm border-0 rounded-0 auto-expand"  name="Objective[]" rows="1"  >{{ $r->Objective  }}</textarea></td>
                     <td class="text-center p-0">
                         <button type="button" class="btn btn-secondary rounded-0 h-100 minus08">-</button>
                     </td>
@@ -132,6 +134,8 @@
         @hasanyrole('president|secretary')
         @role('secretary')
         <button type="button" class="btn btn-warning Merge" value="08"><small class="material-icons">crop</small> Merge Comments</button>
+        @if($Protocol_docs->protocol_v2==0)
+        
         <div class="alert alert-warning my-5" role="alert">
             <h4><i class="material-icons">question_answer</i> Comment</h4>
             <hr>
@@ -153,8 +157,10 @@
             </div>
         <textarea class="form-control form-control-sm auto-expand" id="Merge08" rows="4" name="merge_comment01"></textarea>
         </div>
+        @endif
         @endrole
-        @role('president')
+        @hasanyrole('president|secretary')
+        @if($Protocol_docs->protocol_v2=="1")
         @foreach ($Protocol_secretary_opic as $key => $r)
         @if($r->protocol_number == 8)
         <div class="alert alert-warning my-5" role="alert">
@@ -180,11 +186,13 @@
         </div>
         @endif
         @endforeach
-        @endrole
+        @endif
+        @endhasanyrole
         @endhasanyrole
         <input type="hidden" name="protocol_id" value="{{ request()->id }}">
         <input type="hidden" name="protocol_number" value="8">
         @hasanyrole('secretary|reviewer')
+                <p class="topic-save2">กรุณากด Safe ทุกครั้งหลังมีการแก้ไขข้อมูล</p>
         <button type="submit" class="btn-c material-icons topic-save">save</button>
         @endhasanyrole
         @endif

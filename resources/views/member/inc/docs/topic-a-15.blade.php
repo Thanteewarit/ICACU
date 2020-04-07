@@ -35,7 +35,7 @@
                 <input type="text" class="form-control form-control-sm mb-3" name="ptc15_04_sub">
             </div>
         </div>
-
+        <p class="topic-save2">กรุณากด Save ทุกครั้งหลังมีการแก้ไขข้อมูล</p>
         <button type="submit" class="btn-c material-icons topic-save">save</button>
 
     </div>

@@ -8,17 +8,18 @@
         <div class="row form-group">
             <div class="col-12">
                 <label><strong>10.1</strong> สรุปผลประโยชน์ต่อมนุษย์</label>
-            <textarea class="form-control form-control-sm" rows="3" name="anticipated01" required>{{ $Protocol_opic10->anticipated01 }}</textarea>
+            <textarea class="form-control form-control-sm" rows="3" name="anticipated01" >{{ $Protocol_opic10->anticipated01 }}</textarea>
             </div>
         </div>
         <div class="row form-group">
             <div class="col-12">
                 <label><strong>10.2</strong> สรุปผลประโยชน์ต่อความก้าวหน้าทางวิชาการ</label>
-                <textarea class="form-control form-control-sm" rows="3" name="anticipated02" required>{{ $Protocol_opic10->anticipated02 }}</textarea>
+                <textarea class="form-control form-control-sm" rows="3" name="anticipated02" >{{ $Protocol_opic10->anticipated02 }}</textarea>
             </div>
         </div>
 
         <input type="hidden" name="id" value="{{ $Protocol_opic07->protocol_id }}">
+        <p class="topic-save2">กรุณากด Save ทุกครั้งหลังมีการแก้ไขข้อมูล</p>
         <button type="submit" class="btn-c material-icons topic-save">save</button>
 
     </div>

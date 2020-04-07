@@ -35,7 +35,7 @@
                 prevEl: '.swiper-button-prev',
             },
         });
-    </script>
+</script>
 <script>
         $(".input-date-ranges").flatpickr({
             mode: "range",
@@ -955,11 +955,23 @@
                     text: "",
                     icon: "success",
                     button: "ยืนยัน",
+                })
+                .then((value) => {
+                    window.location="{{route('member.protocol_list.index')}}";
                 });
             }
         });
     });
+    $('#SendBack').on('submit', function (e) {
+    e.preventDefault();
 
+});
     
+</script>
+<script>
+    $('.topic-save').on('click', function (e) {
+        $(this).attr('class', ' btn-c material-icons topic-save-ed');
+
+});
 </script>
 @endsection

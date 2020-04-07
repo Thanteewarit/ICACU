@@ -11,7 +11,7 @@
             </div>
             <div class="col-md-4">
                 <div class="input-group input-group-sm">
-                <input type="text" class="form-control form-control-sm input-date-ranges" name="ptc17_01" value="{{ $Protocol_opic17->ptc17_01 }}" required>
+                <input type="text" class="form-control form-control-sm input-date-ranges" name="ptc17_01" value="{{ $Protocol_opic17->ptc17_01 }}" >
                     <div class="input-group-prepend">
                         <div class="input-group-text material-icons">date_range</div>
                     </div>
@@ -25,7 +25,7 @@
             </div>
             <div class="col-md-4">
                 <div class="input-group input-group-sm">
-                    <input type="text" class="form-control form-control-sm input-date-ranges" name="ptc17_02" value="{{ $Protocol_opic17->ptc17_02 }}" required>
+                    <input type="text" class="form-control form-control-sm input-date-ranges" name="ptc17_02" value="{{ $Protocol_opic17->ptc17_02 }}" >
                     <div class="input-group-prepend">
                         <div class="input-group-text material-icons">date_range</div>
                     </div>
@@ -33,6 +33,7 @@
             </div>
         </div>
         <input type="hidden" name="id" value="{{ $Protocol_opic11->protocol_id }}">
+        <p class="topic-save2">กรุณากด Save ทุกครั้งหลังมีการแก้ไขข้อมูล</p>
         <button type="submit" class="btn-c material-icons topic-save">save</button>
 
     </div>

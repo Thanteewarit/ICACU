@@ -1,6 +1,9 @@
 <!-- STR 29 -->
 <div class="box-topic">
     <div class="topic">
+        @if($Protocol_docs->protocol_status==3)
+        @include ('officer.inc.modal.modal-protocol-include')
+        @endif
         <h2 class="title text-center">คำรับรอง (Statement of profession)</h2>
 
         <div class="row form-group">

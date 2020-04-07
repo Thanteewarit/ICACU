@@ -14,7 +14,13 @@ body {
     box-shadow: unset!important;
     -webkit-box-shadow: unset!important;
 }
-
+.bg-redTU{
+    background-image: url('../img/bgRedTUw.jpg');
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    background-size: cover;
+    height:auto;
+}
 
 /* Styling */
 .main {
@@ -300,6 +306,13 @@ header .head-menu li:first-child {
     .workspace .work-pane.group-ptc .work-tab .nav-tabs {
         justify-content: flex-start!important;
         border: 0;
+    }
+    .bg-redTU{
+        background-image: url('../img/bgRedTUw-Mobile.jpg');
+        background-attachment: fixed;
+        background-repeat: no-repeat;
+        background-size: cover;
+        height:auto;
     }
 }
 @media (max-width : 576px) {

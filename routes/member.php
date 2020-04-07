@@ -5,12 +5,16 @@ Route::get('/My/dashboard','member\DashboardController@index')->name('member.das
 Route::get('/My/create', function () { return view('member.create'); });
 
 Route::get('/My/register','member\RegisterControllers@index')->name('member.register.index');
+Route::get('/My/Profile','member\RegisterControllers@Profile')->name('member.register.Profile');
+Route::get('/My/forget-pass','member\RegisterControllers@forgetpass')->name('member.register.forgetpass');
 Route::post('/My/register/create','member\RegisterControllers@create')->name('member.register.create');
+Route::post('/My/register/edit','member\RegisterControllers@edit')->name('member.register.edit');
 
 
 Route::get('/My/protocol-create','member\CreatedocsController@index')->name('member.protocol_create.index');
 Route::get('/My/protocol-create/{doc_id?}','member\CreatedocsController@create')->name('member.protocol_create.create');
 Route::get('/My/protocol-create/update/{doc_id?}','member\CreatedocsController@update')->name('member.protocol_create.update');
+Route::get('/My/protocol-create/SaveIn/{doc_id?}','member\CreatedocsController@SaveIn')->name('member.protocol_create.SaveIn');
 
 Route::get('/My/protocol-list','member\ListController@index')->name('member.protocol_list.index');
 Route::get('/My/protocol-list-view','member\ListViewController@index')->name('member.protocol_list_view.index');
@@ -92,6 +96,7 @@ Route::post('/members/protocol-edit/termination','member\EditeDocsController@ter
 Route::post('/members/protocol-draft/sendDraft','member\ApproveController@sendDraft')->name('member.protocol-draft.sendDraft');
 
 Route::post('/members/protocol/Renew/{id?}','member\ApproveController@Renew')->name('member.protocol.Renew');
+Route::post('/members/protocol/Amendment','member\ApproveController@Amendment')->name('member.protocol.Amendment');
 Route::post('/members/protocol/secretary','member\EditeDocsController@secretaryShow')->name('member.protocol.secretary');
 
 // Route::get('/member/forgetpassword', function () { return view('member.forget-pass'); });

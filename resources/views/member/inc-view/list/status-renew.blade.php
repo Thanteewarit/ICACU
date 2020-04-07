@@ -20,7 +20,8 @@
                     <td>{{ $r->Protocol_opic01->animal_protocol_th }}</td>
                     <td>{{ DateThai($r->created_at) }}</td>
                     <td>{{ $r->Job_statusName->name }}</td>
-                    <td class="text-center"><a href="{{ route('member.protocol.show',array('id'=>$r->id))}}"><i class="material-icons md-16 md-noti active">rate_review</i></a></td>
+                    {{-- <td class="text-center"><a href="{{ route('member.protocol.show',array('id'=>$r->id))}}"><i class="material-icons md-16 md-noti active">rate_review</i></a></td> --}}
+                    <td class="text-center"><a href="{{ route('member.protocol_draft.show',array('id'=>$r->id))}}"><i class="material-icons md-16 md-noti active">rate_review</i></a></td>
                 </tr>
             @endforeach
         @endif

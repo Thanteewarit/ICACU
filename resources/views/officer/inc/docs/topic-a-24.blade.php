@@ -2,7 +2,9 @@
 <form class="box-topic" id="Protocol_opic24">
         {{ csrf_field() }}
         <div class="topic">
-    
+            @if($Protocol_docs->protocol_status==3)
+        @include ('officer.inc.modal.modal-protocol-include')
+        @endif
             <h2 class="title"><span>24</span>การดำเนินการกับสัตว์ที่ยังมีชีวิตหลังการสิ้นสุดโครงการ (disposition of animals after completion of activity)</h2>
             
             <div class="row form-group">
@@ -15,12 +17,12 @@
                         <input type="radio" id="rad-a24-1_2" name="ptc24_02"  value="Y" @if($Protocol_opic24->ptc24_02=='Y') checked @endif class="custom-control-input">
                         <label class="custom-control-label" for="rad-a24-1_2">นำสัตว์ไปใช้ในโครงการอื่น (Transfer to another research project)</label>
                     </div>
-                <textarea class="form-control form-control-sm ml-4 mb-4" name="ptc24_03" rows="3" required>{{ $Protocol_opic24->ptc24_03 }}</textarea>
+                <textarea class="form-control form-control-sm ml-4 mb-4" name="ptc24_03" rows="3" >{{ $Protocol_opic24->ptc24_03 }}</textarea>
                     <div class="custom-control custom-radio mb-1">
                         <input type="radio" id="rad-a24-1_3" name="ptc24_04" value="Y" @if($Protocol_opic24->ptc24_04=='Y') checked @endif class="custom-control-input">
                         <label class="custom-control-label" for="rad-a24-1_3">อื่นๆ (ระบุวิธีการพร้อมเหตุผล) (Other, please specify method and why)</label>
                     </div>
-                    <textarea class="form-control form-control-sm ml-4 mb-4" name="ptc24_05" rows="3" required>{{ $Protocol_opic24->ptc24_05 }}</textarea>
+                    <textarea class="form-control form-control-sm ml-4 mb-4" name="ptc24_05" rows="3" >{{ $Protocol_opic24->ptc24_05 }}</textarea>
                 </div>
             </div>
             <input type="hidden" name="id" value="{{ $Protocol_opic11->protocol_id }}">
@@ -123,6 +125,8 @@
         @hasanyrole('president|secretary')
         @role('secretary')
         <button type="button" class="btn btn-warning Merge" value="24"><small class="material-icons">crop</small> Merge Comments</button>
+        @if($Protocol_docs->protocol_v2==0)
+        
         <div class="alert alert-warning my-5" role="alert">
             <h4><i class="material-icons">question_answer</i> Comment</h4>
             <hr>
@@ -144,8 +148,10 @@
             </div>
         <textarea class="form-control form-control-sm auto-expand" id="Merge24" rows="4" name="merge_comment01"></textarea>
         </div>
+        @endif
         @endrole
-        @role('president')
+        @hasanyrole('president|secretary')
+        @if($Protocol_docs->protocol_v2=="1")
         @foreach ($Protocol_secretary_opic as $key => $r)
         @if($r->protocol_number == 24)
         <div class="alert alert-warning my-5" role="alert">
@@ -171,11 +177,13 @@
         </div>
         @endif
         @endforeach
-        @endrole
+        @endif
+        @endhasanyrole
         @endhasanyrole
             <input type="hidden" name="protocol_id" value="{{ request()->id }}">
             <input type="hidden" name="protocol_number" value="24">
             @hasanyrole('secretary|reviewer')
+                <p class="topic-save2">กรุณากด Safe ทุกครั้งหลังมีการแก้ไขข้อมูล</p>
         <button type="submit" class="btn-c material-icons topic-save">save</button>
         @endhasanyrole
             @endif

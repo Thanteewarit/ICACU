@@ -108,7 +108,7 @@
                         <td>
                             <div class="custom-control custom-checkbox mb-1">
                                 <input type="checkbox" id="chk-a16-3_1" name="ptc16_11" value="Y"  class="custom-control-input">
-                                <label class="custom-control-label" for="chk-a16-3_1">Strict hygienic conventional</label>
+                                <label class="custom-control-label" for="chk-a16-3_1">Static cage for Mouse</label>
                             </div>
                             <div class="custom-control custom-checkbox mb-1">
                                 <input type="checkbox" id="chk-a16-3_2" name="ptc16_12" value="Y"  class="custom-control-input">
@@ -319,7 +319,7 @@
                     </tr>
                 </tbody>
             </table>
-    
+            <p class="topic-save2">กรุณากด Save ทุกครั้งหลังมีการแก้ไขข้อมูล</p>
             <button type="submit" class="btn-c material-icons topic-save">save</button>
     
         </div>

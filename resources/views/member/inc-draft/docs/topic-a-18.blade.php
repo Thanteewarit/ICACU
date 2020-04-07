@@ -13,20 +13,20 @@
             <div class="row form-group">
                 <div class="col-12">
                     <label>18.1.1 ระบุสถิติที่ใช้ในการออกแบบการวิจัย (Experimental Design)</label>
-                <textarea class="form-control form-control-sm mb-3" name="ptc18_01" rows="3" required>{{ $Protocol_opic18->ptc18_01 }}</textarea>
+                <textarea class="form-control form-control-sm mb-3" name="ptc18_01" rows="3" >{{ $Protocol_opic18->ptc18_01 }}</textarea>
                 </div>
                 <div class="col-12"><hr></div>
                 <div class="col-12">
                     <label>18.1.2 การคำนวณตัวอย่าง (Provide an explanation of how the numbers of animals to
                     be used in each group or total were appropriate. Number of animals used in the experiment
                     should be based on scientific and statistical requirements to achieve objective)</label>
-                    <textarea class="form-control form-control-sm mb-3" name="ptc18_02" rows="3" required>{{ $Protocol_opic18->ptc18_02 }}</textarea>
+                    <textarea class="form-control form-control-sm mb-3" name="ptc18_02" rows="3" >{{ $Protocol_opic18->ptc18_02 }}</textarea>
                 </div>
                 <div class="col-12"><hr></div>
                 <div class="col-12">
                     <label>18.1.3 การวิเคราะห์ผล (Data analysis/statistical method: (List the statistical test(s)
                     planned or describe the strategy intended to evaluate the data))</label>
-                    <textarea class="form-control form-control-sm mb-3" name="ptc18_03" rows="3" required>{{ $Protocol_opic18->ptc18_03 }}</textarea>
+                    <textarea class="form-control form-control-sm mb-3" name="ptc18_03" rows="3" >{{ $Protocol_opic18->ptc18_03 }}</textarea>
                 </div>
                 <div class="col-12"><hr></div>
                 <div class="col-12">
@@ -46,10 +46,11 @@
                         <tbody class="tr_protocol_1801">
                             @foreach ($Protocol_opic18_sub01 as $key => $r)
                             <tr id="tra1801{{ $key }}">
-                            <td class="p-0"><input type="text" name="ptc18_01_l1[]" value="{{ $r->ptc18_01 }}" class="form-control form-control-sm border-0 rounded-0" required></td>
-                                    <td class="p-0"><input type="number" name="ptc18_02_l1[]" value="{{ $r->ptc18_02 }}" maxlength="3" class="form-control form-control-sm border-0 rounded-0" required></td>
-                                    <td class="p-0"><input type="number" name="ptc18_03_l1[]" value="{{ $r->ptc18_03 }}" maxlength="3" class="form-control form-control-sm border-0 rounded-0" required></td>
-                                    <td class="p-0"><input type="number" name="ptc18_04_l1[]" value="{{ $r->ptc18_04 }}" maxlength="3" class="form-control form-control-sm border-0 rounded-0" required></td>
+                            <td class="p-0"><input type="text" name="ptc18_01_l1[]" value="{{ $r->ptc18_01 }}" class="form-control form-control-sm border-0 rounded-0" 
+                                ></td>
+                                    <td class="p-0"><input type="number" name="ptc18_02_l1[]" value="{{ $r->ptc18_02 }}" maxlength="3" class="form-control form-control-sm border-0 rounded-0" ></td>
+                                    <td class="p-0"><input type="number" name="ptc18_03_l1[]" value="{{ $r->ptc18_03 }}" maxlength="3" class="form-control form-control-sm border-0 rounded-0" ></td>
+                                    <td class="p-0"><input type="number" name="ptc18_04_l1[]" value="{{ $r->ptc18_04 }}" maxlength="3" class="form-control form-control-sm border-0 rounded-0" ></td>
                                     <td class="text-center p-0">
                                         <button type="button" class="btn btn-secondary rounded-0 minus1801">-</button>
                                     </td>
@@ -77,7 +78,7 @@
                     to the end of study. Specify all outcomes to be measured or observed from the
                     experiment. Succinctly outline the formal scientific plan and direction for
                     experimentation. A diagram or chart may be helpful to explain complex design)</label>
-                    <textarea class="form-control form-control-sm mb-3" name="ptc18_04" rows="3" required>{{ $Protocol_opic18->ptc18_04 }}</textarea>
+                    <textarea class="form-control form-control-sm mb-3" name="ptc18_04" rows="3" >{{ $Protocol_opic18->ptc18_04 }}</textarea>
                     <img class="d-block mx-auto mb-3" src="{{asset('file-upload/'.$Protocol_opic18->ptc18_file)}}" width="600" />
                     <input type="file" name="ptc18_file" class="form-control-file mb-3">
                 </div>
@@ -154,7 +155,7 @@
                     และอธิบายวิธีการควบคุมภาพของสารที่นำมาใช้ในโครงการ พร้อมทั้งแนบเอกสารควบคุมคุณภาพ) (IACUC
                     Policy 400 : Use of Non-Pharmaceutical Grade Substances Policy
                     Provide sound scientific justification for the use of non-pharmaceutical Grade Substances</label>
-                    <textarea class="form-control form-control-sm mb-3" name="ptc18_06" rows="3" required>{{ $Protocol_opic18->ptc18_06 }}</textarea>
+                    <textarea class="form-control form-control-sm mb-3" name="ptc18_06" rows="3" >{{ $Protocol_opic18->ptc18_06 }}</textarea>
                 </div>
                 <div class="col-12"><hr></div>
                 <div class="col-12">
@@ -179,14 +180,14 @@
                     (กรุณาแนบเอกสารอ้างอิงถึงระดับความอันตราย รวมทั้ง Standard Operating Procedure: SOP)
                     (Explain any safety precautions or programs designed to protect personnel from
                     biohazards and any surveillance procedures in place to monitor potential exposures.)</label>
-                    <textarea class="form-control form-control-sm mb-3" name="ptc18_08" rows="3" required>{{ $Protocol_opic18->ptc18_08 }}</textarea>
+                    <textarea class="form-control form-control-sm mb-3" name="ptc18_08" rows="3" >{{ $Protocol_opic18->ptc18_08 }}</textarea>
                 </div>
                 <div class="col-12"><hr></div>
                 <div class="col-12">
                     <label>18.2.4 ระบุวิธีการกำจัดสารพิษ/วัตถุอันตราย/เชื้อโรค
                     และการปฏิบัติกับซากสัตว์หรือวัสดุอุปกรณ์ในการเลี้ยงสัตว์อย่างไรเมื่อสิ้นสุดการทดลอง (Explain
                     how the waste is decontaminated and disposed.)</label>
-                    <textarea class="form-control form-control-sm mb-3" name="ptc18_09" rows="3" required>{{ $Protocol_opic18->ptc18_09 }}</textarea>
+                    <textarea class="form-control form-control-sm mb-3" name="ptc18_09" rows="3" >{{ $Protocol_opic18->ptc18_09 }}</textarea>
                 </div>
                 <div class="col-12"><hr></div>
             </div>
@@ -237,7 +238,7 @@
                         <input type="checkbox" id="chk-a18-1_10" name="ptc18_19"  value="Y" @if($Protocol_opic18->ptc18_19=="Y") checked @endif class="custom-control-input">
                         <label class="custom-control-label" for="chk-a18-1_10">อื่น ๆ (ระบุ) (Other, please specify)</label>
                     </div>
-                    <textarea class="form-control form-control-sm mb-3" name="ptc18_19_sub" rows="3" required>{{ $Protocol_opic18->ptc18_19_sub }}</textarea>
+                    <textarea class="form-control form-control-sm mb-3" name="ptc18_19_sub" rows="3" >{{ $Protocol_opic18->ptc18_19_sub }}</textarea>
                 </div>
                 <div class="col-12"><hr></div>
             </div>
@@ -447,7 +448,7 @@
                     </div>
                 </div>
                 <div class="col-6">ใช้วิธีการ (Method)</div>
-                <div class="col-6"><input type="text" class="form-control form-control-sm mb-2" name="ptc18_24" value="{{ $Protocol_opic18->ptc18_24 }}" required></div>
+                <div class="col-6"><input type="text" class="form-control form-control-sm mb-2" name="ptc18_24" value="{{ $Protocol_opic18->ptc18_24 }}" ></div>
                 <div class="col-6">ชนิดของกรงหรือวัสดุอุปกรณ์ที่ช่วยในการเก็บตัวอย่าง (Cage or device that use in feces collection)</div>
                 <div class="col-6"><input type="text" class="form-control form-control-sm" name="ptc18_24_1" value="{{ $Protocol_opic18->ptc18_24_1 }}"></div>
                 <div class="col-12"><hr></div>
@@ -457,18 +458,18 @@
                 <div class="col-12">
                     <label class="d-block">18.3.6 การเก็บตัวอย่างปัสสาวะ (Is protocol involve urine collection)</label>
                     <div class="custom-control custom-control-inline custom-radio">
-                        <input type="radio" id="rad-a18-6_1" name="ptc18_25" value="N" @if($Protocol_opic18->ptc18_25=="N") checked @endif class="custom-control-input" required>
+                        <input type="radio" id="rad-a18-6_1" name="ptc18_25" value="N" @if($Protocol_opic18->ptc18_25=="N") checked @endif class="custom-control-input" >
                         <label class="custom-control-label" for="rad-a18-6_1">ไม่มี (No)</label>
                     </div>
                     <div class="custom-control custom-control-inline custom-radio mb-3">
-                        <input type="radio" id="rad-a18-6_2" name="ptc18_25" value="Y" @if($Protocol_opic18->ptc18_25=="Y") checked @endif class="custom-control-input" required>
+                        <input type="radio" id="rad-a18-6_2" name="ptc18_25" value="Y" @if($Protocol_opic18->ptc18_25=="Y") checked @endif class="custom-control-input" >
                         <label class="custom-control-label" for="rad-a18-6_2">มี (ระบุ) (Yes, Please specify below)</label>
                     </div>
                 </div>
                 <div class="col-6">ใช้วิธีการ (Method)</div>
-                <div class="col-6"><input type="text" class="form-control form-control-sm mb-2" name="ptc18_26" value="{{ $Protocol_opic18->ptc18_27 }}" required></div>
+                <div class="col-6"><input type="text" class="form-control form-control-sm mb-2" name="ptc18_26" value="{{ $Protocol_opic18->ptc18_27 }}" ></div>
                 <div class="col-6">ชนิดของกรงหรือวัสดุอุปกรณ์ที่ช่วยในการเก็บตัวอย่าง (Cage or device that use in urine collection)</div>
-                <div class="col-6"><input type="text" class="form-control form-control-sm" name="ptc18_27" value="{{ $Protocol_opic18->ptc18_27 }}" required></div>
+                <div class="col-6"><input type="text" class="form-control form-control-sm" name="ptc18_27" value="{{ $Protocol_opic18->ptc18_27 }}" ></div>
                 <div class="col-12"><hr></div>
             </div>
     
@@ -492,10 +493,10 @@
                         <tbody class="tr_protocol_1806">
                         @foreach ($Protocol_opic18_sub06 as $key => $r)
                         <tr id="tra1806{{ $key }}">
-                                <td class="p-0"><textarea name="ptc18_01_l6[]" class="form-control form-control-sm border-0 rounded-0 txt-auto-h" rows="3" required>{{ $r->ptc18_01 }}</textarea></td>
-                                <td class="p-0"><textarea name="ptc18_02_l6[]" class="form-control form-control-sm border-0 rounded-0 txt-auto-h" rows="3" required>{{ $r->ptc18_02 }}</textarea></td>
-                                <td class="p-0"><textarea name="ptc18_03_l6[]" class="form-control form-control-sm border-0 rounded-0 txt-auto-h" rows="3" required>{{ $r->ptc18_03 }}</textarea></td>
-                                <td class="p-0"><textarea name="ptc18_04_l6[]" class="form-control form-control-sm border-0 rounded-0 txt-auto-h" rows="3" required>{{ $r->ptc18_04 }}</textarea></td>
+                                <td class="p-0"><textarea name="ptc18_01_l6[]" class="form-control form-control-sm border-0 rounded-0 txt-auto-h" rows="3" >{{ $r->ptc18_01 }}</textarea></td>
+                                <td class="p-0"><textarea name="ptc18_02_l6[]" class="form-control form-control-sm border-0 rounded-0 txt-auto-h" rows="3" >{{ $r->ptc18_02 }}</textarea></td>
+                                <td class="p-0"><textarea name="ptc18_03_l6[]" class="form-control form-control-sm border-0 rounded-0 txt-auto-h" rows="3" >{{ $r->ptc18_03 }}</textarea></td>
+                                <td class="p-0"><textarea name="ptc18_04_l6[]" class="form-control form-control-sm border-0 rounded-0 txt-auto-h" rows="3" >{{ $r->ptc18_04 }}</textarea></td>
                                 <td class="text-center p-0">
                                     <button type="button" class="btn btn-secondary rounded-0 h-100 minus1806">-</button>
                                 </td>
@@ -514,6 +515,7 @@
                 </div>
             </div>
             <input type="hidden" name="id" value="{{ $Protocol_opic11->protocol_id }}">
+            <p class="topic-save2">กรุณากด Save ทุกครั้งหลังมีการแก้ไขข้อมูล</p>
             <button type="submit" class="btn-c material-icons topic-save">save</button>
     
         </div>

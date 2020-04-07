@@ -53,6 +53,8 @@ use App\Model\Budget;
 use App\Model\Animal_stock;
 use App\Model\Animal_common_name;
 use App\Model\Protocol_docsfile;
+use App\Model\UserAll;
+use App\Model\UsersDetail;
 
 class CreatedocsController extends Controller
 {
@@ -68,12 +70,17 @@ class CreatedocsController extends Controller
         $StatusUser  = StatusUser::all();
         $Budget     = Budget::where('status','Y')->get();
         $Protocol_docsfile    =   Protocol_docsfile::where('protocol_id',0)->get();
+        $UserAll    =   UserAll::find(Auth::user()->id);
+        $UsersDetail    =   UsersDetail::where('usersId',Auth::user()->id)->first();
+
         return view('member.protocol-docs', compact(
             'StatusUser',
             'Budget',
             'Animal_stock',
             'Animal_common_name',
-            'Protocol_docsfile'
+            'Protocol_docsfile',
+            'UserAll',
+            'UsersDetail'
         ));
     }
 
@@ -107,12 +114,21 @@ class CreatedocsController extends Controller
         Session::put('protocol_id', $Protocol_docs->id);
         return redirect()->route('member.protocol_create.index')->with('yes', 'สร้าง protocol เรียบร้อยกรุณากรอกข้อมูลให้ถูกต้อง');
     }
-    public function update($id)
+    public function SaveIn($id)
     {
         $Protocol_docs  = Protocol_docs::find($id);
         $Protocol_docs->protocol_status     = "2";
         $Protocol_docs->save();
         return redirect()->route('member.protocol_draft.index')->with('yes', 'บัญทึก protocol เรียบร้อยกรุณาตรวจสอบข้อมูลให้ถูกต้อง');
+        
+
+    }
+    public function update($id)
+    {
+        $Protocol_docs  = Protocol_docs::find($id);
+        $Protocol_docs->protocol_status     = "3";
+        $Protocol_docs->save();
+        return redirect()->route('member.protocol_list.index')->with('yes', 'บัญทึก protocol เรียบร้อยกรุณาตรวจสอบข้อมูลให้ถูกต้อง');
         
 
     }
@@ -574,6 +590,7 @@ class CreatedocsController extends Controller
         $Protocol_opic18->ptc18_03      = $request->ptc18_03;
         $Protocol_opic18->ptc18_04      = $request->ptc18_04;
         $Protocol_opic18->ptc18_05      = $request->ptc18_05;
+
         if(!empty($_FILES['ptc18_file']["name"])){  $Protocol_opic18->ptc18_file    = $file_nameth; }
 
         $Protocol_opic18->ptc18_06      = $request->ptc18_06;

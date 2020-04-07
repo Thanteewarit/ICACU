@@ -65,18 +65,18 @@
         <div class="row form-group">
             <div class="col-lg-4">
                 <label>โทรศัพท์ (Tel.)</label>
-                <input type="text" class="form-control form-control-sm" name="Tel" autocomplete="off" required>
+                <input type="text" class="form-control form-control-sm" name="Tel" autocomplete="off" >
             </div>
             <div class="col-lg-4">
                 <label>โทรสาร (Fax.)</label>
-                <input type="text" class="form-control form-control-sm" name="Fax" autocomplete="off" required>
+                <input type="text" class="form-control form-control-sm" name="Fax" autocomplete="off" >
             </div>
             <div class="col-lg-4">
                 <label>E-mail</label>
-                <input type="email" class="form-control form-control-sm" name="email" autocomplete="off" required>
+                <input type="email" class="form-control form-control-sm" name="email" autocomplete="off" >
             </div>
         </div>
-
+        <p class="topic-save2">กรุณากด Save ทุกครั้งหลังมีการแก้ไขข้อมูล</p>
         <button type="submit" class="btn-c material-icons topic-save">save</button>
 
     </div>

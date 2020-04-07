@@ -15,7 +15,7 @@
             <tbody class="tr_protocol_08">
                 @foreach ($Protocol_opic08 as $r)
                 <tr>
-                <td class="p-0"><textarea class="form-control form-control-sm border-0 rounded-0 auto-expand"  name="Objective[]" rows="1"  required>{{ $r->Objective  }}</textarea></td>
+                <td class="p-0"><textarea class="form-control form-control-sm border-0 rounded-0 auto-expand"  name="Objective[]" rows="1"  >{{ $r->Objective  }}</textarea></td>
                     <td class="text-center p-0">
                         <button type="button" class="btn btn-secondary rounded-0 h-100 minus08">-</button>
                     </td>
@@ -33,6 +33,7 @@
         </table>
 
         <input type="hidden" name="id" value="{{ $Protocol_opic07->protocol_id }}">
+        <p class="topic-save2">กรุณากด Save ทุกครั้งหลังมีการแก้ไขข้อมูล</p>
         <button type="submit" class="btn-c material-icons topic-save">save</button>
 
     </div>
